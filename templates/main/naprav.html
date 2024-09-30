@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/napravlen.css' %}" rel="stylesheet">
+
+    <title>Направлення</title>
+   
+</head>
+<body>
+
+<div class="upload-container">
+    <h2>Завантажте направлення</h2>
+    <form  method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="pdf" required>
+        <br>
+        <button type="submit">Відправити</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+body {
+    font-family: "uaf", sans-serif !important;
+}
+
+
+.multipleSelect2 {
+    width: 300px;
+}
+
+
+
+.card {
+    transition: background-color 0.7s;
+}
+
+.card:hover {
+    background-color: #8ACBDE;
+    /* Градієнтний фон */
+    color: #222222;
+    transition: background-color 0.7s;
+}
+
+.gradi {
+    /* Градієнтне фонове заповнення тексту */
+    background-image: linear-gradient(to right, #9FACE6, #07dbdf);
+    /* Обрізка градієнту до області тексту */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* Колір тексту у випадку, якщо браузер не підтримує градієнтні текстові ефекти */
+    color: transparent;
+}
+
+.whitee{
+    background-color: #F5EDF0;
+}
+.grenee{
+    background-color: #368200;
+    color: #F5EDF0
+}
+
+.pinkee{
+    background-color: #AB006F;
+    color:#F5EDF0;
+}
+
+.yelowee{
+    background-color: #FFC32A;
+    color:#368200
+}
+
+.blackee{
+    background-color: #222222;
+    color: #F5EDF0;
+}
+
+.disablee{
+    background-color: #989898;
+    color: #222222;
+}
+

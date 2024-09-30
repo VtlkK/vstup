@@ -1,0 +1,1099 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета</title>
+    <link rel="stylesheet" href="{% static 'css/anketa_style.css' %}">
+    <style>
+        body {
+            background-color: #2e5538;
+        }
+        .container {
+            background-color: #ffffff;
+        }
+        .submit-button {
+            background-color: #4c8b64;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px; /* Відступ між верхнім рядом і input */
+        }
+
+        .info-button {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px; /* Відступ між кнопкою і текстом label */
+        }
+
+       .info-icon {
+            background-color: #333;
+            color: white;
+            border: none;
+            width: 20px; /* Однакові ширина */
+            height: 20px; /* і висота для круглої форми */
+            border-radius: 50%; /* Кругла форма */
+            cursor: pointer;
+            font-size: 16px;
+            display: flex; /* Додаємо flex для вирівнювання тексту */
+            align-items: center; /* Вирівнювання по вертикалі */
+            justify-content: center; /* Вирівнювання по горизонталі */
+       }
+
+        .info-popup {
+            visibility: hidden;
+            width: 200px;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Позиціювання над кнопкою */
+            left: 50%;
+            margin-left: -100px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-popup::after {
+            content: "";
+            position: absolute;
+            top: 100%; /* Вказує на нижню частину інформуючого віконця */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #f9f9f9 transparent transparent transparent;
+        }
+
+        .info-button:hover .info-popup {
+            visibility: visible;
+        }
+
+        .info-button .info-icon:focus + .info-popup {
+            visibility: visible;
+        }
+
+        input[type="file"] {
+            margin-top: 5px; /* Відступ зверху для input */
+        }
+
+
+        @media (max-width: 768px) {
+            .info-icon {
+                width: 30px;  /* Збільшуємо розмір для кращої видимості */
+                height: 30px;
+                border-radius: 50%; /* Зберігаємо круглу форму */
+            }
+
+            .info-popup {
+                left: 90px; /* Невеликий відступ зліва */
+
+            }
+
+            .input-field{
+                width: 85%;
+                font-size: 12px;
+            }
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+{% if ank %}
+   <div class="container">
+<form method="POST" class="form-inline" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <h2>Заповніть анкету</h2>
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Завантажте ваше фото паспортного формату 3х4 см.</div>
+                </div>
+                <label for="photoUpload">Завантажте фото:</label>
+            </div>
+            <input type="file" class="form-control" id="photoUpload" name="photo" accept="image/*" required>
+        </div>
+
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Хмельницький Богдан Михайлович</div>
+                </div>
+                <label for="nsf">1. Прізвище, ім’я, по батькові:</label>
+            </div>
+            <input type="text" value="{{ ank.nsf }}" class="form-control" id="nsf" name="nsf" placeholder="" oninput="validateInput(this)">
+        </div>
+
+
+
+       <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Прізвище не змінювалося. Або прізвище змінено з Шевченко на Петренко 18.06.2022 у зв'язку з одруженням.</div>
+                </div>
+                <label for="ed_nsf">2. Якщо змінювали прізвище, ім’я або по батькові, вкажіть коли і з якої причини:</label>
+            </div>
+            <input type="text" value="{{ ank.ed_nsf }}" class="form-control" id="ed_nsf" name="ed_nsf" placeholder="" oninput="validateInput(this)">
+       </div>
+
+
+       <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: 10.10.2006, Київська область,  Лісовський район, село Вишневе, вулиця Центральна, будинок 12.</div>
+                </div>
+                <label for="born">3. Рік, число, місяць та місце народження (село, місто, район, область):</label>
+            </div>
+            <input type="text" value="{{ ank.born }}" class="form-control" id="born" name="born" placeholder="" oninput="validateInput(this)">
+       </div>
+
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Київська область,  Лісовський район, село Вишневе, вулиця Центральна, будинок 12.</div>
+                </div>
+                <label for="place">4. Місце реєстрації:</label>
+            </div>
+            <input type="text" value="{{ ank.place }}" class="form-control" id="place" name="place" placeholder="" oninput="validateInput(this)">
+        </div>
+
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Київська область,  Лісовський район, село Вишневе, вулиця Центральна, будинок 12.</div>
+                </div>
+                <label for="place_register">5. Місце фактичного проживання:</label>
+            </div>
+            <input type="text" value="{{ ank.place_register }}" class="form-control" id="place_register" name="place_register" placeholder="" oninput="validateInput(this)">
+        </div>
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Українець/Українка.</div>
+                </div>
+                <label for="place_live">6. Громадянство:</label>
+            </div>
+            <input type="text" value="{{ ank.place_live }}" class="form-control" id="place_live" name="place_live" placeholder="" oninput="validateInput(this)">
+        </div>
+
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Змінив/змінила громадянство з [громадянство1] на українське відповідно до рішення суду.</div>
+                </div>
+                <label for="cityzen">7. Якщо змінювали громадянство або маєте громадянство іншої країни, вкажіть коли і з якої причини, або за яких обставин ви отримали (змінили):</label>
+            </div>
+            <input type="text" value="{{ ank.cityzen }}" class="form-control" id="cityzen" name="cityzen" placeholder="" oninput="validateInput(this)">
+        </div>
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Паспорт громадянина України: 001234567, 1234, 03.12.2020. </div>
+                </div>
+                <label for="edit_cit">8. Паспорт громадянина України: серія, номер, ким виданий і коли:</label>
+            </div>
+            <input type="text" value="{{ ank.edit_cit }}" class="form-control" id="edit_cit" name="edit_cit" placeholder="" oninput="validateInput(this)">
+        </div>
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Відсутній. У разі наявності: XX123456, 1234, 03.12.2020.</div>
+                </div>
+                <label for="pasport">9. Паспорт громадянина України для виїзду за кордон: серія, номер, ким виданий і коли:</label>
+            </div>
+            <input type="text" value="{{ ank.pasport }}" class="form-control" id="pasport" name="pasport" placeholder="" oninput="validateInput(this)">
+        </div>
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Відсутні. У разі наявності вказуємо: назву документу, серію, номер, ким виданий і коли. </div>
+                </div>
+                <label for="pasport_c">10. Інші документи що посвідчують особу (посвідчення водія, посвідчення біженця, ін.):</label>
+            </div>
+            <input type="text" value="{{ ank.pasport_c }}" class="form-control" id="pasport_c" name="pasport_c" placeholder="" oninput="validateInput(this)">
+        </div>
+
+            <div class="input-container">
+                <div class="top-row">
+                    <div class="info-button">
+                        <button type="button" class="info-icon">i</button>
+                        <div class="info-popup">Приклад: Відсутні. У разі наявності вкажіть деталі про отримані паспорти, посвідчення, посвідки або картки інших держав, включаючи коли, з якої країни, з якої причини або за яких обставин.</div>
+                    </div>
+                    <label for="en_doc">11. Якщо отримували паспорти (посвідчення, посвідки, картки) інших держав, вкажіть коли, якої країни, з якої причини або за яких обставин:</label>
+                </div>
+                <input type="text" value="{{ ank.en_doc }}" class="form-control" id="en_doc" name="en_doc" placeholder="" oninput="validateInput(this)">
+            </div>
+
+            <div class="input-container">
+                <div class="top-row">
+                    <div class="info-button">
+                        <button type="button" class="info-icon">i</button>
+                        <div class="info-popup">Приклад: Ваша освіта, спеціальність, коли і який навчальний заклад ви закінчили (вказуючи всі навчальні заклади).</div>
+                    </div>
+                    <label for="education">12. Освіта, спеціальність, коли і який навчальний заклад закінчили (вказуються всі навчальні заклади):</label>
+                </div>
+                <input type="text" value="{{ ank.education }}" class="form-control" id="education" name="education" placeholder="" oninput="validateInput(this)">
+            </div>
+
+            <div class="input-container">
+                <div class="top-row">
+                    <div class="info-button">
+                        <button type="button" class="info-icon">i</button>
+                        <div class="info-popup">Приклад: Cерія, номер, ким виданий та коли.</div>
+                    </div>
+                    <label for="duplom">13. Диплом (свідоцтво про здобуття повної загальної середньої освіти): серія і номер, ким виданий і коли:</label>
+                </div>
+                <input type="text" value="{{ ank.duplom }}" class="form-control" id="duplom" name="duplom" placeholder="" oninput="validateInput(this)">
+            </div>
+
+            <div class="input-container">
+                <div class="top-row">
+                    <div class="info-button">
+                        <button type="button" class="info-icon">i</button>
+                        <div class="info-popup">Приклад: Англійською на розмовному рівні, або вказуєте рівень (B2).</div>
+                    </div>
+                    <label for="len">14. Якими іноземними мовами володієте (якою та в якому обсязі):</label>
+                </div>
+                <input type="text" value="{{ ank.len }}" class="form-control" id="len" name="len" placeholder="" oninput="validateInput(this)">
+            </div>
+
+            <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Звертаємо увагу на достовірність ваших даних, так як вони будуть перевірятися відповідними органами! Приклад: Instagram - @poter_oleg, twitter - @poter, facebook - Потер Олег.</div>
+                            </div>
+                            <label for="social_med">15. Якими соціальними медіа (соціальними мережами) ви користуєтесь, а також вкажіть ваші профілі:</label>
+                        </div>
+                        <input type="text" class="form-control" id="social_med" name="social_med" placeholder="" oninput="validateInput(this)">
+            </div>
+
+            <div class="input-container">
+                <div class="top-row">
+                    <div class="info-button">
+                        <button type="button" class="info-icon">i</button>
+                        <div class="info-popup">Приклад: Власне авто "Skoda".</div>
+                    </div>
+                    <label for="tz">16. Наявність транспортних засобів, що перебувають в особистій власності і членів сім'ї:</label>
+                </div>
+                <input type="text" value="{{ ank.tz }}" class="form-control" id="tz" name="tz" placeholder="" oninput="validateInput(this)">
+            </div>
+
+            <div class="input-container">
+                <div class="top-row">
+                    <div class="info-button">
+                        <button type="button" class="info-icon">i</button>
+                        <div class="info-popup">Приклад: КМС по Дзюдо.</div>
+                    </div>
+                    <label for="zbroi">17. Володіння зброєю (яка та в якому обсязі), наявність спортивних звань, розрядів (з яких видів спорту):</label>
+                </div>
+                <input type="text" value="{{ ank.zbroi }}" class="form-control" id="zbroi" name="zbroi" placeholder="" oninput="validateInput(this)">
+            </div>
+
+            <div class="input-container">
+                <div class="top-row">
+                    <div class="info-button">
+                        <button type="button" class="info-icon">i</button>
+                        <div class="info-popup"> Приклад: Вкажіть, чи притягались ви або ваші близькі родичі до кримінальної чи адміністративної відповідальності, включаючи коли і за що, а також рішення суду.</div>
+                    </div>
+                    <label for="crimanal">18. Чи притягались Ви або Ваші близькі родичі до кримінальної, адміністративної відповідальності, коли і за що, рішення суду:</label>
+                </div>
+                <input type="text" value="{{ ank.crimanal }}" class="form-control" id="crimanal" name="crimanal" placeholder="" oninput="validateInput(this)">
+            </div>
+
+            <div class="input-container">
+                <div class="top-row">
+                    <div class="info-button">
+                        <button type="button" class="info-icon">i</button>
+                        <div class="info-popup">Приклад: Відсутні та не перебував. Або тітка - АР Крим, вул. Пушкіна, буд. 22.</div>
+                    </div>
+                    <label for="teritory">19. Чи перебували Ви (де і коли) або маєте родичів на непідконтрольній території України (Донецька, Луганська області та АР Крим, вказати адресу):</label>
+                </div>
+                <input type="text" value="{{ ank.teritory }}" class="form-control" id="teritory" name="teritory" placeholder="" oninput="validateInput(this)">
+            </div>
+
+            <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Приклад: Перебував у Польщі в період з 12.12.2018 по 14.12.2018, родичів за кордоном немає.</div>
+                            </div>
+                            <label for="rf">20. Чи перебували Ви (де і коли) або маєте за кордоном :</label>
+                        </div>
+                        <input type="text" class="form-control" id="rf" name="rf" placeholder="" oninput="validateInput(this)">
+            </div>
+
+
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">Приклад: Батько, Шевченко Олег Миколайович, 01.02.1972, тренер ФК "Шахта", Київська область,  Лісовський район, село Вишневе, вулиця Центральна, будинок 12.</div>
+                </div>
+                <label for="familyTable">21. Ваші близькі родичі (дружина, чоловік), батько, мати, брати, сестри і діти:</label>
+            </div>
+            <div class="table-container">
+                <table id="familyTable">
+                    <thead>
+                        <tr>
+                            <th>Ступінь спорідненості</th>
+                            <th>Прізвище, ім'я, по батькові</th>
+                            <th>Рік і місце народження</th>
+                            <th>Місце роботи, посада</th>
+                            <th>Адреса проживання</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input name="stupin" value="{{ ank.stupin }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                            <td><input name="name1" type="text" value="{{ ank.name1 }}" class="input-field" oninput="validateInput(this)"></td>
+                            <td><input name="born1" value="{{ ank.born1 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                            <td><input name="work1" value="{{ ank.work1 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                            <td><input name="adress" value="{{ ank.adress }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                          <td><input name="stupin2"  value="{{ ank.stupin2 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="name2" value="{{ ank.name2 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="born2"  value="{{ ank.born2 }}"type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="work2" value="{{ ank.work2 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="adress2" value="{{ ank.adress2 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                          <td><input name="stupin3"  value="{{ ank.stupin3 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="name3" value="{{ ank.name3 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="born3"  value="{{ ank.born3 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="work3"  value="{{ ank.work3 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="adress3"  value="{{ ank.adress3 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                          <td><input name="stupin4" value="{{ ank.stupin4 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="name4" value="{{ ank.stupin4 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="born4" value="{{ ank.stupin4 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="work4" value="{{ ank.stupin4 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="adress4" value="{{ ank.stupin4 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                          <td><input name="stupin5" value="{{ ank.stupin5 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="name5" value="{{ ank.name5 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="born5" value="{{ ank.born5 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="work5" value="{{ ank.work5 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="adress5" value="{{ ank.adress5 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                          <td><input name="stupin6" value="{{ ank.stupin6 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="name6" value="{{ ank.name6 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="born6" value="{{ ank.born6 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="work6" value="{{ ank.work6 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="adress6" value="{{ ank.adress6 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                          <td><input name="stupin7" value="{{ ank.stupin7 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="name7" value="{{ ank.name7 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="born7" value="{{ ank.born7 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="work7" value="{{ ank.work7 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="adress7" value="{{ ank.adress7 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                          <td><input name="stupin8"  value="{{ ank.stupin8 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="name8" value="{{ ank.name8 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="born8" value="{{ ank.born8 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="work8" value="{{ ank.work8 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                          <td><input name="adress8" value="{{ ank.adress8 }}" type="text" class="input-field" oninput="validateInput(this)"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 12px; color: #777">У разі заповнення анкети зі смартфону, зверніть увагу на те, що таблиці прогортуються в сторону.</p>
+        </div>
+
+
+
+
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">
+                        Приклад: Вказати деталі трудової діяльності, включаючи періоди роботи та навчання. Використовуйте назви організацій та підприємств так, як вони іменувались у той час.
+                    </div>
+                </div>
+                <label for="workTable">22. Виконувана робота від початку трудової діяльності (включаючи навчання в середніх і вищих навчальних закладах, роботу за сумісництвом). Під час заповнення цього пункту навчальні заклади, організації та підприємства називають так, як вони іменувались у той час:</label>
+            </div>
+            <div class="table-container">
+                <table id="workTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Дата (число, місяць і рік)</th>
+                            <th rowspan="2">Посада, номер військової частини, назва військового округу, міністерства (відомства)</th>
+                            <th rowspan="2">Місцезнаходження закладу, організації, підприємства</th>
+                        </tr>
+                        <tr>
+                            <th>Вступ</th>
+                            <th>Звільнення</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="input-field" placeholder="" name="vstup" value="{{ ank.vstup }}" oninput="validateInput(this)"></td>
+                            <td><input type="text" class="input-field" placeholder="" name="zvil" value="{{ ank.zvil }}" oninput="validateInput(this)"></td>
+                            <td><input type="text" class="input-field" placeholder="" name="posada" value="{{ ank.posada }}" oninput="validateInput(this)"></td>
+                            <td><input type="text" class="input-field" placeholder="" name="location" value="{{ ank.location }}" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="input-field" placeholder="" name="vstup1" value="{{ ank.vstup1 }}" oninput="validateInput(this)"></td>
+                            <td><input type="text" class="input-field" placeholder="" name="zvil1" value="{{ ank.zvil1 }}" oninput="validateInput(this)"></td>
+                            <td><input type="text" class="input-field" placeholder="" name="posada1" value="{{ ank.posada1 }}" oninput="validateInput(this)"></td>
+                            <td><input type="text" class="input-field" placeholder="" name="location1" value="{{ ank.location1 }}" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="input-field" placeholder="" name="vstup2" value="{{ ank.vstup2 }}" oninput="validateInput(this)"></td>
+                            <td><input type="text" class="input-field" placeholder="" name="zvil2" value="{{ ank.zvil2 }}" oninput="validateInput(this)"></td>
+                            <td><input type="text" class="input-field" placeholder="" name="posada2" value="{{ ank.posada2 }}" oninput="validateInput(this)"></td>
+                            <td><input type="text" class="input-field" placeholder="" name="location2" value="{{ ank.location2 }}" oninput="validateInput(this)"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 12px; color: #777">У разі заповнення анкети зі смартфону, зверніть увагу на те, що таблиці прогортуються в сторону.</p>
+        </div>
+
+
+
+        <div class="input-container">
+            <div class="top-row">
+                <div class="info-button">
+                    <button type="button" class="info-icon">i</button>
+                    <div class="info-popup">
+                        Приклад: Вказати деталі служби в Збройних Силах України та інших військових формуваннях, включаючи дати, посади та місцезнаходження.
+                    </div>
+                </div>
+                <label for="serviceTable">23. Служба в Збройних Силах України інших військових формуваннях у творених у відповідності до законодавства України (коли і ким призивався на службу). Під час заповнення цього пункту військові частини називають так, як вони іменувались у той час:</label>
+            </div>
+            <div class="table-container">
+                <table id="serviceTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Дата (число, місяць і рік)</th>
+                            <th rowspan="2">Посада, номер військової частини, назва військового округу, міністерства (відомства) до складу якого входив підрозділ</th>
+                            <th rowspan="2">Місцезнаходження закладу, організації, підприємства</th>
+                        </tr>
+                        <tr>
+                            <th>Вступ</th>
+                            <th>Звільнення</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input name="vstup4" value="{{ ank.vstup4 }}" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                            <td><input name="zvil4"  value="{{ ank.zvil4 }}"type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                            <td><input name="posada4" value="{{ ank.posada4 }}" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                            <td><input name="location4" value="{{ ank.location4 }}" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="vstup5" value="{{ ank.vstup5 }}" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                            <td><input name="zvil5" value="{{ ank.zvil5 }}" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                            <td><input name="posada5" value="{{ ank.posada5 }}" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                            <td><input name="location5" value="{{ ank.location5 }}" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 12px; color: #777">У разі заповнення анкети зі смартфону, зверніть увагу на те, що таблиці прогортуються в сторону.</p>
+        </div>
+
+
+
+
+            <label class="" for="">Військово-обліковий документ (для військовозобов’язаних – військовий квиток або тимчасового посвідчення, для призовників – посвідчення про приписку до призовних дільниць):</label>
+
+            <label class="" for="">серія і номер:</label>
+            <input type="text" value="{{ ank.seria_num }}" class="form-control" id="" name="seria_num" placeholder="" oninput="validateInput(this)">
+
+            <label class="" for="">ким виданий і коли</label>
+            <input type="text" value="{{ ank.kum }}"  class="form-control" id="" name="kum" placeholder="" oninput="validateInput(this)">
+            <br>
+            <label class="" for="">Контактні телефони:</label>
+
+            <label class="" for="">Особистий:</label>
+            <input type="text" value="{{ ank.kontact_os }}" class="form-control" id="" name="kontact_sl" placeholder="068-xxx-xx-xx" pattern="\d{10}" maxlength="10" oninput="validatePhoneNumber(this)">
+            <label class="" for="">Додатковий:</label>
+            <input type="text" value="{{ ank.kontact_sl }}" class="form-control" id="" name="kontact_os" placeholder="068-xxx-xx-xx" pattern="\d{10}" maxlength="10" oninput="validatePhoneNumber(this)">
+
+            <label class="" for="">Номер телефону Батька:</label>
+            <input type="text" value="{{ ank.kontact_fa }}" class="form-control" id="" name="kontact_fa" placeholder="068-xxx-xx-xx" pattern="\d{10}" maxlength="10" oninput="validatePhoneNumber(this)">
+            <label class="" for="">Номер телефону Матері:</label>
+            <input type="text" value="{{ ank.kontact_ma }}" class="form-control" id="" name="kontact_ma" placeholder="068-xxx-xx-xx" pattern="\d{10}" maxlength="10" oninput="validatePhoneNumber(this)">
+            <label class="" for="">Дата заповнення анкети:</label>
+            <input type="text" value="{{ ank.data22 }}" class="form-control" id="" name="data22" placeholder="22.05.2025"  >
+            <button type="submit" name="save" class="submit-button">ПОДАТИ ЗАЯВУ НА ВСТУП</button>
+
+        {% if show_save_button %}
+
+                <button  style="position: relative;top: 10px" type="submit" name="save2" class="submit-button">Зберегти як чернетку</button>
+                <p style="font-size: 12px; color: #777">Для того щоб зберегти заповненні поля у анкеті, обов'язково завантажте фото в 1 пункті.</p>
+        {% else %}
+        {% endif %}
+
+
+    </div>
+
+</form>
+
+</div>
+    {% else %}
+
+
+
+    <!-- Для виправлення використовувати анкету яка знизу -->
+
+
+
+
+    <div class="container">
+        <form method="POST" class="form-inline" role="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <h2>Заповніть анкету</h2>
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Завантажте ваше фото паспортного формату 3х4 см.</div>
+                        </div>
+                        <label for="photoUpload">Завантажте фото:</label>
+                    </div>
+                    <input type="file" class="form-control" id="photoUpload" name="photo" accept="image/*" required>
+                </div>
+
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Хмельницький Богдан Михайлович</div>
+                        </div>
+                        <label for="nsf">1. Прізвище, ім’я, по батькові:</label>
+                    </div>
+                    <input type="text" class="form-control" value="Кожушко Віталій Юрійович" id="nsf" name="nsf" placeholder="" oninput="validateInput(this)">
+                </div>
+
+
+
+               <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Прізвище не змінювалося. Або прізвище змінено з Шевченко на Петренко 18.06.2022 у зв'язку з одруженням.</div>
+                        </div>
+                        <label for="ed_nsf">2. Якщо змінювали прізвище, ім’я або по батькові, вкажіть коли і з якої причини:</label>
+                    </div>
+                    <input type="text" class="form-control" value="Прізвище не змінювалося" id="ed_nsf" name="ed_nsf" placeholder="" oninput="validateInput(this)">
+               </div>
+
+
+               <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: 10.10.2006, Київська область,  Лісовський район, село Вишневе, вулиця Центральна, будинок 12.</div>
+                        </div>
+                        <label for="born">3. Рік, число, місяць та місце народження (село, місто, район, область):</label>
+                    </div>
+                    <input type="text" class="form-control" value="2004 02 01 Лісовський обл, село Вишневе," id="born" name="born" placeholder="" oninput="validateInput(this)">
+               </div>
+
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Київська область,  Лісовський район, село Вишневе, вулиця Центральна, будинок 12.</div>
+                        </div>
+                        <label for="place">4. Місце реєстрації:</label>
+                    </div>
+                    <input type="text" class="form-control" id="place" value="Лісовський обл, село Вишневе" name="place" placeholder="" oninput="validateInput(this)">
+                </div>
+
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Київська область,  Лісовський район, село Вишневе, вулиця Центральна, будинок 12.</div>
+                        </div>
+                        <label for="place_register">5. Місце фактичного проживання:</label>
+                    </div>
+                    <input type="text" class="form-control" value="Лісовський обл, село Вишневе" id="place_register" name="place_register" placeholder="" oninput="validateInput(this)">
+                </div>
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Українець/Українка.</div>
+                        </div>
+                        <label for="place_live">6. Громадянство:</label>
+                    </div>
+                    <input type="text" class="form-control" value="Українець" id="place_live" name="place_live" placeholder="" oninput="validateInput(this)">
+                </div>
+
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Змінив/змінила громадянство з [громадянство1] на українське відповідно до рішення суду.</div>
+                        </div>
+                        <label for="cityzen">7. Якщо змінювали громадянство або маєте громадянство іншої країни, вкажіть коли і з якої причини, або за яких обставин ви отримали (змінили):</label>
+                    </div>
+                    <input type="text" class="form-control" id="cityzen" value="громадянство не змінював" name="cityzen" placeholder="" oninput="validateInput(this)">
+                </div>
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Паспорт громадянина України: 001234567, 1234, 03.12.2020. </div>
+                        </div>
+                        <label for="edit_cit">8. Паспорт громадянина України: серія, номер, ким виданий і коли:</label>
+                    </div>
+                    <input type="text" class="form-control" id="edit_cit"  value="001234567, 1234, 03.12.2020" name="edit_cit" placeholder="" oninput="validateInput(this)">
+                </div>
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Відсутній. У разі наявності: XX123456, 1234, 03.12.2020.</div>
+                        </div>
+                        <label for="pasport">9. Паспорт громадянина України для виїзду за кордон: серія, номер, ким виданий і коли:</label>
+                    </div>
+                    <input type="text" class="form-control" id="pasport" value="відсутній" name="pasport" placeholder="" oninput="validateInput(this)">
+                </div>
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Відсутні. У разі наявності вказуємо: назву документу, серію, номер, ким виданий і коли. </div>
+                        </div>
+                        <label for="pasport_c">10. Інші документи що посвідчують особу (посвідчення водія, посвідчення біженця, ін.):</label>
+                    </div>
+                    <input type="text" class="form-control" id="pasport_c" value="відсутні" name="pasport_c" placeholder="" oninput="validateInput(this)">
+                </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Приклад: Відсутні. У разі наявності вкажіть деталі про отримані паспорти, посвідчення, посвідки або картки інших держав, включаючи коли, з якої країни, з якої причини або за яких обставин.</div>
+                            </div>
+                            <label for="en_doc">11. Якщо отримували паспорти (посвідчення, посвідки, картки) інших держав, вкажіть коли, якої країни, з якої причини або за яких обставин:</label>
+                        </div>
+                        <input type="text" class="form-control" value="Відсутні" id="en_doc" name="en_doc" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Приклад: Ваша освіта, спеціальність, коли і який навчальний заклад ви закінчили (вказуючи всі навчальні заклади).</div>
+                            </div>
+                            <label for="education">12. Освіта, спеціальність, коли і який навчальний заклад закінчили (вказуються всі навчальні заклади):</label>
+                        </div>
+                        <input type="text" class="form-control" value="Середкевицький ЗЗСЩ 1 - 3 ст" id="education" name="education" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Приклад: Cерія, номер, ким виданий та коли.</div>
+                            </div>
+                            <label for="duplom">13. Диплом (свідоцтво про здобуття повної загальної середньої освіти): серія і номер, ким виданий і коли:</label>
+                        </div>
+                        <input type="text" class="form-control" value="34556 464365466" id="duplom" name="duplom" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Приклад: Англійською на розмовному рівні, або вказуєте рівень (B2).</div>
+                            </div>
+                            <label for="len">14. Якими іноземними мовами володієте (якою та в якому обсязі):</label>
+                        </div>
+                        <input type="text" class="form-control" value="Англійською на розмовному рівні" id="len" name="len" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Звертаємо увагу на достовірність ваших даних, так як вони будуть перевірятися відповідними органами! Приклад: Instagram - @poter_oleg, twitter - @poter, facebook - Потер Олег.</div>
+                            </div>
+                            <label for="social_med">15. Якими соціальними медіа (соціальними мережами) ви користуєтесь, а також вкажіть ваші профілі:</label>
+                        </div>
+                        <input type="text" class="form-control" value="Instagram: _vitalik.k_____" id="social_med" name="social_med" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Приклад: Власне авто "Skoda".</div>
+                            </div>
+                            <label for="tz">16. Наявність транспортних засобів, що перебувають в особистій власності і членів сім'ї:</label>
+                        </div>
+                        <input type="text" class="form-control" id="tz" value="Власне авто Skoda" name="tz" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Приклад: КМС по Дзюдо.</div>
+                            </div>
+                            <label for="zbroi">17. Володіння зброєю (яка та в якому обсязі), наявність спортивних звань, розрядів (з яких видів спорту):</label>
+                        </div>
+                        <input type="text" class="form-control" value="КМС по Дзюдо" id="zbroi" name="zbroi" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup"> Приклад: Вкажіть, чи притягались ви або ваші близькі родичі до кримінальної чи адміністративної відповідальності, включаючи коли і за що, а також рішення суду.</div>
+                            </div>
+                            <label for="crimanal">18. Чи притягались Ви або Ваші близькі родичі до кримінальної, адміністративної відповідальності, коли і за що, рішення суду:</label>
+                        </div>
+                        <input type="text" class="form-control" value="не притягались" id="crimanal" name="crimanal" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Приклад: Відсутні та не перебував. Або тітка - АР Крим, вул. Пушкіна, буд. 22.</div>
+                            </div>
+                            <label for="teritory">19. Чи перебували Ви (де і коли) або маєте родичів на непідконтрольній території України (Донецька, Луганська області та АР Крим, вказати адресу) або рф:</label>
+                        </div>
+                        <input type="text" class="form-control" value="відсутні" id="teritory" name="teritory" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+                    <div class="input-container">
+                        <div class="top-row">
+                            <div class="info-button">
+                                <button type="button" class="info-icon">i</button>
+                                <div class="info-popup">Приклад: Перебував у Польщі в період з 12.12.2018 по 14.12.2018, родичів за кордоном немає.</div>
+                            </div>
+                            <label for="rf">20. Чи перебували Ви (де і коли) або маєте за кордоном :</label>
+                        </div>
+                        <input type="text" class="form-control" value="не перебував" id="rf" name="rf" placeholder="" oninput="validateInput(this)">
+                    </div>
+
+
+
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">Приклад: Батько, Шевченко Олег Миколайович, 01.02.1972, тренер ФК "Шахта", Київська область,  Лісовський район, село Вишневе, вулиця Центральна, будинок 12.</div>
+                        </div>
+                        <label for="familyTable">21. Ваші близькі родичі (дружина, чоловік), батько, мати, брати, сестри і діти:</label>
+                    </div>
+                    <div class="table-container">
+                        <table id="familyTable">
+                            <thead>
+                                <tr>
+                                    <th>Ступінь спорідненості</th>
+                                    <th>Прізвище, ім'я, по батькові</th>
+                                    <th>Рік і місце народження</th>
+                                    <th>Місце роботи, посада</th>
+                                    <th>Адреса проживання</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input name="stupin" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                    <td><input name="name1" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                    <td><input name="born1" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                    <td><input name="work1" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                    <td><input name="adress" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                  <td><input name="stupin2" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="name2" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="born2" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="work2" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="adress2" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                  <td><input name="stupin3" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="name3" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="born3" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="work3" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="adress3" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                  <td><input name="stupin4" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="name4" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="born4" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="work4" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="adress4" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                  <td><input name="stupin5" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="name5" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="born5" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="work5" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="adress5" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                  <td><input name="stupin6" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="name6" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="born6" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="work6" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="adress6" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                  <td><input name="stupin7" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="name7" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="born7" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="work7" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="adress7" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                  <td><input name="stupin8" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="name8" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="born8" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="work8" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                  <td><input name="adress8" type="text" class="input-field" oninput="validateInput(this)"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 12px; color: #777">У разі заповнення анкети зі смартфону, зверніть увагу на те, що таблиці прогортуються в сторону.</p>
+                </div>
+
+
+
+
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">
+                                Приклад: Вказати деталі трудової діяльності, включаючи періоди роботи та навчання. Використовуйте назви організацій та підприємств так, як вони іменувались у той час.
+                            </div>
+                        </div>
+                        <label for="workTable">22. Виконувана робота від початку трудової діяльності (включаючи навчання в середніх і вищих навчальних закладах, роботу за сумісництвом). Під час заповнення цього пункту навчальні заклади, організації та підприємства називають так, як вони іменувались у той час:</label>
+                    </div>
+                    <div class="table-container">
+                        <table id="workTable">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Дата (число, місяць і рік)</th>
+                                    <th rowspan="2">Посада, номер військової частини, назва військового округу, міністерства (відомства)</th>
+                                    <th rowspan="2">Місцезнаходження закладу, організації, підприємства</th>
+                                </tr>
+                                <tr>
+                                    <th>Вступ</th>
+                                    <th>Звільнення</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" class="input-field" placeholder="" name="vstup" oninput="validateInput(this)"></td>
+                                    <td><input type="text" class="input-field" placeholder="" name="zvil" oninput="validateInput(this)"></td>
+                                    <td><input type="text" class="input-field" placeholder="" name="posada" oninput="validateInput(this)"></td>
+                                    <td><input type="text" class="input-field" placeholder="" name="location" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" class="input-field" placeholder="" name="vstup1" oninput="validateInput(this)"></td>
+                                    <td><input type="text" class="input-field" placeholder="" name="zvil1" oninput="validateInput(this)"></td>
+                                    <td><input type="text" class="input-field" placeholder="" name="posada1" oninput="validateInput(this)"></td>
+                                    <td><input type="text" class="input-field" placeholder="" name="location1" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" class="input-field" placeholder="" name="vstup2" oninput="validateInput(this)"></td>
+                                    <td><input type="text" class="input-field" placeholder="" name="zvil2" oninput="validateInput(this)"></td>
+                                    <td><input type="text" class="input-field" placeholder="" name="posada2" oninput="validateInput(this)"></td>
+                                    <td><input type="text" class="input-field" placeholder="" name="location2" oninput="validateInput(this)"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 12px; color: #777">У разі заповнення анкети зі смартфону, зверніть увагу на те, що таблиці прогортуються в сторону.</p>
+                </div>
+
+
+
+                <div class="input-container">
+                    <div class="top-row">
+                        <div class="info-button">
+                            <button type="button" class="info-icon">i</button>
+                            <div class="info-popup">
+                                Приклад: Вказати деталі служби в Збройних Силах України та інших військових формуваннях, включаючи дати, посади та місцезнаходження.
+                            </div>
+                        </div>
+                        <label for="serviceTable">23. Служба в Збройних Силах України інших військових формуваннях у творених у відповідності до законодавства України (коли і ким призивався на службу). Під час заповнення цього пункту військові частини називають так, як вони іменувались у той час:</label>
+                    </div>
+                    <div class="table-container">
+                        <table id="serviceTable">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Дата (число, місяць і рік)</th>
+                                    <th rowspan="2">Посада, номер військової частини, назва військового округу, міністерства (відомства) до складу якого входив підрозділ</th>
+                                    <th rowspan="2">Місцезнаходження закладу, організації, підприємства</th>
+                                </tr>
+                                <tr>
+                                    <th>Вступ</th>
+                                    <th>Звільнення</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input name="vstup4" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                                    <td><input name="zvil4" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                                    <td><input name="posada4" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                                    <td><input name="location4" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                                </tr>
+                                <tr>
+                                    <td><input name="vstup5" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                                    <td><input name="zvil5" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                                    <td><input name="posada5" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                                    <td><input name="location5" type="text" class="input-field" placeholder="" oninput="validateInput(this)"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 12px; color: #777">У разі заповнення анкети зі смартфону, зверніть увагу на те, що таблиці прогортуються в сторону.</p>
+                </div>
+
+
+
+
+                    <label class="" for="">Військово-обліковий документ (для військовозобов’язаних – військовий квиток або тимчасового посвідчення, для призовників – посвідчення про приписку до призовних дільниць):</label>
+
+                    <label class="" for="">серія і номер:</label>
+                    <input type="text" class="form-control" id="" name="seria_num" placeholder="" oninput="validateInput(this)">
+
+                    <label class="" for="">ким виданий і коли</label>
+                    <input type="text" class="form-control" id="" name="kum" placeholder="" oninput="validateInput(this)">
+                    <br>
+                    <label class="" for="">Контактні телефони:</label>
+
+                    <label class="" for="">Особистий:</label>
+                    <input type="text" class="form-control" id="" name="kontact_sl" placeholder="068-xxx-xx-xx" pattern="\d{10}" maxlength="10" oninput="validatePhoneNumber(this)">
+                    <label class="" for="">Додатковий:</label>
+                    <input type="text" class="form-control" id="" name="kontact_os" placeholder="068-xxx-xx-xx" pattern="\d{10}" maxlength="10" oninput="validatePhoneNumber(this)">
+
+                    <label class="" for="">Номер телефону батька:</label>
+                    <input type="text" class="form-control" id="" name="kontact_fa" placeholder="068-xxx-xx-xx" pattern="\d{10}" maxlength="10" oninput="validatePhoneNumber(this)">
+                    <label class="" for="">Номер телефону Матері:</label>
+                    <input type="text" class="form-control" id="" name="kontact_ma" placeholder="068-xxx-xx-xx" pattern="\d{10}" maxlength="10" oninput="validatePhoneNumber(this)">
+                    <label class="" for="">Дата заповнення анкети:</label>
+                    <input type="text" class="form-control" id="" name="data22" placeholder="22.05.2025" pattern="\d{10}" maxlength="10" >
+                    <button type="submit" name="save" class="submit-button">ПОДАТИ ЗАЯВУ НА ВСТУП</button>
+
+                    <button  style="position: relative;top: 10px" type="submit" name="save2" class="submit-button">Зберегти як чернетку</button>
+                    <p style="font-size: 12px; color: #777">Для того щоб зберегти заповненні поля у анкеті, обов'язково завантажте фото в 1 пункті.</p>
+            </div>
+
+        </form>
+
+</div>
+{% endif %}
+</body>
+<script>
+
+    function validatePhoneNumber(input) {
+        // Регулярний вираз для цифр та крапки
+        const regex = /^[\d.]{0,11}$/;
+        // Зберігаємо значення до і після очищення
+        const originalValue = input.value;
+        // Очищаємо значення до цифр та крапки і обмежуємо довжину до 11 символів (10 цифр і 1 крапка)
+        input.value = originalValue.replace(/[^0-9.]/g, '').substring(0, 11);
+    }
+
+
+
+    function validateInput(input) {
+        // Регулярний вираз для українських літер, цифр, пробілів, знаків (тире, апострофи, крапка, кома, /, !, ?, _, =, +, *, (, ), #)
+        const regex = /^[А-ЩЬЮЯа-щьюя0-9 \-\'’.,\/!?_=\+\*\(\)#]*$/;
+        // Зберігаємо значення до і після очищення
+        const originalValue = input.value;
+        // Очищаємо значення до тих, що відповідають регулярному виразу
+        input.value = originalValue.replace(/[^А-ЩЬЮЯа-щьюя0-9 \-\'’.,\/!?_=\+\*\(\)#]/g, '');
+    }
+
+
+
+
+
+    function addInfoButton(containerId, infoText) {
+        const container = document.getElementById(containerId);
+        const infoButton = document.createElement("div");
+        infoButton.className = "info-button";
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "info-icon";
+        button.textContent = "i";
+
+        const infoPopup = document.createElement("div");
+        infoPopup.className = "info-popup";
+        infoPopup.textContent = infoText;
+
+        infoButton.appendChild(button);
+        infoButton.appendChild(infoPopup);
+
+        container.appendChild(infoButton);
+    }
+
+
+    
+
+</script>
+</html>

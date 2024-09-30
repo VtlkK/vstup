@@ -1,0 +1,104 @@
+body {
+            font-family: Arial, sans-serif;
+            background-color: #2e5538;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto ;
+        }
+
+        .container {
+            background-color: rgb(255, 255, 255);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            margin: 3% auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+          }
+
+        label {
+            text-align: left;
+            margin-left: 10px;
+            margin-right: 20px;
+        }
+
+
+        button {
+            background-color: #1f501d;
+            color: rgb(255, 255, 255);
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #187750;
+        }
+
+        .input-fields {
+            margin-bottom: 20px;
+            text-align: left;
+            margin-left: 35px;
+        }
+
+
+        .checkbox-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+
+
+        .info-button {
+            display: block; /* Забезпечує блочне розміщення кнопки */
+            width: 20px; /* Розмір кнопки */
+            height: 20px; /* Розмір кнопки */
+            border-radius: 50%; /* Створює круглу форму */
+            background-color: rgb(179, 179, 179); /* Синій колір */
+            color: white; /* Білий текст */
+            text-align: center; /* Центрування тексту */
+            line-height: 20px; /* Вирівнювання тексту по вертикалі */
+            position: absolute; /* Абсолютне позиціонування */
+            top: 50%; /* Позиціонування по вертикалі */
+            right: 0px; /* Відступ праворуч */
+            transform: translateY(-50%); /* Вертикальне центрування */
+            cursor: pointer; /* Зміна курсора на вказівник при наведенні */
+        }
+
+        .info-box {
+            display: none; /* Спочатку приховуємо вікно */
+            position: absolute; /* Абсолютне позиціонування */
+            top: 50%; /* Позиціонування по вертикалі */
+            right: 40px; /* Відступ праворуч */
+            transform: translateY(-50%); /* Вертикальне центрування */
+            background-color: #333333; /* Білий фон */
+            padding: 10px; /* Внутрішній відступ */
+            border: 1px solid #000000; /* Тонка сіра рамка */
+            border-radius: 15px; /* Злегка закруглені кути */
+            z-index: 1; /* Розміщуємо вікно поверх інших елементів */
+            text-align: justify;
+            color: #fff;
+        }
+
+        .info-button:hover + .info-box { /* Відображаємо вікно при наведенні на кнопку */
+            display: block;
+        }

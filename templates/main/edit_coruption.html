@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наявність родичів у ДПСУ</title>
+    <link rel="stylesheet" href="{% static 'css/parents_style.css' %}">
+    <style>
+        body {
+            background-color: #2e5538;
+        }
+        .container {
+            background-color: #ffffff;
+        }
+
+        .info-icon {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .info-icon:hover {
+            background-color: #555; /* Темніший відтінок при наведенні */
+        }
+
+        .info-icon:focus {
+            outline: none; /* Прибрати стандартний контур при фокусуванні */
+        }
+
+        .modal {
+            display: none; /* Сховати за замовчуванням */
+            position: fixed; /* Залишається на місці при прокручуванні */
+            z-index: 1; /* Задає вище пріоритет, щоб бути над іншими елементами */
+            left: 0;
+            top: 0;
+            width: 100%; /* Ширина модального вікна */
+            height: 100%; /* Висота модального вікна */
+            overflow: auto; /* Додає прокрутку, якщо потрібно */
+            background-color: rgb(0,0,0); /* Чорний фон з прозорістю */
+            background-color: rgba(0,0,0,0.4); /* Прозорий фон */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* Розташування в центрі екрана */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Ширина модального вікна */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+   <div class="container">
+        <form method="POST" class="form-inline" role="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <h2>ЗАЯВА ПРО НАЯВНІСТЬ БЛИЗЬКИХ ОСІБ, ЩО ПРОХОДЯТЬ СЛУЖБУ В ДПСУ</h2>
+                <label for="f22">
+                    <button type="button" class="info-icon" title="члени сім’ї суб’єкта, зазначеного у частині першій статті 3 цього Закону, чоловік, дружина, батько, мати, вітчим, мачуха, син, дочка, пасинок, падчерка, рідний та двоюрідний брати, рідна та двоюрідна сестри, рідний брат та сестра дружини (чоловіка), племінник, племінниця, рідний дядько, рідна тітка, дід, баба, прадід, прабаба, внук, внучка, правнук, правнучка, зять, невістка, тесть, теща, свекор, свекруха, батько та мати дружини (чоловіка) сина (дочки), усиновлювач чи усиновлений, опікун чи піклувальник, особа, яка перебуває під опікою або піклуванням зазначеного суб’єкта;">i</button>
+                    Вкажіть близьких осіб:
+                    <p style="color: #777;">члени сім’ї суб’єкта, зазначеного у частині першій статті 3 цього Закону, чоловік, дружина, батько, мати, вітчим, мачуха, син, дочка, пасинок, падчерка, рідний та двоюрідний брати, рідна та двоюрідна сестри, рідний брат та сестра дружини (чоловіка), племінник, племінниця, рідний дядько, рідна тітка, дід, баба, прадід, прабаба, внук, внучка, правнук, правнучка, зять, невістка, тесть, теща, свекор, свекруха, батько та мати дружини (чоловіка) сина (дочки), усиновлювач чи усиновлений, опікун чи піклувальник, особа, яка перебуває під опікою або піклуванням зазначеного суб’єкта;</p>
+                </label>
+                <input type="text" class="form-control" id="f22" name="f22" placeholder="" required>
+                                <button type="submit" class="submit-button">ПОДАТИ ЗАЯВУ</button>
+
+            </div>
+        </form>
+   </div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Приклад: Лейтенант Артеменко Андрій Петрович, начальник ВІПС Біла Кринмця 31 прикз</p>
+      </div>
+    </div>
+</body>
+<script>
+    function validateInput(input) {
+        // Регулярний вираз для українських літер, цифр, пробілів, знаків (тире, апострофи, крапка, кома, /, !, ?, _, =, +, *, (, ), #)
+        const regex = /^[А-ЩЬЮЯа-щьюя0-9 \-\'’.,\/!?_=\+\*\(\)#]*$/;
+        // Зберігаємо значення до і після очищення
+        const originalValue = input.value;
+        // Очищаємо значення до тих, що відповідають регулярному виразу
+        input.value = originalValue.replace(/[^А-ЩЬЮЯа-щьюя0-9 \-\'’.,\/!?_=\+\*\(\)#]/g, '');
+    }
+
+
+
+
+
+    // Отримати модальне вікно
+    var modal = document.getElementById("myModal");
+
+    // Отримати кнопку, яка відкриває модальне вікно
+    var btn = document.querySelector(".info-icon");
+
+    // Отримати елемент <span> з елементом закриття
+    var span = document.getElementsByClassName("close")[0];
+
+    // Коли користувач натискає кнопку, відкрити модальне вікно
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Коли користувач натискає на <span> (x), закрити модальне вікно
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Коли користувач натискає будь-де поза модальним вікном, закрити його
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+</html>

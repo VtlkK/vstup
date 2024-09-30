@@ -1,0 +1,915 @@
+
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профіль користувача</title>
+    <link href="{% static 'css/moderator_style.css' %}" rel="stylesheet">
+    <style>
+
+       @media (max-width: 768px) {
+            /* Контейнер пошуку */
+            .search-container {
+                width: 100% !important;
+                
+            }
+        
+            /* Поля форми */
+            .search-fields {
+                margin-right: 25%;
+                margin-top: -20px !important;
+                display: flex !important;
+                flex-direction: column !important;
+               
+            }
+        
+            /* Форма */
+            form.search-container {
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                 
+            }
+        
+            /* Кнопка пошуку */
+            .button22 {
+                margin-right: 20%;
+                background-color: #1e512f !important;
+                color: white !important;
+                padding: 10px !important;
+                border: none !important;
+                border-radius: 10px !important;
+                width: 90% !important;
+                margin-top: 10px !important;
+                font-size: 16px !important;
+            }
+        
+            /* Селект */
+            select.form-control {
+                width: 320px !important;
+                padding: 10px !important;
+                border-radius: 5px !important;
+                margin-top: 35px !important;
+                font-size: 16px !important;
+            }
+        
+            /* Посилання */
+            a {
+                margin-right: 10%;
+                display: block !important;
+                margin-top: 10px !important;
+                text-align: center !important;
+                position: relative !important;
+                left: 0 !important;
+                top: 10px !important;
+                width: 85% !important;
+                
+            }
+        
+            /* Заголовок */
+            h3 {
+                text-align: left !important;
+                margin-left: -40px !important; /* Додаємо невеликий відступ зліва */
+                font-size: 24px !important;
+            }
+        
+            /* Текст в полях форми */
+            .search-fields label {
+                font-size: 14px !important;
+            }
+            
+            .modal01 {
+                top: 250px !important;
+            }
+            
+           .modal02 {
+                top: 250px !important;
+            }
+             
+           .modal03 {
+                top: 250px !important;
+            }
+              
+           .modal04 {
+                top: 250px !important;
+            }
+               
+           .modal05 {
+                top: 250px !important;
+            }
+                
+           .modal06 {
+                top: 250px !important;
+            }
+                 
+           .modal07 {
+                top: 250px !important;
+            }
+                  
+           .modal08 {
+                top: 250px !important;
+            }
+           .modal09 {
+                top: 250px !important;
+            }
+       }
+       
+
+
+
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <form method="get" class="search-container">
+            <h3>Пошук</h3>
+            <br>
+            <div class="search-fields">
+                <label for="nsf">Прізвище:</label>
+                {{ filter.form.soname }}
+            </div>
+
+            <button class="button22" type="submit">Пошук</button>
+             <div class="search-fields">
+             <label class="" for="">Оберіть:</label>
+                   <select name="place_med" id="input" class="form-control" required="required">
+                        <option value="main">Загальний Список к-сть: {{ filter_count }} </option>
+                        <option value="ver">Верифікація к-сть: {{ filtered_ver_count }}</option>
+                        <option value="ank">Анкета к-сть: {{ filtered_ank_count }}</option>
+                        <option value="docs">Документи к-сть: {{ combined_filtered_count }}</option>
+                        <option value="med">Медичні к-сть: {{ filtered_med_count }}</option>
+                        <option value="red">Запит на редагування к-сть: {{final_user_count}}</option>
+                        <option value="reds">Редаговані к-сть: {{ final_count }}</option>
+                        <option value="napravlen">Відправити Направлення к-сть: {{ filtered_nap_count }}</option>
+                        <option value="vid_napr">Перевірка Направлення к-сть: {{ filtered_vid_nap_count }}</option>
+                       <option value="end">Справа сформована к-сть: {{ end_count }}</option>
+                    </select>
+                 
+             </div>
+            <a style="position: relative; left: 40px; top: 10px; color: rgba(255,255,255,0.9); background-color: #1e512f; padding: 12px; border-radius: 10px" href="{% url 'exel' %}"><span class="glyphicon glyphicon-log-in" style="padding-right:3px;"></span><label>exсel</label></a>
+        </form>
+    </div>
+    {% for el in filter.qs %}
+    <div class="modal01" style="position: relative; margin-bottom: -55px; top: 80px " >
+            <br>
+            <br>
+            <br>
+        <div class="container" >
+          <div class="col-md-12">
+            <div class="card b-1 hover-shadow mb-20">
+              <div class="media card-body">
+                <div class="media-left pr-12" >
+                  {% for a_img in Anketa_img %}
+                    {% if a_img.client.id == el.id %}
+                      <img src="{{ a_img.photo.url }}" class="avatar avatar-xl ">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="media-body">
+                  <div class="mb-2">
+                    <span class="fs-20 pr-16" style="color: black">{{ el.soname }} {{ el.name }} {{ el.fname }}</span>
+                  </div>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Телефон: {{ el.num }}</small><br>
+                    <small style="color: black" class="fs-16 fw-300 ls-1">Email: {{ el.email }}</small><br>
+                    <small style="color: black" class="fs-16 fw-300 ls-1">На обліку: {{ el.military }}</small><br>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду: {{ el.place_med }}</small><br>
+                    <small style="color: black" class="fs-16 fw-300 ls-1">
+                    </small><br>
+                    </div>
+              
+                    <div class="media-right text-right d-none d-md-block">
+                       <div>
+                        <a>
+                            <button onclick="redirectToViber('{{ el.num}}') " style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                        </a>
+                           {% for client_data in clients_data %}
+                                {% if client_data.client.id == el.id %}
+                                    <button style="position: absolute; left:80%;" class="learn-more"  data-client-id="{{ client_data.client.id }}">
+                                        Модератор {{ client_data.client.name }}
+                                    </button>
+                                    <div id="myModal-{{ client_data.client.id }}" class="modal">
+                                        <div class="modal-content">
+                                            <span class="close" data-client-id="{{ client_data.client.id }}">&times;</span>
+                                            <div class="left-column">
+                                                <p>Заява</p>
+                                                {% if client_data.tf and client_data.tf.tf2 %}
+                                                    ✔️
+                                                {% else %}
+                                                    ❌
+                                                {% endif %}
+                                                <p>Анкета</p>
+                                                {% if client_data.tf and client_data.tf.tf1 %}
+                                                    ✔️
+                                                {% else %}
+                                                    ❌
+                                                {% endif %}
+                                                {% if client_data.tf and client_data.tf.tfe1 %}
+                                                    🔵
+                                                {% endif %}
+
+                                                <p>Згода на обробку персональних даних</p>
+                                                {% if client_data.tf and client_data.tf.tf3 %}
+                                                    ✔️
+                                                {% else %}
+                                                    ❌
+                                                {% endif %}
+
+                                                <p>Згода батьків</p>
+                                                {% if client_data.tf and client_data.tf.tf4 %}
+                                                    ✔️
+                                                {% else %}
+                                                    ❌
+                                                {% endif %}
+                                                {% if client_data.tf and client_data.tf.tfe2 %}
+                                                🔵
+                                                {% endif %}
+
+                                                <p>Відсутність родичів в ДПСУ</p>
+                                                {% if client_data.tf and client_data.tf.tf5 %}
+                                                    ✔️
+                                                {% else %}
+                                                    ❌
+                                                {% endif %}
+                                                {% if client_data.tf and client_data.tf.tfe3 %}
+                                                🔵
+                                                {% endif %}
+
+                                                <p>Перелік документів</p>
+                                                {% if client_data.tf and client_data.tf.tf7 %}
+                                                    ✔️
+                                                {% else %}
+                                                    ❌
+                                                {% endif %}
+                                                {% if client_data.tf and client_data.tf.tfe5 %}
+                                                🔵
+                                                {% endif %}
+
+                                                <p>Медичні документи</p>
+                                                {% if client_data.tf and client_data.tf.tf6 %}
+                                                    ✔️
+                                                {% else %}
+                                                    ❌
+                                                {% endif %}
+                                                {% if client_data.tf and client_data.tf.tfe4 %}
+                                                    🔵
+                                                {% endif %}
+
+                                                <form action="{% url 'aut' el.id %}">
+                                                    <button class="submitButton" type="submit" data-client-id="{{ client_data.client.id }}">Видалити</button>
+                                               </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                           {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                            <footer class="card-footer flexbox align-items-center">
+                            
+                               
+                                <div class="button-container">
+                                    <a href="{% url 'items' id=el.client_id %}">
+                                        <button >Переглянути</button>
+                                    </a>
+                                </div>
+                            
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+
+
+
+    {% for el in filter_ver %}
+      {% if not el.verif.exists %}
+    <div class="modal02" style="position: relative; top: 80px;margin-bottom: -55px;">
+    <br>
+    <br>
+    <br>
+        <div class="container">
+          <div class="col-md-12">
+            <div class="card b-1 hover-shadow mb-20">
+              <div class="media card-body">
+                <div class="media-left pr-12" >
+                  {% for a_img in Anketa_img %}
+                    {% if a_img.client.id == el.id %}
+                      <img src="{{ a_img.photo.url }}" class="avatar avatar-xl ">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="media-body">
+                  <div class="mb-2">
+                    <span class="fs-20 pr-16" style="color: black">
+                        {% for element in ell %}
+                            {% if element.client.id == el.id %}
+                                {{ element.soname }} {{ element.name }} {{ element.fname }}
+                    </span>
+                   </div>
+                                <small style="color: black" class="fs-16 fw-300 ls-1">Телефон: {{ element.num }}</small><br>
+                                 <small style="color: black" class="fs-16 fw-300 ls-1">Email: {{ element.email }}</small><br>
+                                <small style="color: black" class="fs-16 fw-300 ls-1">На обліку: {{ element.military }}</small><br>
+                                <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду: {{ element.place_med }}</small><br>
+                  </div>
+                      <div class="media-right text-right d-none d-md-block">
+                         <div>
+                                    <a>
+                                        <button onclick="redirectToViber('{{ element.num}}') " style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                                    </a>
+                            {% endif %}
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                </div>
+                <footer class="card-footer flexbox align-items-center">
+
+                    <div class="button-container">
+                         <a href="{% url 'aut' id=el.id %}">
+                                        <button>Аутентифікація</button>
+                                    </a>
+                            <a href="{% url 'items' id=el.id %}">
+                                <button  >Переглянути</button>
+                            </a>
+                                     </div>
+                                </footer>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    
+    {% for el in filtered_ank %}
+    <div class="modal03" style="position: relative; top: 80px;margin-bottom: -55px; " >
+            <br>
+            <br>
+            <br>
+        <div class="container">
+          <div class="col-md-12">
+            <div class="card b-1 hover-shadow mb-20">
+              <div class="media card-body">
+                <div class="media-left pr-12" >
+                  {% for a_img in Anketa_img %}
+                    {% if a_img.client.id == el.id %}
+                      <img src="{{ a_img.photo.url }}" class="avatar avatar-xl ">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="media-body">
+                  <div class="mb-2">
+                    <span class="fs-20 pr-16" style="color: black">
+                        {% for element in ell %}
+                            {% if element.client.id == el.id %}
+                                {{ element.soname }} {{ element.name }} {{ element.fname }}
+                                    </span>
+                                  </div>
+                                  <small style="color: black" class="fs-16 fw-300 ls-1">Телефон: {{ element.num }}</small><br>
+                                   <small style="color: black" class="fs-16 fw-300 ls-1">Email: {{ element.email }}</small><br>
+                                                <small style="color: black" class="fs-16 fw-300 ls-1">На обліку: {{ element.military }}</small><br>
+                                  <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду: {{ element.place_med }}</small><br>
+                                </div>
+                            <div class="media-right text-right d-none d-md-block">
+                               <div>
+                
+                                <a>
+                                    <button onclick="redirectToViber('{{ element.num}}') " style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+            </div>
+            </div>
+        </div>
+        <footer class="card-footer flexbox align-items-center">
+
+            <div class="button-container">
+                    <a href="{% url 'items' id=el.id %}">
+                        <button  >Переглянути</button>
+                    </a>
+                             </div>
+                        </footer>
+                     </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+
+    {% for el in combined_filtered  %}
+    <div class="modal04" style="position: relative; top: 80px;margin-bottom: -55px; " >
+            <br>
+            <br>
+            <br>
+        <div class="container">
+          <div class="col-md-12">
+            <div class="card b-1 hover-shadow mb-20">
+              <div class="media card-body">
+                <div class="media-left pr-12" >
+                  {% for a_img in Anketa_img %}
+                    {% if a_img.client.id == el.id %}
+                      <img src="{{ a_img.photo.url }}" class="avatar avatar-xl ">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="media-body">
+                  <div class="mb-2">
+                    <span class="fs-20 pr-16" style="color: black">
+                        {% for element in ell %}
+                            {% if element.client.id == el.id %}
+                                {{ element.soname }} {{ element.name }} {{ element.fname }}
+                    </span>
+                  </div>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Телефон: {{ element.num }}</small><br>
+                   <small style="color: black" class="fs-16 fw-300 ls-1">Email: {{ element.email }}</small><br>
+                                <small style="color: black" class="fs-16 fw-300 ls-1">На обліку: {{ element.military }}</small><br>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду: {{ element.place_med }}</small><br>
+                </div>
+            <div class="media-right text-right d-none d-md-block">
+               <div>
+                <a>
+                    <button onclick="redirectToViber('{{ element.num}}') " style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                </a>
+               {% endif %}
+                        {% endfor %}
+            </div>
+            </div>
+        </div>
+        <footer class="card-footer flexbox align-items-center">
+
+            <div class="button-container">
+                    <a href="{% url 'items' id=el.id %}">
+                        <button  >Переглянути</button>
+                    </a>
+                             </div>
+                        </footer>
+                     </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+    
+      {% for el in client_vid_red  %}
+    <div class="modal09" style="position: relative; top: 80px;margin-bottom: -55px; " >
+            <br>
+            <br>
+            <br>
+        <div class="container">
+          <div class="col-md-12">
+            <div class="card b-1 hover-shadow mb-20">
+              <div class="media card-body">
+                <div class="media-left pr-12" >
+                  {% for a_img in Anketa_img %}
+                    {% if a_img.client.id == el.id %}
+                      <img src="{{ a_img.photo.url }}" class="avatar avatar-xl ">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="media-body">
+                  <div class="mb-2">
+                    <span class="fs-20 pr-16" style="color: black">
+                        {% for element in ell %}
+                            {% if element.client.id == el.id %}
+                                {{ element.soname }} {{ element.name }} {{ element.fname }}
+
+                    </span>
+                  </div>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Телефон: {{ element.num }}</small><br>
+                   <small style="color: black" class="fs-16 fw-300 ls-1">Email: {{ element.email }}</small><br>
+                                <small style="color: black" class="fs-16 fw-300 ls-1">На обліку: {{ element.military }}</small><br>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду: {{ element.place_med }}</small><br>
+                </div>
+            <div class="media-right text-right d-none d-md-block">
+               <div>
+
+                <a>
+                    <button onclick="redirectToViber('{{ element.num}}') " style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                </a>
+               {% endif %}
+                        {% endfor %}
+            </div>
+            </div>
+        </div>
+        <footer class="card-footer flexbox align-items-center">
+
+            <div class="button-container">
+
+
+                    <a href="{% url 'items' id=el.id %}">
+                        <button  >Переглянути</button>
+                    </a>
+                             </div>
+                        </footer>
+                     </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+    
+    
+     {% for el in filtered_med  %}
+    <div class="modal05" style="position: relative; top: 80px;margin-bottom: -55px; " >
+            <br>
+            <br>
+            <br>
+        <div class="container">
+          <div class="col-md-12">
+            <div class="card b-1 hover-shadow mb-20">
+              <div class="media card-body">
+                <div class="media-left pr-12" >
+                  {% for a_img in Anketa_img %}
+                    {% if a_img.client.id == el.id %}
+                      <img src="{{ a_img.photo.url }}" class="avatar avatar-xl ">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <div class="media-body">
+                  <div class="mb-2">
+                    <span class="fs-20 pr-16" style="color: black">
+                        {% for element in ell %}
+                            {% if element.client.id == el.id %}
+                                {{ element.soname }} {{ element.name }} {{ element.fname }}
+                    </span>
+                  </div>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Телефон: {{ element.num }}</small><br>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Email: {{ element.email }}</small><br>
+                                <small style="color: black" class="fs-16 fw-300 ls-1">На обліку: {{ element.military }}</small><br>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду: {{ element.place_med }}</small><br>
+                </div>
+            <div class="media-right text-right d-none d-md-block">
+               <div>
+                <a>
+                    <button onclick="redirectToViber('{{ element.num}}') " style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                </a>
+               {% endif %}
+                        {% endfor %}
+            </div>
+            </div>
+        </div>
+        <footer class="card-footer flexbox align-items-center">
+
+            <div class="button-container">
+                
+                    <a href="{% url 'items' id=el.id %}">
+                        <button  >Переглянути</button>
+                    </a>
+                             </div>
+                        </footer>
+                     </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+
+    {% for el in users_with_vid_red %}
+    {% with client_data=clients_data_dict|get_item:el.id %}
+        {% if client_data %}
+            {% if client_data.hide_client %}
+            {% else %}
+
+                <br>
+                <div class="modal06" style="position: relative; top: 80px; margin-bottom: -55px;">
+                    <br>
+                    <br>
+                    <br>
+                    <div class="container">
+                        <div class="col-md-12">
+                            <div class="card b-1 hover-shadow mb-20">
+                                <div class="media card-body">
+                                    <div class="media-left pr-12">
+                                        {% for a_img in Anketa_img %}
+                                            {% if a_img.client.id == el.id %}
+                                                <img src="{{ a_img.photo.url }}" class="avatar avatar-xl">
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="mb-2">
+                                            <span class="fs-20 pr-16" style="color: black">
+                                                {% for element in ell %}
+                                                    {% if element.client.id == el.id %}
+                                                        {{ element.soname }} {{ element.name }} {{ element.fname }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </span>
+                                        </div>
+                                        <small style="color: black" class="fs-16 fw-300 ls-1">Телефон:
+                                            {% for element in ell %}
+                                                {% if element.client.id == el.id %}
+                                                    {{ element.num }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </small>
+                                        <br>
+                                        <small style="color: black" class="fs-16 fw-300 ls-1">Дата:
+                                            {% for element in ell %}
+                                                {% if element.client.id == el.id %}
+                                                    {{ element.data_now2 }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </small>
+                                        <br>
+                                        <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду:
+                                            {% for element in ell %}
+                                                {% if element.client.id == el.id %}
+                                                    {{ element.place_med }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </small>
+                                        <br>
+                                    </div>
+                                    <div class="media-right text-right d-none d-md-block">
+                                        <div>
+                                            <a>
+                                                <button onclick="redirectToViber('{{ element.num }}')" style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <footer class="card-footer flexbox align-items-center">
+                                    <div class="button-container">
+                                        <a href="{% url 'items' id=el.id %}">
+                                            <button>Переглянути</button>
+                                        </a>
+                                    </div>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+         {% endif %}
+        {% endif %}
+    {% endwith %}
+{% endfor %}
+
+
+{% for client_id, client_data in clients_data_dict.items %}
+    {% if client_data.show_in_list %}
+            <br>
+    <div class="modal07" style="position: relative; top: 80px;margin-bottom: -55px;">
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="col-md-12">
+                <div class="card b-1 hover-shadow mb-20">
+                    <div class="media card-body">
+                        <div class="media-left pr-12">
+                            {% for a_img in Anketa_img %}
+                                {% if a_img.client.id == client_id %}
+                                    <img src="{{ a_img.photo.url }}" class="avatar avatar-xl">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="media-body">
+                            <div class="mb-2">
+                                <span class="fs-20 pr-16" style="color: black">
+                                    {% for element in ell %}
+                                        {% if element.client.id == client_id %}
+                                            {{ element.soname }} {{ element.name }} {{ element.fname }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </span>
+                            </div>
+                            <small style="color: black" class="fs-16 fw-300 ls-1">Телефон:
+                                {% for element in ell %}
+                                    {% if element.client.id == client_id %}
+                                        {{ element.num }}
+                                    {% endif %}
+                                {% endfor %}
+                            </small>
+                            <br>
+                            <small style="color: black" class="fs-16 fw-300 ls-1">Дата:
+                                {% for element in ell %}
+                                    {% if element.client.id == client_id %}
+                                        {{ element.data_now2 }}
+                                    {% endif %}
+                                {% endfor %}
+                            </small>
+                            <br>
+                            <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду:
+                                {% for element in ell %}
+                                    {% if element.client.id == client_id %}
+                                        {{ element.place_med }}
+                                    {% endif %}
+                                {% endfor %}
+                            </small>
+                            <br>
+                        </div>
+                        <div class="media-right text-right d-none d-md-block">
+                            <div>
+                                <a>
+                                    <button onclick="redirectToViber('{{ element.num }}')" style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer flexbox align-items-center">
+                        <div class="button-container">
+
+                            <a href="{% url 'items' id=client_id %}">
+                                <button>Переглянути</button>
+                            </a>
+
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
+
+
+
+    
+    {% for el in filtered_nap %}
+    <div class="modal08" style="position: relative; top: 50px;margin-bottom: -55px; " >
+            <br>
+            <br>
+            <br>
+        <div class="container">
+          <div class="col-md-12">
+            <div class="card b-1 hover-shadow mb-20">
+              <div class="media card-body">
+                <div class="media-left pr-12" >
+                  {% for a_img in Anketa_img %}
+                    {% if a_img.client.id == el.id %}
+                      <img src="{{ a_img.photo.url }}" class="avatar avatar-xl ">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="media-body">
+                  <div class="mb-2">
+                    <span class="fs-20 pr-16" style="color: black">
+                        {% for element in ell %}
+                            {% if element.client.id == el.id %}
+                                {{ element.soname }} {{ element.name }} {{ element.fname }}
+                    </span>
+                  </div>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Телефон: {{ element.num }}</small><br>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Email: {{ element.email }}</small><br>
+                                <small style="color: black" class="fs-16 fw-300 ls-1">На обліку: {{ element.military }}</small><br>
+                  <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду: {{ element.place_med }}</small><br>
+                </div>
+            <div class="media-right text-right d-none d-md-block">
+               <div>
+
+                <a>
+                    <button onclick="redirectToViber('{{ element.num}}') " style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                </a>
+                            {% endif %}
+                        {% endfor %}
+            </div>
+            </div>
+        </div>
+        <footer class="card-footer flexbox align-items-center">
+            <div class="button-container">
+                <a href="{% url 'vlk_n' id=el.id %}">
+                        <button  >Відправити направлення</button>
+                    </a>
+                
+                 <a href="{% url 'items' id=el.id %}">
+                        <button  >Переглянути</button>
+                 </a>
+                             </div>
+                        </footer>
+                     </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+    
+    
+        {% for el in filter_vid_nap %}
+        <div class="modal09" style="position: relative; top: 50px;margin-bottom: -55px; " >
+                <br>
+                <br>
+                <br>
+            <div class="container">
+              <div class="col-md-12">
+                <div class="card b-1 hover-shadow mb-20">
+                  <div class="media card-body">
+                    <div class="media-left pr-12" >
+                      {% for a_img in Anketa_img %}
+                        {% if a_img.client.id == el.id %}
+                          <img src="{{ a_img.photo.url }}" class="avatar avatar-xl ">
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    <div class="media-body">
+                      <div class="mb-2">
+                        <span class="fs-20 pr-16" style="color: black">
+                            {% for element in ell %}
+                                {% if element.client.id == el.id %}
+                                    {{ element.soname }} {{ element.name }} {{ element.fname }}
+                        </span>
+                      </div>
+                      <small style="color: black" class="fs-16 fw-300 ls-1">Телефон: {{ element.num }}</small><br>
+                      <small style="color: black" class="fs-16 fw-300 ls-1">Email: {{ element.email }}</small><br>
+                                    <small style="color: black" class="fs-16 fw-300 ls-1">На обліку: {{ element.military }}</small><br>
+                      <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду: {{ element.place_med }}</small><br>
+                    </div>
+                            <div class="media-right text-right d-none d-md-block">
+                               <div>
+                                    <a>
+                                        <button onclick="redirectToViber('{{ element.num}}') " style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                                    </a>
+                                         {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+            </div>
+                            <footer class="card-footer flexbox align-items-center">
+                                <div class="button-container">
+                                     <a href="{% url 'moders_napr_otr' id=el.id %}">
+                                            <button  style="width: 20vw; " >Переглянути КАРТУ медичного огляду</button>
+                                     </a>
+                                    <form method="post" action="{% url 'check_napravlen' el.id %}">
+                                        {% csrf_token %}
+                                        {% if not el.check_napr2.exists %}
+                                            <button style="background-color: #222222" type="submit" name="check2" value="Check" >Перевірено</button>
+                                        {% else %}
+                                            <p>КАРТА медичного огляду ПЕРЕВІРИНА</p>
+                                        {% endif %}
+                                    </form>
+                                            <a href="{% url 'items' id=el.id %}">
+                                                <button >Переглянути</button>
+                                            </a>
+                                    </div>
+                            </footer>
+                         </div>
+                    </div>
+                </div>
+            </div>
+{% endfor %}
+    
+     {% for el in end%}
+        <div class="modal10" style="position: relative; top: 50px;margin-bottom: -55px; " >
+                <br>
+                <br>
+                <br>
+            <div class="container">
+              <div class="col-md-12">
+                <div class="card b-1 hover-shadow mb-20">
+                  <div class="media card-body">
+                    <div class="media-left pr-12" >
+                      {% for a_img in Anketa_img %}
+                        {% if a_img.client.id == el.id %}
+                          <img src="{{ a_img.photo.url }}" class="avatar avatar-xl ">
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    <div class="media-body">
+                      <div class="mb-2">
+                        <span class="fs-20 pr-16" style="color: black">
+                            {% for element in ell %}
+                                {% if element.client.id == el.id %}
+                                    {{ element.soname }} {{ element.name }} {{ element.fname }}
+                        </span>
+                      </div>
+                      <small style="color: black" class="fs-16 fw-300 ls-1">Телефон: {{ element.num }}</small><br>
+                      <small style="color: black" class="fs-16 fw-300 ls-1">Email: {{ element.email }}</small><br>
+                                    <small style="color: black" class="fs-16 fw-300 ls-1">На обліку: {{ element.military }}</small><br>
+                      <small style="color: black" class="fs-16 fw-300 ls-1">Місце проходження медогляду: {{ element.place_med }}</small><br>
+                    </div>
+                            <div class="media-right text-right d-none d-md-block">
+                               <div>
+                                    <a>
+                                        <button onclick="redirectToViber('{{ element.num}}') " style="padding: 10px 20px; border: none; border-radius: 50%; background-color: #8A2BE2; color: white; cursor: pointer; font-size: 16px; text-align: center; height: 60px; width: 60px; position: absolute; top: 4%; right: 2%;">💬</button>
+                                    </a>
+                                         {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            </div>
+                            <footer class="card-footer flexbox align-items-center">
+                                <div class="button-container">
+                                    
+                                            <a href="{% url 'items' id=el.id %}">
+                                                <button >Переглянути</button>
+                                            </a>
+                                    </div>
+                            </footer>
+                         </div>
+                    </div>
+                </div>
+            </div>
+{% endfor %}
+    
+    <script>
+        setTimeout(function (){
+            location.reload()
+        },9000)
+    </script>
+        <script src="{% static 'js/moderator.js' %}"></script>
+        <script src="{% static 'js/menu.js' %}"></script>
+</body>
+</html>

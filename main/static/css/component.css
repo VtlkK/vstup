@@ -1,0 +1,79 @@
+button {
+    background-color: black;
+    /* Задаємо чорний колір кнопки */
+    color: white;
+    /* Задаємо колір тексту кнопки */
+    padding: 10px 20px;
+    /* Задаємо відступи */
+    border-radius: 100px;
+    /* Закруглюємо кути кнопки */
+    border-width: 1px;
+    border-color: #222222;
+    transition: background-image 0.4s ease;
+    /* Додаємо плавну анімацію при зміні градієнту */
+    transition: background-color 0.4s;
+    width: fit-content;
+
+  }
+
+  button:hover {
+
+    cursor:pointer;
+    background-color: #e0e0e0;
+    transition: background-color 0.4s;
+    /* Градієнтний фон */
+
+
+    color: #222222;
+    border-color: #222222;
+  }
+
+  button:active {
+    filter: brightness(80%);
+    /* Темніше при кліку */
+  }
+
+  .file {
+    background-color: black;
+    /* Задаємо чорний колір кнопки */
+    color: white;
+    /* Задаємо колір тексту кнопки */
+    padding: 10px 20px;
+    /* Задаємо відступи */
+    border-radius: 100px;
+    /* Закруглюємо кути кнопки */
+    border-width: 1px;
+    border-color: #222222;
+    transition: background-image 0.4s ease;
+    /* Додаємо плавну анімацію при зміні градієнту */
+    transition: background-color 0.4s;
+    width: 50vh;
+
+  }
+
+  .file:hover {
+
+    cursor:pointer;
+    background-color: #e0e0e0;
+    transition: background-color 0.4s;
+    /* Градієнтний фон */
+
+
+    color: #222222;
+    border-color: #222222;
+  }
+
+  .file:active {
+    filter: brightness(80%);
+    /* Темніше при кліку */
+  }
+
+  /* CSS */
+.img-container img {
+  max-width: 100%; /* Зробить зображення адаптивним у межах батьківського контейнера */
+  height: auto;    /* Збереже пропорції */
+}
+
+
+
+

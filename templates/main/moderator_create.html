@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'img/nadpsu-logo-rgb.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/component.css' %}" rel="stylesheet">
+    
+    <title>Реєстрація</title>
+    <style>
+        @font-face {
+            font-family: "uaf";
+            
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <!--ring div starts here-->
+<div class="ring">
+    <i style="--clr:#AB006F;"></i>
+    <i style="--clr:#FFC32A;"></i>
+    <i style="--clr:#368200;"></i>
+    <div class="login">
+      <img src="{% static 'img/green.png'%}" class="img-responsive img-rounded" style="width: 20vh; margin-bottom: -5vh;">
+      <h2 style="color: #F5EDF0">Реєстрація</h2>
+      
+      <div class="">
+    <form method="POST" role="form" enctype="multipart/form-data">
+      {% csrf_token %}
+        <input type="text" name ='login' placeholder="Логін" class="form-control" required="required">
+        <br>
+        <input type="password" name ='password' placeholder="Пароль" class="form-control" required="required">
+        <div class="" align="center">
+            <br>
+            <button class="animate__animated animate__fadeInUp" type="submit" style="font-size: larger;">Реєстрація</button>
+            <br>
+            
+            
+        </div>
+        <br>
+       
+        
+    </form>
+        
+</div>
+        
+      <div class="links">
+       
+      </div>
+    </div>
+  </div>
+  <
+</body>
+<script src="{% static 'js/gradient.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/pass.js'%}"></script>
+</html>

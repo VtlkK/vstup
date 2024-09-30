@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ {% for ell in napr %}
+        {% if ell.napr_img %}
+            <img style="position: relative;left: 20%;width: 60%; height: auto" src="{{ ell.napr_img.url }}" alt="User Photo">
+        {% else %}
+            <p>Немає фотографій</p>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

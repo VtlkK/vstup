@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parents consent</title>
+    <link rel="stylesheet" href="{% static 'css/parents_style.css' %}">
+    <style>
+        body {
+            background-color: #2e5538;
+        }
+        .container {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form method="POST" class="form-inline" role="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <h2>Згода батьків</h2>  
+                <p>Вашим батькам потрібно вигрузити дану згоду, заповнити її необхідною інформацією, відксканувати або зробити фото</p>
+                <a href="{% static 'pdf/zgoda-batkiv.pdf' %}"> 📄Шаблон згоди батьків</a>
+                <br><br>
+                <label>Завантажте фото заяви:</label>
+                <input type="file" class="form-control" id="" name="photo_zgodu" placeholder="" required>
+
+                
+                <p></p>
+                
+                <button type="submit" class="submit-button">ПОДАТИ ЗГОДУ БАТЬКІВ</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

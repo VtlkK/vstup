@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завантаження документів</title>
+    <link href="{% static 'css/meds.css' %}" rel="stylesheet">
+     <style>
+        body{
+            background-color: #185831;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Позначте наявні медичні документи</h1>
+        <form  method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="checkbox-container">
+                <input type="checkbox" id="medical-documents" value="✔️" name="pos_v">
+                <label for="front-side">Тимчасове посвідчення військовозобов’язаного або посвідчення про приписку до призовних дільниць, або військовий квиток, або службове посвідчення</label>
+                <span id="info-button" class="info-button"> i </span> 
+                <div id="info-box" class="info-box">
+                  <p>Таким документом є військовий квиток, проте замість нього може видаватися тимчасове посвідчення.
+                    Тимчасове посвідчення військовозобов’язаного — це документ, який посвідчує військовозобов’язану особу, що перебуває у запасі 
+                    осіб офіцерського складу або осіб рядового, сержантського й старшинського складу.</p>
+                </div>
+            </div>
+            
+        
+            <div class="checkbox-container">
+                <input type="checkbox" id="medical-documents" value="✔️" name="psix">
+                <label for="front-side">Довідка про проходження попереднього, періодичного та позачергового психіатричних оглядів, у тому числі на предмет вживання психоактивних речовин (форма  первинної облікової документації «100-2/о)</label>
+                <span id="info-button" class="info-button"> i </span> 
+                <div id="info-box" class="info-box">
+                  <p>Форма № 100-2/о ведеться в закладах з надання психіатричної допомоги будь-якої організаційно-правової форми, або фізичними 
+                    особами-підприємцями, які отримали ліцензію з медичної практики та забезпечують на її підставі медичне обслуговування населення,
+                    безпосередньо пов’язане з наданням психіатричної допомоги. Форма № 100-2/о надається особі, стосовно якої проведено попередній,
+                    періодичний та позачерговий психіатричний огляд, у тому числі на предмет вживання психоактивних речовин.</p>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="medical-documents" value="✔️" name="protu_tub">
+                <label for="front-side">Довідка з протитуберкульозного диспансеру про перебування на диспансерному обліку</label>
+                <span id="info-button" class="info-button"> i </span> 
+                <div id="info-box" class="info-box">
+                  <p>Довідку можна отримати у будь-якому центрі зайнятості, незалежно від місця реєстрації. Під час відвідування центру зайнятості 
+                    при собі необхідно мати паспорт (ID-картку) та ідентифікаційний код.</p>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="medical-documents" value="✔️" name="antutila">
+                <label for="front-side">Довідка про результати досліджень на антитіла до ВІЛ методом імуноферментного аналізу</label>
+                <span id="info-button" class="info-button"> i </span> 
+                <div id="info-box" class="info-box">
+                  <p>Ви можете пройти тест:
+                    - у свого сімейного лікаря, педіатра чи терапевта;
+                    - у кабінетах “Довіри”, кабінетах інфекційних захворювань поліклініки або консультаційно-діагностичного центру, Центрах профілактики та боротьби зі СНІДом, представництвах профільних громадських організацій; 
+                    - в мобільних амбулаторіях.</p>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="medical-documents" value="✔️" name="skira">
+                <label for="front-side">Довідка зі шкірно-венерологічного диспансеру про наявність шкірно-венерологічних захворювань та перебування на диспансерному обліку</label>
+                <span id="info-button" class="info-button"> i </span> 
+                <div id="info-box" class="info-box">
+                  <p>Отримати медичну довідку такого зразка можна у будь-якій медичній установі, яка надає послуги дерматовенеролога (венеролога). 
+                    Довідка видається після огляду лікарем, клінічного аналізу крові та посіву мазка та діє протягом трьох місяців.</p>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="medical-documents" value="✔️" name="f025">
+                <label for="front-side">Медична карта амбулаторного хворого (форма 025/о) (з дня народження)</label>
+                <span id="info-button" class="info-button"> i </span> 
+                <div id="info-box" class="info-box">
+                  <p>Форма № 025/о є основним первинним медичним документом хворого, який лікується амбулаторно або вдома, і заповнюється на усіх 
+                    хворих при зверненні у заклад охорони здоров'я, який надає амбулаторно- поліклінічну допомогу.</p>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="medical-documents" value="✔️" name="f027">
+                <label for="front-side">Витяг з медичної карти амбулаторного хворого (форма 027-о) з переліком перенесених захворювань (у тому числі інфекційних) за останніх 5 років</label>
+                <span id="info-button" class="info-button"> i </span> 
+                <div id="info-box" class="info-box">
+                  <p>Форма № 027/о призначена для взаємообміну інформацією амбулаторно-поліклінічних і стаціонарних закладів охорони здоров'я щодо 
+                    діагнозу, перебігу захворювання, стану хворого при направленні (виписці), проведенні досліджень, консультацій в інших закладах 
+                    охорони здоров'я, лікування, диспансерного спостереження та інших ...</p>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="medical-documents" value="✔️" name="f063">
+                <label for="front-side">Довідка про профілактичні щеплення (форма 063-о) відповідно календаря щеплень, засвідчений печаткою закладу охорони здоров’я</label>
+                <span id="info-button" class="info-button"> i </span> 
+                <div id="info-box" class="info-box">
+                  <p>Форма 063/о «Карта профілактичних щеплень» – це офіційний медичний документ, який заповнюється на кожного новонародженого і на
+                     дитину, яка вперше надходить під нагляд амбулаторно-поліклінінічного закладу та містить перелік щеплень, які були проведені 
+                     дитині протягом часу спостереження.</p>
+                </div>
+            </div>
+
+            <div class="checkbox-container" style="margin-bottom: 20px;">
+                <input type="checkbox" id="medical-documents" value="✔️" name="medical-documents">
+                <label for="front-side">Результати лабораторних досліджень (не пізніше місячного строку): <br>
+                    <span style="font-size: 14px; color: #777">(вкажіть дату отримання аналізів у кожному із полів)</span>
+                </label>
+            </div>
+              
+            <div class="input-fields">
+                <label style="margin-left: auto;" for="date1">◾ Загальний аналіз крові:</label><br>
+                <input style="margin-top: 10px;" type="date" id="date1" value="✔️" name="an_kr" placeholder="Дата">
+            </div>
+
+            <div class="input-fields">
+                <label style="margin-left: auto;" for="date1">◾ Загальний аналіз сечі:</label><br>
+                <input style="margin-top: 10px;" type="date" id="date1" value="✔️" name="an_s" placeholder="Дата">
+            </div>
+
+            <div class="input-fields">
+                <label style="margin-left: auto;" for="date1">◾ Біохімічний аналіз крові (на цукор, білірубін, АЛТ):</label><br>
+                <input style="margin-top: 10px;" type="date" id="date1"value="✔️"  name="bio_h" placeholder="Дата">
+            </div>
+
+            <div class="input-fields">
+                <label style="margin-left: auto;" for="date1">◾ Cерологічний аналіз крові на антитіла до вірусу імунодефіциту людини (ВІЛ):</label><br>
+                <input style="margin-top: 10px;" type="date" id="date1" value="✔️" name="ser_an_k" placeholder="Дата">
+            </div>
+            
+            <div class="input-fields">
+                <label style="margin-left: auto;" for="date1">◾ Антиген до вірусу гепатиту В (HBsAg):</label><br>
+                <input style="margin-top: 10px;" type="date" id="date1" value="✔️" name="ant_b" placeholder="Дата">
+            </div>
+
+            <div class="input-fields">
+                <label style="margin-left: auto;" for="date1">◾ Антитіла до вірусу гепатиту С (ati-HCV):</label><br>
+                <input style="margin-top: 10px;" type="date" id="date1" value="✔️" name="ant_c" placeholder="Дата">
+            </div>
+
+            <div class="input-fields">
+                <label style="margin-left: auto;" for="date1">◾ Реакція мікропреципітації з кардіоліпіновим антигеном (RW):</label><br>
+                <input style="margin-top: 10px;" type="date" id="date1" value="✔️" name="rw" placeholder="Дата">
+            </div>
+
+            <div class="input-fields">
+                <label style="margin-left: auto;" for="date1">◾ Флюорографічне (рентгенологічне) дослідження органів грудної клітки (не пізніше шестимісячного строку):</label><br>
+                <input style="margin-top: 10px;" type="date" id="date1" value="✔️" name="flu" placeholder="Дата">
+            </div>
+
+            <div class="input-fields">
+                <label style="margin-left: auto;" for="date1">◾ ЕКГ (не пізніше місячного строку):</label> <br>
+                <input style="margin-top: 10px;" type="date" id="date1"  name="ekg" placeholder="Дата">
+            </div>
+              
+            
+            <button type="submit">Завантажити</button>
+        </form>
+        
+    </div>
+</body>
+<script>
+    // Знаходимо всі елементи з класом 'info-button'
+    var infoButtons = document.querySelectorAll('.info-button');
+
+    // Додаємо обробник кліку для кожного елемента
+    infoButtons.forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        // Знаходимо відповідний info-box (він повинен бути сусідом info-button)
+        var infoBox = button.nextElementSibling;
+
+        // Перемикаємо видимість info-box
+        if (infoBox.style.display === 'block') {
+          infoBox.style.display = 'none';
+        } else {
+          infoBox.style.display = 'block';
+        }
+
+        // Зупиняємо подію, щоб не закривати вікно при кліці на сам спан
+        event.stopPropagation();
+      });
+    });
+
+    // Закриваємо модальне вікно при кліку поза ним
+    document.addEventListener('click', function(event) {
+      infoButtons.forEach(function(button) {
+        var infoBox = button.nextElementSibling;
+
+        // Якщо клік не на info-box і не на info-button, закриваємо info-box
+        if (!infoBox.contains(event.target) && event.target !== button) {
+          infoBox.style.display = 'none';
+        }
+      });
+    });
+
+
+</script>
+</html>

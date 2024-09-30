@@ -1,0 +1,361 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профіль користувача</title>
+    <link rel="stylesheet" href="{% static 'css/info3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/info2.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-img">
+                <img src="{{ ank.photo.url }}" style="width: 250px; height: 250px">
+            </div>
+            <div class="profile-nav-info">
+                <h3 class="user-name">
+                    <h2>{{ ank.nsf }}</h2>
+                </h3>
+                <div class="address">
+                    <p id="state" class="state"></p>
+                    <span id="country" class="country"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-bd">
+            <div class="left-side">
+                <div class="profile-side">
+                    <div class="user-bio">
+                        <h2>Надати доступ до редагуваня</h2>
+                        <br>
+                        <form method="post" action="{% url 'save_dozvil_data' el.id %}">
+                            {% csrf_token %}
+                            <p style="font-size: 24px">Медичний</p>
+                            {% if vv and vv.med_red and not dozvil.med_dozvil %}
+                                <button class="chatbtn" name="med_dozvil" value="True" type="submit">Надати дозвіл</button>
+                            {% endif %}
+
+                            <p style="font-size: 24px">Анкета</p>
+                            {% if vv and vv.anketa_red and not dozvil.anketa_dozvil %}
+                                <button class="chatbtn" name="anketa_dozvil" value="True" type="submit">Надати дозвіл</button>
+                            {% endif %}
+
+                            <p style="font-size: 24px">Наявність родичів в ДПСУ</p>
+                            {% if vv and vv.corup_red and not dozvil.corup_dozvil %}
+                                <button class="chatbtn" name="corup_dozvil" value="True" type="submit">Надати дозвіл</button>
+                            {% endif %}
+
+                            <p style="font-size: 24px">Згода батьків</p>
+                            {% if vv and vv.zgoda_bat_red and not dozvil.zgoda_dozvil %}
+                                <button class="chatbtn" name="zgoda_dozvil" value="True" type="submit">Надати дозвіл</button>
+                            {% endif %}
+
+                            <p style="font-size: 24px">Перелік документів</p>
+                            {% if vv and vv.documents_red and not dozvil.documents_dozvil %}
+                                <button class="chatbtn" name="documents_dozvil" value="True" type="submit">Надати дозвіл</button>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+                <div class="add-row-button">
+                    <button class="chatbtn" id="openModalBtn">Позначення документи</button>
+                </div>
+            
+             <div class="add-row-button">
+                 <a href="{% url 'download_PDF_napravlen' el.id %}">
+                    <button class="chatbtn" id="openModalBtn">Завантажити направлення</button>
+                 </a>
+             </div>
+            
+            
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Заголовок спливаючого вікна</h2>
+                        <div class="document_check">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="document-check">
+                                    <p>Анкета</p>
+                                    <div class="ck">
+                                        {% if tf and tf.tf1 %}
+                                            ✔️
+                                        {% else %}
+                                            <input type="checkbox"  value="True" class="checkbox1" name="tf1" >
+                                        {% endif %}
+                                        <div class="ck44">
+                                            {% if date1 and dozvil.anketa_dozvil %}
+                                                {% if tf and tf.tfe1 %}
+                                                    🔵
+                                                {% else %}
+                                                    <input type="checkbox" value="True" class="checkbox2" name="tfe1">Нові дані
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="document-check">
+                                    <p>Заява</p>
+                                    <div class="ck1">
+                                        {% if tf and tf.tf2 %}
+                                            ✔️
+                                        {% else %}
+                                            <input type="checkbox" value="True" class="checkbox1" name="tf2" >
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            
+                                <div class="document-check">
+                                    <p>Згода на обробку персональних даних</p>
+                                    <div class="ck2">
+                                        {% if tf and tf.tf3 %}
+                                            ✔️
+                                        {% else %}
+                                            <input type="checkbox" value="True" class="checkbox1" name="tf3">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            
+                                <div class="document-check">
+                                    <p>Згода батьків</p>
+                                    <div class="ck3">
+                                        {% if tf and tf.tf4 %}
+                                            ✔️
+                                        {% else %}
+                                            <input type="checkbox" value="True" class="checkbox1" name="tf4">
+                                        {% endif %}
+                                    </div>
+                                    <div class="ck0">
+                                        {% if date2 and dozvil.zgoda_dozvil %}
+                                            {% if tf and tf.tfe2 %}
+                                                🔵
+                                            {% else %}
+                                                <input type="checkbox" value="True" class="checkbox2" name="tfe2">Нові дані
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            
+                                <div class="document-check">
+                                    <p>Заява про наявність родичів в ДПСУ</p>
+                                    <div class="ck7">
+                                        {% if tf and tf.tf5  %}
+                                            ✔️
+                                        {% else %}
+                                            <input type="checkbox" value="True" class="checkbox1" name="tf5">
+                                        {% endif %}
+                                    </div>
+                                    <div class="ck0">
+                                        {% if date4 and dozvil.corup_dozvil %}
+                                            {% if tf and tf.tfe3 %}
+                                                🔵
+                                            {% else %}
+                                                <input type="checkbox" value="True" class="checkbox2" name="tfe3">Нові дані
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                
+                                </div>
+                                <div class="document-check">
+                                    <p>Медичні</p>
+                                    <div class="ck5">
+                                        {% if tf and tf.tf6 %}
+                                            ✔️
+                                        {% else %}
+                                            <input type="checkbox" value="True" class="checkbox1" name="tf6">
+                                        {% endif %}
+                                    </div>
+                                    <div class="ck0">
+                                        {% if date3 and dozvil.med_dozvil %}
+                                            {% if tf and tf.tfe4 %}
+                                                🔵
+                                            {% else %}
+                                                <input type="checkbox" value="True" class="checkbox2" name="tfe4">Нові дані
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            
+                            
+                                <div class="document-check">
+                                    <p>Всі документи</p>
+                                    <div class="ck6">
+                                        {% if tf and tf.tf7 %}
+                                            ✔️
+                                        {% else %}
+                                            <input type="checkbox" value="True" class="checkbox1" name="tf7">
+                                        {% endif %}
+                                    </div>
+                                    <div class="ck0">
+                                        {% if date5 and dozvil.documents_dozvil %}
+                                            {% if tf and tf.tfe5 %}
+                                                🔵
+                                            {% else %}
+                                                <input type="checkbox" value="True" class="checkbox2" name="tfe5">Нові дані
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                             <button class="chatbtn" type="submit">Назад</button>
+                            </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-side">
+                <div class="nav">
+                    <ul>
+                        <li onclick="tabs(0)" class="user-post active">Документи</li>
+                    </ul>
+                </div>
+                <div class="profile-body">
+                    <div class="profile-posts tab">
+                        <div class="documents-container">
+                            <div class="documents-left">
+                                <div class="document">
+                                    <span>📑 Анкета</span>
+                                    {% if date1 and dozvil.anketa_dozvil %}
+                                        <a href="{% url 'generate_pdf' id=el.id %}">
+                                            <button style="background-color: #0078ff" class="btn1">Переглянути</button>
+                                        </a>
+                                    {% else %}
+                                        {% if an %}
+                                            <a href="{% url 'generate_pdf' id=el.id %}">
+                                                <button class="btn1" onclick="location.href=''">Переглянути</button>
+                                            </a>
+                                        {% else %}
+                                            Немає даних ❌
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+
+                                <div class="document">
+                                    <span>📑 Заява</span>
+                                    {% if za %}
+                                        <a href="{% url 'down_pdf' id=el.id %}">
+                                            <button class="btn1" onclick="location.href=''">Переглянути</button>
+                                        </a>
+                                    {% else %}
+                                        Немає даних ❌
+                                    {% endif %}
+                                </div>
+
+                                <div class="document">
+                                    <span>📑 Згода на обробку персональних даних</span>
+                                    {% if za %}
+                                        <a href="{% url 'download_zgoda_p' id=el.id %}">
+                                            <button class="btn1" onclick="location.href=''">Переглянути</button>
+                                        </a>
+                                    {% else %}
+                                        Немає даних ❌
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="documents-right">
+                                <div class="document2">
+                                    <span>📑 Заява про наявність родичів в ДПСУ</span>
+                                    {% if date4 and dozvil.corup_dozvil %}
+                                        <a href="{% url 'generate_cor' id=el.id %}">
+                                            <button style="background-color: #0078ff" class="btn1">Переглянути</button>
+                                        </a>
+                                    {% else %}
+                                        {% if coruptions %}
+                                            <a href="{% url 'generate_cor' id=el.id %}">
+                                                <button class="btn1" onclick="location.href=''">Переглянути</button>
+                                            </a>
+                                        {% else %}
+                                            Немає даних ❌
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+
+                                <div class="document2">
+                                    <span>📑 Медичний</span>
+                                    {% if date3 and dozvil.med_dozvil %}
+                                        <a href="{% url 'med_docs' id=el.id %}">
+                                            <button style="background-color: #0078ff" class="btn1">Переглянути</button>
+                                        </a>
+                                    {% else %}
+                                        {% if meds %}
+                                            <a href="{% url 'med_docs' id=el.id %}">
+                                                <button class="btn1">Переглянути</button>
+                                            </a>
+                                        {% else %}
+                                            Немає даних ❌
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+
+                                <div class="document2">
+                                    <p>📑 Згода батьків</p>
+                                    {% if date2 and dozvil.zgoda_dozvil %}
+                                        <a href="{% url 'generate_zgoda' id=el.id %}">
+                                            <button style="background-color: #0078ff" class="btn1">Переглянути</button>
+                                        </a>
+                                    {% else %}
+                                        {% if zgoda2 %}
+                                            <a href="{% url 'generate_zgoda' id=el.id %}">
+                                                <button class="btn1" onclick="location.href=''">Переглянути</button>
+                                            </a>
+                                        {% else %}
+                                            Немає даних ❌
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="document2">
+                            <span>📑 Всі документи</span>
+                            {% if date5 and dozvil.documents_dozvil %}
+                                <a href="{% url 'generate_doc' id=el.id %}">
+                                    <button style="background-color: #0078ff" class="btn1">Переглянути</button>
+                                </a>
+                            {% else %}
+                                {% if docs %}
+                                    <a href="{% url 'generate_doc' id=el.id %}">
+                                        <button class="btn1" onclick="location.href=''">Переглянути</button>
+                                    </a>
+                                {% else %}
+                                    Немає даних ❌
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        <div>
+                            <a href="{% url 'moderator' moder.id  %}">
+                                <button class="chatbtn">Назад</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/info2.js' %}"></script>
+ <script>
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("openModalBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

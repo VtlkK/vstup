@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Вступ НАДПСУ 2024</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'src/1.png' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/component.css' %}" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: "uaf";
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="padding-bottom: 10vh; background-color: #F5EDF0;">
+        <nav class="navbar navbar-inverse  animate__animated animate__fadeInRight navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand " href="#"><span><img src="{% static 'img/dpsu-logo-rgb.png' %}"
+                                width="25vh"><label class="gradi" style="padding-left: 2vh;">Вступ НАДПСУ
+                                2024</label></span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="https://nadpsu.edu.ua/abituriyentu/pravyla-pryjomu/"><label>ПРО ВСТУП</label></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'CreatUser' %}"><span class="glyphicon glyphicon-user"></span><label>РЕЄСТРАЦІЯ</label></a></li>
+                        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in" style="padding-right:3px;"></span><label>ВХІД</label></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="container-fluid whitee" style="padding-top: 6vh; padding-bottom: 20vh;">
+        <div align="center">
+            <img src="{% static 'img/nadpsu-logo-rgb.png'%}"
+                class="img-responsive  animate__animated animate__fadeInUp" alt="Image" style="width: 20%;">
+        </div>
+        <div align="center" style="padding-bottom: 25vh;">
+            <h1 class="animate__animated animate__fadeInUp"><strong>ВСТУП НАДПСУ <span
+                        style="color: #AB006F;">2024</span></strong></h1>
+            <div style="padding-top: 2vh;">
+                <h3 id="quote-container" style="color:#368200;"></h3>
+            </div>
+
+            <br>
+            <br>
+            <button class="animate__animated animate__fadeInUp" onclick="ank()" style=" font-size:x-large;">ПОДАТИ ЗАЯВУ НА ВСТУП</button>
+        </div>
+    </div>
+
+    <div class="container-fluid gradient">
+        <br>
+        <div class="container-fluid ">
+            <div class="jumbotron" style="background: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1><strong>Вступна кампанія НАДПСУ 2024 розпочинає набір майбутніх курсантів!</strong></h1>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Національна академія Державної прикордонної служби України імені Богдана Хмельницького є
+                            вищим військовим навчальним закладом, що проводить підготовку військових фахівців для
+                            Державної прикордонної служби України за схемою підготовки "курсант".</h3>
+                        <button class="animate__animated animate__fadeInUp"><a href="https://nadpsu.edu.ua/abituriyentu/pravyla-pryjomu/"><label>Дізнатись конкурсні пропозиції</label></a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid whitee">
+        <br>
+        <div class="container-fluid ">
+            <div class="jumbotron" style="background: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{% static 'img/cadet.jpg'%}" class="img-responsive img-rounded">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>До Національної академії на навчання приймаються громадяни України віком від 17 до 30 років
+                            (в тому числі і ті, яким виповнюється 17 років у рік вступу), які здобули повну загальну
+                            середню освіту.
+                        </h3><br>
+                        <h3>
+                            Випускник: отримує кваліфікацію – офіцер тактичного рівня Державної прикордонної служби
+                            України, ступінь бакалавра за відповідною спеціальністю, присвоюється первинне військове
+                            звання офіцерського складу – лейтенант, та призначається на первинні посади осіб
+                            офіцерського складу.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid blackee">
+        <br>
+        <div class="container-fluid ">
+            <div class="jumbotron" style="background: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 style="color:#368200"><strong>Ми чекаємо саме на тебе!</strong></h1><br>
+                        <h3>Стань невід'ємною частиною великої родини Державної прикордонної служби України імені
+                            Богдана Хмельницького! Твій шлях до служби починається прямо зараз, у знаковій Національній
+                            академії.</h3>
+                            <br>
+                            <img src="{% static 'img/green.png'%}" class="img-responsive img-rounded" style="width: 50vh;">
+
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+
+                        <img src="{% static 'img/curcantu.jpg'%}" class="img-responsive img-rounded">
+                        <h3>
+                            Тут ти отримаєш не лише вищу військову освіту, а й можливість стати справжнім героєм своєї
+                            країни. Наші випускники – це ті, хто стоїть на захисті кордонів, забезпечуючи безпеку та
+                            порядок.
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid blackee">
+        <br>
+        <div class="container-fluid ">
+            <div class="jumbotron" style="background: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{% static 'img/cadet2.jpg'%}" class="img-responsive img-rounded"><br>
+                        <h3>
+                            Обирай важливий шлях служби в Академії імені Богдана Хмельницького, де тебе чекає якісна
+                            підготовка, відданість і професійний ріст. Ти не лише навчишся, але й знайдеш в себе
+                            справжнє покликання та братерську підтримку.
+                        </h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>
+                            Приєднуйся до нас, стань частиною великої сім'ї, де кожен може зробити вагомий внесок у
+                            безпеку та процвітання України. Твій час прийшов – обирай службу у Національній академії та
+                            готуйся стати героєм свого часу!
+                        </h3><br>
+
+                        <img src="{% static 'img/22.jpg'%}" class="img-responsive img-rounded">
+
+
+                    </div>
+                </div>
+                <br>
+                
+            
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="{% static 'js/gradient.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="{% static 'js/quotes2.js'%}"></script>
+    <script>
+        function ank() {
+            window.location.href = "svbbghvfgdsfhfgdhhrttherghhy_234gnjtgtr_fnvbkfig433495jerg"
+        }
+    </script>
+</body>

@@ -1,0 +1,47 @@
+ body {
+             background-color: #40693b;
+        }
+
+
+        .container {
+            height: auto;
+            width: auto;
+            margin: 3% auto;
+            padding: 20px;
+            background-color: #e6e6e6;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .image-container{
+            height: 500px; /* Задайте бажану висоту віконця */
+            background-color: #fff;
+            border: 1px solid #618a67;
+            border-radius: 5px;
+            overflow: hidden; /* Сховати переповнення зображення */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #507f54;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #315138;
+        }

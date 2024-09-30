@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завантаження документів</title>
+    <link rel="stylesheet" href="{% static 'css/documents.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h1>Завантажте фото своїх документів</h1>
+        <form  method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="upload-section">
+                <label for="front-side">Передня  сторона ID паспорту</label>
+                <input type="file" id="front-side" name="id_card" accept="image/*" required>
+            </div>
+            <div class="upload-section">
+                <label for="back-side">Задня сторона ID паспорту</label>
+                <input type="file" id="back-side" name="id_card2" accept="image/*" required>
+            </div>
+            <div class="upload-section">
+                <label for="back-side">Довідка про реєстрацію місця проживання особи</label>
+                <input type="file" id="back-side" name="location_doc" accept="image/*" required>
+            </div>
+            <div class="upload-section">
+                <label for="back-side">Свідоцтво про народження</label>
+                <input type="file" id="back-side" name="born_doc" accept="image/*" required>
+            </div>
+            <div class="upload-section">
+                <label for="back-side">Реєстраційний номер облікової картки платника податків</label>
+                <input type="file" id="back-side" name="plat_doc" accept="image/*" required>
+            </div>
+            <div class="upload-section">
+                <label for="back-side">Фото документів, що підтверджують право вступника на спеціальні умови участі у конкурсному відборі (за наявності)</label>
+                <input type="file" id="back-side" name="spec_doc" accept="image/*" required>
+            </div>
+            
+            <div class="upload-section">
+                <label for="back-side">Фотокартка розміром 3x4 см </label>
+                <input type="file" id="back-side" name="photo_doc" accept="image/*" required>
+            </div>
+            
+            
+            <div class="upload-section">
+                <label for="back-side">Витяг з інформаційно-аналітичної системи «Облік відомостей про притягнення особи до кримінальної відповідальності та наявності судимості» (повний)</label>
+                <input type="file" id="back-side" name="cruminal_doc" accept="image/*" required>
+            </div>
+            
+            <div class="upload-section">
+                <label for="back-side">Військово-обліковий документ (у військовозобовʼязаних - копія військового квитка або тимчасового посвідчення, у призовників - посвідчення про приписку до призовних дільниць) (для окремо пойменованої категорії вступників - за наявності)</label>
+                <input type="file" id="back-side" name="viy_doc" accept="image/*" required>
+            </div>
+            
+            <div class="upload-section">
+                <label for="back-side">Довідка про проходження попереднього, періодичного та позачергового психіатричних оглядів, у тому числі на предмет вживання психоактивних речовин (форма первинної облікової документації «100-2/о)</label>
+                <input type="file" id="back-side" name="psix_doc" accept="image/*" required>
+            </div>
+            
+            <button type="submit">Завантажити</button>
+        </form>
+    </div>
+
+</body>
+</html>

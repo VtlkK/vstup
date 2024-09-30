@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="77ddaea5-b96c-45a0-9cb5-b82cf090c6f2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vstupProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/Anketa.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/Anketa_edit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/Login_logout.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/Med_docs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/cabinet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/check_napr.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/coruption.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/coruption_edit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/documents.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/documents_edit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/edit_password.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/exel/db_exel.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/exel_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/front/DejaVuSans-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/front/DejaVuSans-BoldOblique.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/front/DejaVuSans-ExtraLight.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/front/DejaVuSans.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/json.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/med.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/med_edit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/middleware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/moder_vlknapr_vid.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/moderator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/moderator_create.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/moderator_verif_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/napr_otr.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/open_zgoda.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf/all_doc.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf/all_doc2.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf/anketa-6.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf/corup.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf/napr_vlk.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf/zayava.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf/zgoda.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf/zgoda_bat.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf/zgoda_p1.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf_anketa.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf_coruption.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf_document.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf_napravlen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf_zayava.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/pdf_zgoda.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/cabinet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/documents.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/edit_doc.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/edit_med.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/info2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/info3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/info_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/meds.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/mod_ver.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/moderator_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/napravlen.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/parents_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/bdk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/cadet.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/cadet2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/cadet3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/cadet4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/curcantu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/dpsu-logo-rgb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/eng.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/face_ver.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/fil.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/green-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/info.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/kin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/nadpsu-logo-rgb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/prd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/psy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/img/tlk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/js/cabinet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/js/gradient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/js/info2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/js/menu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/js/moderator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/js/page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/js/quotes2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/pdf/zgoda-batkiv.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templatetags/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templatetags/custom_filters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/upload_photo_verification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/vid_red_doca.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/vlk.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/vlk_nap_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/zgoda_bat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/zgoda_bat_edit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/zgoda_p.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/anketa.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/cabinet.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/corruption.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/doc_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/document.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/edit_anketa.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/edit_coruption.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/edit_docs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/edit_med.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/edit_zgoda.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/info2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/med.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/med_docs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/mod_verific.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/moder_napr_otr.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/moderator.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/moderator_create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/modertor_login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/naprav.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/parents_consent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/password2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/password_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main/upload_photo_for_verification.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vstupProject/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vstupProject/asgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vstupProject/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vstupProject/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vstupProject/wsgi.py" afterDir="false" />
+    </list>
+    <list id="ed714fbf-2b7d-4a30-ab78-4335e01ca868" name="Changes by IDservice" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="Python Script" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="showPreview" value="true" />
+    <option name="sortByName" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2k647mKw0I5aGSQy5MLy75iVPzl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.vstupProject.executor": "Run",
+    "Python.exel_data.executor": "Run",
+    "Python.settings.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/vtlkk/OneDrive/Робочий стіл/MPZ-main",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static\img" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\pdf" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\front" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\vstupProject" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static\img" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static\pdf" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\pdf" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django Server.vstupProject">
+    <configuration name="settings" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="vstupProject" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/vstupProject" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/vstupProject/settings.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="vstupProject" type="Python.DjangoServer" factoryName="Django server">
+      <module name="vstupProject" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="vstupProject.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.settings" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="77ddaea5-b96c-45a0-9cb5-b82cf090c6f2" name="Changes" comment="" />
+      <created>1722590527870</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722590527870</updated>
+      <workItem from="1722590586599" duration="591000" />
+      <workItem from="1722600433091" duration="13456000" />
+      <workItem from="1722673717832" duration="153000" />
+      <workItem from="1723185738169" duration="5013000" />
+      <workItem from="1723192950978" duration="8020000" />
+      <workItem from="1723208599072" duration="9000" />
+      <workItem from="1723208648308" duration="25000" />
+      <workItem from="1723208693208" duration="4000" />
+      <workItem from="1723208710450" duration="11000" />
+      <workItem from="1723210278547" duration="13000" />
+      <workItem from="1723210311058" duration="6000" />
+      <workItem from="1723210328319" duration="16000" />
+      <workItem from="1723210375571" duration="12000" />
+      <workItem from="1723211452438" duration="23000" />
+      <workItem from="1723211802234" duration="51000" />
+      <workItem from="1723211947186" duration="12000" />
+      <workItem from="1723212228248" duration="21000" />
+      <workItem from="1723212763865" duration="25000" />
+      <workItem from="1723212857239" duration="9000" />
+      <workItem from="1723212875052" duration="2000" />
+      <workItem from="1723214326788" duration="23000" />
+      <workItem from="1723215103873" duration="55000" />
+      <workItem from="1723466209314" duration="3507000" />
+      <workItem from="1723536941084" duration="3562000" />
+      <workItem from="1723619990331" duration="3889000" />
+      <workItem from="1723786393046" duration="26718000" />
+      <workItem from="1723870923231" duration="5222000" />
+      <workItem from="1724046412330" duration="2327000" />
+      <workItem from="1724048803631" duration="16489000" />
+      <workItem from="1724074747821" duration="1000" />
+      <workItem from="1724075697369" duration="3000" />
+      <workItem from="1724078013462" duration="32000" />
+      <workItem from="1724078125185" duration="39000" />
+      <workItem from="1724078336598" duration="38000" />
+      <workItem from="1724078390567" duration="11000" />
+      <workItem from="1724135159920" duration="19117000" />
+      <workItem from="1724225787268" duration="905000" />
+      <workItem from="1724239654064" duration="44000" />
+      <workItem from="1724248484108" duration="23000" />
+      <workItem from="1724249640784" duration="496000" />
+      <workItem from="1724250172904" duration="25000" />
+      <workItem from="1724250224916" duration="24000" />
+      <workItem from="1724309644512" duration="72000" />
+      <workItem from="1724310059374" duration="3318000" />
+      <workItem from="1724322453564" duration="3284000" />
+      <workItem from="1724329186181" duration="9000" />
+      <workItem from="1724329227493" duration="7000" />
+      <workItem from="1724329316736" duration="10000" />
+      <workItem from="1724333381170" duration="342000" />
+      <workItem from="1724333803314" duration="1406000" />
+      <workItem from="1724398044769" duration="3451000" />
+      <workItem from="1724507321728" duration="25456000" />
+      <workItem from="1724824624955" duration="73343000" />
+      <workItem from="1725261400933" duration="546000" />
+      <workItem from="1725263119984" duration="40000" />
+      <workItem from="1725264837508" duration="30000" />
+      <workItem from="1725267687837" duration="942000" />
+      <workItem from="1725268902207" duration="2893000" />
+      <workItem from="1725277319719" duration="42914000" />
+      <workItem from="1725459938126" duration="8990000" />
+      <workItem from="1725535659230" duration="13418000" />
+      <workItem from="1725608741124" duration="20323000" />
+      <workItem from="1725696171354" duration="16848000" />
+      <workItem from="1725714689784" duration="366000" />
+      <workItem from="1725861502945" duration="7022000" />
+      <workItem from="1725869121386" duration="10000" />
+      <workItem from="1725870120014" duration="18000" />
+      <workItem from="1725884657018" duration="19000" />
+      <workItem from="1725891716145" duration="19000" />
+      <workItem from="1725891800594" duration="8000" />
+      <workItem from="1725951486975" duration="2158000" />
+      <workItem from="1725954785436" duration="13637000" />
+      <workItem from="1725973805134" duration="1986000" />
+      <workItem from="1725975913539" duration="6873000" />
+      <workItem from="1726041488760" duration="42116000" />
+      <workItem from="1726294807298" duration="64000" />
+      <workItem from="1726479102487" duration="3701000" />
+      <workItem from="1726489770407" duration="18000" />
+      <workItem from="1726489892063" duration="9000" />
+      <workItem from="1726492655627" duration="18000" />
+      <workItem from="1726492697580" duration="6000" />
+      <workItem from="1726492953287" duration="18000" />
+      <workItem from="1726496603745" duration="70000" />
+      <workItem from="1726639106878" duration="6732000" />
+      <workItem from="1727249187346" duration="5959000" />
+      <workItem from="1727260004844" duration="70000" />
+      <workItem from="1727281261313" duration="5492000" />
+      <workItem from="1727356653767" duration="2065000" />
+      <workItem from="1727417367002" duration="599000" />
+      <workItem from="1727420419674" duration="14761000" />
+      <workItem from="1727442915828" duration="6096000" />
+      <workItem from="1727676076887" duration="8106000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/vstupProject$exel_data.coverage" NAME="exel_data Coverage Results" MODIFIED="1723192888881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
+    <SUITE FILE_PATH="coverage/vstupProject$settings.coverage" NAME="settings Coverage Results" MODIFIED="1725864656085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vstupProject" />
+  </component>
+</project>

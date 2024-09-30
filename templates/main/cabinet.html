@@ -1,0 +1,778 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Особистий кабінет</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'img/nadpsu-logo-rgb.png' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cabinet.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<div style="padding-bottom: 10vh; background-color: #F5EDF0;">
+    <nav class="navbar navbar-inverse  animate__animated animate__fadeInRight navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand " href="#"><span><img src="{% static 'img/dpsu-logo-rgb.png' %}"
+                            width="25vh"><label class="gradi" style="padding-left: 2vh;">Вступ НАДПСУ   
+                            2024</label></span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://nadpsu.edu.ua/abituriyentu/pravyla-pryjomu/"><label>ПРО ВСТУП</label></a></li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href=""><span class="glyphicon glyphicon-user"></span><label> {{d.soname}} {{d.name}} </label></a></li>
+                    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span><label>Вихід</label></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    <div class="container-fluid whitee" style="padding-top: 2vh;">
+        <br><br>
+        <div align="center" style="padding-bottom: 30vh;">
+            <h2 class="animate__animated animate__fadeInUp"><strong>Шановний <span style="color: #368200;">{{d.soname}} {{d.name}} абітурієнте!</span></strong></h2>
+            <br><br><br>
+            <h3>Вітаємо Вас у Вашому особистому кабінеті! Разом з Вами ми пройдемо весь шлях до Вашої мети.</h3>
+            <br>
+            <h3>На цій сторінці описано всі кроки для зарахування Вас до Національної академії ДПСУ.</h3>
+        </div>
+    </div>
+    <div class="container-fluid blackee">
+        <br>
+        <div class="container-fluid ">
+            <div class="jumbotron" style="background: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 style="color:#368200"><strong>Крок 1: Верифікація</strong></h1><br>
+                        <h3>Пройдіть верифікацію, для пітвердження вашої особистості. Вам знадобиться Ваш пасорт у формі ID-картки.</h3>
+                        <p style="font-size: 12px; color: #777">(Ваші дані та заповнені заяви або анкети перевірятимуться модератором. Якщо все буде в порядку, статус кожного кроку зміниться. Для точнішого відслідковування статусу перезавантажте сторінку.) </p>
+                            <br>
+                        <a href="{% url 'verify' id=el.id  %}">
+                            <button class="animate__animated animate__fadeInUp" onclick="verify()" style="background-color: #368200;">Пройти верифікацію</button>
+                        </a>
+                    <br><br>
+                    <div style="position: relative; left: 1%">
+                        {% if ve %}
+                            <p  style="color:#989898; font-size: 100%;">ДАНІ ПОДАНІ ✔️</p>
+                        {% else %}
+                            <p style="color:#989898; font-size: 100%;">ПОКИ НЕМАЄ ДАНИХ ❌</p>
+                        {% endif %}
+                    
+                    <p id="auth-status" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+                    <script>
+                $.noConflict();
+                jQuery(document).ready(function($) {
+                    function fetchData() {
+                        $.ajax({
+                            url: '{% url "json_request" el.id %}',  
+                            type: 'GET',
+                            success: function(data) {
+                                console.log(data); 
+                                if (data.v === "verified") {
+                                    $('#verification-step').stop(true, true).show();
+                                    $('#auth-status').html('<p style="color: #FFC32A; font-size: 100%;">Ви пройшли авторизацію</p>');
+                                } else if (data.v === "pending") {
+                                    $('#verification-step').stop(true, true).hide();
+                                    $('#auth-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                } else if (data.v === "not_found") {
+                                    $('#verification-step').stop(true, true).hide();
+                                    $('#auth-status').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
+                                } else {
+                                    $('#auth-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('AJAX Error:', status, error);
+                                $('#auth-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                            },
+                            complete: function() {
+                                fetchData(); 
+                            }
+                        });
+                    }
+            
+                    fetchData();
+                });
+            </script>
+
+                    
+                    </div>
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid whitee">
+        <br>
+        <div class="container-fluid ">
+            <div class="jumbotron" style="background: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 style=""><strong>Крок 2: Складання заяви</strong></h1><br>
+                        <h3>Ваша заява сформована, завантажте її для подальшого формування навчальної справи.</h3>
+                        <p style="font-size: 12px; color: #777">(Ваші дані та заповнені заяви або анкети перевірятимуться модератором. Якщо все буде в порядку, статус кожного кроку зміниться. Для точнішого відслідковування статусу перезавантажте сторінку.) </p>
+                        <br>
+                        <a href="{% url 'down_pdf' id=el.id %}"> <button class="animate__animated animate__fadeInUp"  style="background-color: #368200;">Завантажити заяву</button></a>
+                        <br><br>
+                        <div style="position: relative; left: 1%">
+                        {% if za %}
+                            <p  style="color:#989898; font-size: 100%;">ДАНІ ПОДАНІ ✔️</p>
+                        {% else %}
+                            <p style="color:#989898; font-size: 100%;">ПОКИ НЕМАЄ ДАНИХ ❌</p>
+                        {% endif %}
+                    <div style="position: relative; left:-1%">
+                   </div>
+                    </div>
+                    </div>    
+                    <br>
+                    <div class="col-md-6">
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div> 
+       
+
+    <div id="verification-step" class="container-fluid pinkee">
+        <br>
+        <div class="container-fluid">
+            <div class="jumbotron" style="background: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 style="color:#FFC32A"><strong>Крок 3: Анкета на вступ</strong></h1><br>
+                        <h3>Заповніть анкету для вступу, це займе у вас близько 5 хвилин. Після чого завантажте її для подальшого формування навчальної справи.</h3>
+                        <p style="font-size: 12px; color: #777">(Ваші дані та заповнені заяви або анкети перевірятимуться модератором. Якщо все буде в порядку, статус кожного кроку зміниться. Для точнішого відслідковування статусу перезавантажте сторінку.) </p>
+                        <br>
+                        <a href="{% url 'anketa' id=el.id %}">
+                            <button class="animate__animated animate__fadeInUp" onclick="anketa()" style="background-color: #368200;">Заповнити анкети</button>
+                        </a>
+                    <br><br>
+                         {% if anket %}
+                                <a href="{% url 'generate_pdf' id=el.id %}">
+                                    <button class="animate__animated animate__fadeInUp" onclick="anketa()" style="background-color: #368200;">Завантажити анкету</button>
+                                </a>
+                             {% else %}
+                         {% endif %}
+                        {% if red.anketa_red%}
+                            {% else %}
+                                 {% if anket %}
+                                     <br><br>
+                                   <form method="post" action="{% url 'red_zaput' el.id %}">
+                                       {% csrf_token %}
+                                        <button  class="animate__animated animate__fadeInUp" name='anketa_red' value='True' onclick="anketa()" style="background-color: black">Відправити запит на редагування</button>
+                                    </form>
+                                    {% else %}
+                                {% endif %}
+                        {% endif %}
+                        {% if dozvil.anketa_dozvil and not time_close_ank %}
+                            <br><br>
+                            <a href="{% url 'edit_anketa' id=el.id %}">
+                                <button class="animate__animated animate__fadeInUp" onclick="anketa()" style="background-color: black">Редагувати анкети</button>
+                            </a>
+                            {% else %}
+                        {% endif %}
+                        <br><br>
+                            <div style="position: relative; left: 1%">
+                                {% if anket %}
+                                <p  style="color:#989898; font-size: 100%;">ДАНІ ПОДАНІ ✔️</p>
+                                {% else %}
+                                <p style="color:#989898; font-size: 100%;">ПОКИ НЕМАЄ ДАНИХ ❌</p>
+                                {% endif %}
+                            
+                           
+                             <p id="ank-status" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>
+                       $.noConflict();
+                            jQuery(document).ready(function($) {
+                                function fetchData() {
+                                    $.ajax({
+                                        url: '{% url "json_tf" el.id %}',
+                                        type: 'GET',
+                                        success: function(data) {
+                                        console.log('Data received:', data);
+                                        if (data.tf1 === 'True') {
+                                            $('#ank-status').html('<p style="color: #FFC32A; font-size: 100%;">Дані перевірені</p>');
+                                        } else if (data.tf1 === 'False') {
+                                            $('#ank-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        } else if (data.tf1 === 'not_found') {
+                                            $('#ank-status').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
+                                        } else {
+                                            $('#ank-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    },
+                                        error: function(xhr, status, error) {
+                                            console.error('AJAX Error:', status, error);
+                                            $('#ank-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    });
+                                }
+                            
+                                setInterval(fetchData, 2000);
+                            });
+                    </script>
+                            
+                           </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+  
+{% if anketa %}
+
+
+
+
+    <div class="container-fluid yelowee">
+    <br>
+    <div class="container-fluid">
+        <div class="jumbotron" style="background: none;">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 style="color:#AB006F"><strong>Крок 4.1: Завантаження документів для навчальної справи</strong></h1><br>
+                    <h3>Вам необхідно заповнити та завантажити перелік необхідних документів для формування справи.</h3>
+                    <p style="font-size: 12px; color: #777">(Ваші дані та заповнені заяви або анкети перевірятимуться модератором. Якщо все буде в порядку, статус кожного кроку зміниться. Для точнішого відслідковування статусу перезавантажте сторінку.)</p>
+
+                    <a href="{% url 'corup' id=el.id %}">
+                        <button class="animate__animated animate__fadeInUp" style="background-color: #368200; width: 70%" onclick="anketa()"> Заява про наявність близьких в ДПСУ</button>
+                    </a>
+
+                    <br><br>
+                    <div style="left: 3%;">
+                        {% if co %}
+                        <p style="color:#989898; font-size: 100%;">ДАНІ ПОДАНІ ✔️</p>
+                        {% else %}
+                        <p style="color:#989898; font-size: 100%;">ПОКИ НЕМАЄ ДАНИХ ❌</p>
+                        {% endif %}
+                    </div>
+
+                    
+                    <p id="corup-status" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>
+                       $.noConflict();
+                            jQuery(document).ready(function($) {
+                                function fetchData() {
+                                    $.ajax({
+                                        url: '{% url "json_tf5" el.id %}',
+                                        type: 'GET',
+                                        success: function(data) {
+                                        console.log('tf5:', data);
+                                        if (data.tf5 === 'True') {
+                                            $('#corup-status').html('<p style="color: green; font-size: 100%;">Дані перевірені</p>');
+                                        } else if (data.tf5 === 'False') {
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        } else if (data.tf5 === 'not_found') {
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
+                                        } else {
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    },
+                                        error: function(xhr, status, error) {
+                                            console.error('AJAX Error:', status, error);
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    });
+                                }
+                            
+                                setInterval(fetchData, 2000);
+                            });
+                    </script>
+
+                    <br><br>
+
+                    <a href="{% url 'zgoda_ofor' id=el.id %}">
+                        <button class="animate__animated animate__fadeInUp" onclick="anketa()" style="background-color: #368200; width: 70%">Згода батьків</button>
+                    </a>
+                    <br><br>
+                    <div style=" top: -115px; left: 60%">
+                        {% if zgodbat %}
+                        <p style="color:#989898; font-size: 100%;">ДАНІ ПОДАНІ ✔️</p>
+                        {% else %}
+                        <p style="color:#989898; font-size: 100%;">ПОКИ НЕМАЄ ДАНИХ ❌</p>
+                        {% endif %}
+                    </div>
+
+                    
+                <p id="corup-status4" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>
+                       $.noConflict();
+                            jQuery(document).ready(function($) {
+                                function fetchData() {
+                                    $.ajax({
+                                        url: '{% url "json_tf4" el.id %}',
+                                        type: 'GET',
+                                        success: function(data) {
+                                        console.log('tf4:', data);
+                                        if (data.tf4 === 'True') {
+                                            $('#corup-status4').html('<p style="color: green; font-size: 100%;">Дані перевірені</p>');
+                                        } else if (data.tf4 === 'False') {
+                                            $('#corup-status4').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        } else if (data.tf4 === 'not_found') {
+                                            $('#corup-status4').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
+                                        } else {
+                                            $('#corup-status4').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    },
+                                        error: function(xhr, status, error) {
+                                            console.error('AJAX Error:', status, error);
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    });
+                                }
+                            
+                                setInterval(fetchData, 2000);
+                            });
+                    </script>
+
+                    <br><br>
+                    <a href="{% url 'document' id=el.id %}">
+                        <button class="animate__animated animate__fadeInUp" onclick="anketa()" style=" background-color: #368200; width: 70%">Завантажити документи</button>
+                    </a>
+
+                    <br><br>
+                    <div style=" bottom: 90px; left: 3%;">
+                        {% if do %}
+                        <p style="color:#989898; font-size: 100%;">ДАНІ ПОДАНІ ✔️</p>
+                        {% else %}
+                        <p style="color:#989898; font-size: 100%;">ПОКИ НЕМАЄ ДАНИХ ❌</p>
+                        {% endif %}
+                    </div>
+
+                    
+                <p id="corup-status7" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>
+                       $.noConflict();
+                            jQuery(document).ready(function($) {
+                                function fetchData() {
+                                    $.ajax({
+                                        url: '{% url "json_tf7" el.id %}',
+                                        type: 'GET',
+                                        success: function(data) {
+                                        console.log('tf7:', data);
+                                        if (data.tf7 === 'True') {
+                                            $('#corup-status7').html('<p style="color: green; font-size: 100%;">Дані перевірені</p>');
+                                        } else if (data.tf7 === 'False') {
+                                            $('#corup-status7').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        } else if (data.tf7 === 'not_found') {
+                                            $('#corup-status7').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
+                                        } else {
+                                            $('#corup-status7').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    },
+                                        error: function(xhr, status, error) {
+                                            console.error('AJAX Error:', status, error);
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    });
+                                }
+                            
+                                setInterval(fetchData, 2000);
+                            });
+                    </script>
+
+                    {% if co %}
+                    <a href="{% url 'generate_cor' id=el.id %}">
+                        <button class="animate__animated animate__fadeInUp" onclick="anketa()" style=" background-color: #368200; width: 70%;">Завантажити заяву про близьких в ДПСУ</button>
+                    </a>
+                    {% endif %}
+                    <br><br>
+                    {% if zgodbat %}
+                    <a href="{% url 'generate_zgoda' id=el.id %}">
+                        <button class="animate__animated animate__fadeInUp" onclick="anketa()" style=" background-color: #368200; width: 70%;">Завантажити згоду батьків</button>
+                    </a>
+                    {% endif %}
+                     <br><br>
+                    <button style="width: 70%;" id="openModalButton">Відправити запит на редагування</button>
+                    <br><br>
+
+                    <button style=" width: 70%;" id="openModalBtn">Редагувати</button>
+
+                    <div id="myModal" class="modal" >
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Що саме вам необхідно редагувати?</h2>
+                            {% if dozvil.documents_dozvil and not time_close1 %}
+                            <label><input id="editDocuments" data-url="{% url 'edit_document' id=el.id %}" type="checkbox"> Редагувати документи</label><br>
+                            {% endif %}
+                            {% if dozvil.zgoda_dozvil and not time_close %}
+                            <label><input id="editZgoda" data-url="{% url 'edit_zgoda' id=el.id %}" type="checkbox"> Редагувати згоду батьків</label><br>
+                            {% endif %}
+                            {% if dozvil.corup_dozvil and not time_close2 %}
+                            <label><input id="editZayava" data-url="{% url 'edit_cor' id=el.id %}" type="checkbox"> Редагувати заяву про наявність близьких в ДПСУ</label><br>
+                            {% endif %}
+                            <button id="submitButton" type="button">Вибрати</button>
+                        </div>
+                    </div>
+
+                    <div id="myModal2" class="modal2" >
+                        <form method="post" action="{% url 'red_zaput' el.id %}">
+                            {% csrf_token %}
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+
+                                <h2>Що саме вам необхідно редагувати?</h2>
+                                {% if do and not red.documents_red %}
+                                <label><input id="documents_red" name="documents_red" value="True" type="checkbox">Відправити заяву на редагування документи</label><br>
+                                {% endif %}
+                                {% if zgodbat and not red.zgoda_bat_red %}
+                                <label><input id="zgoda_bat_red" name="zgoda_bat_red" value="True" type="checkbox"> Відправити заяву на редагування згоди батьків</label><br>
+                                {% endif %}
+                                {% if co and not red.corup_red %}
+                                <label><input id="corup_red" name="corup_red" value="True" type="checkbox"> Відправити заяву на редагування заяви про наявність близьких в ДПСУ</label><br>
+                                {% endif %}
+                                <button id="submitButton2" type="submit">Вибрати</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Закриваємо блок col-md-6 -->
+                <div class="col-md-6">
+                </div>
+            </div>
+            <!-- Закриваємо блок row -->
+        </div>
+        <!-- Закриваємо блок jumbotron -->
+    </div>
+    <!-- Закриваємо блок container-fluid -->
+</div>
+<!-- Закриваємо блок container-fluid yelowee -->
+
+    {% else %}
+{% endif %}
+{% if close_edit1 and close_edit and close_edit2 %}
+ <div style="background-color: #105a05; color: black">
+        <br>
+        <div class="container-fluid ">
+            <div class="jumbotron" style="background: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 style="color: #e1e6d8;"><strong>Крок 4.2: Завантаження документів для проходження медичного огляду</strong></h1><br>
+                        <h3>Вам необхідно позначити медичні документи, які потрібні для подальшого проходження медичного огляду ВЛК.</h3>
+                         <p style="font-size: 12px; color: #777">(Ваші дані та заповнені заяви або анкети перевірятимуться модератором. Якщо все буде в порядку, статус кожного кроку зміниться. Для точнішого відслідковування статусу перезавантажте сторінку.) </p>
+                            <br>
+                        <a href="{% url 'med' id=el.id  %}">
+                            <button class="animate__animated animate__fadeInUp" onclick="" style="background-color: #368200;  width: 70%;">Позначити медичні документи</button>
+                        </a>
+
+                    <br><br>
+                     <div style="position: relative; left: 0%">
+                        {% if meds %}
+                            <p  style="color:#989898; font-size: 100%;">ДАНІ ПОДАНІ ✔️</p>
+                        {% else %}
+                            <p style="color:#989898; font-size: 100%;">ПОКИ НЕМАЄ ДАНИХ ❌</p>
+                        {% endif %}
+                     </div>
+                 
+                    
+                    <p id="corup-status6" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>
+                       $.noConflict();
+                            jQuery(document).ready(function($) {
+                                function fetchData() {
+                                    $.ajax({
+                                        url: '{% url "json_tf6" el.id %}',
+                                        type: 'GET',
+                                        success: function(data) {
+                                        console.log('tf6:', data);
+                                        if (data.tf6 === 'True') {
+                                            $('#corup-status6').html('<p style="color: orange; font-size: 100%;">Дані перевірені</p>');
+                                        } else if (data.tf6 === 'False') {
+                                            $('#corup-status6').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        } else if (data.tf6 === 'not_found') {
+                                            $('#corup-status6').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
+                                        } else {
+                                            $('#corup-status6').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    },
+                                        error: function(xhr, status, error) {
+                                            console.error('AJAX Error:', status, error);
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                        }
+                                    });
+                                }
+                            
+                                setInterval(fetchData, 2000);
+                            });
+                    </script>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <form method="post" action="{% url 'red_zaput' el.id %}">
+                    {% csrf_token %}
+                    {% if red.med_red  %}
+                            {% else %}
+                        {% if meds  %}
+                            <button class="animate__animated animate__fadeInUp" name="med_red" value="True" onclick="" style="background-color: #368200; width: 70%;">Відправити запит на редагування</button>
+                            {% else %}
+                        {% endif %}
+                    {% endif %}
+                    <br><br>
+                    {% if dozvil.med_dozvil and not time_close_med  %}
+                                    <a href="{% url 'edit_med' id=el.id %}">
+                                        <button class="animate__animated animate__fadeInUp" onclick="anketa()" style="background-color: black; width: 70%;">Редагувати дані</button>
+                                    </a>
+                                {% else %}
+                    {% endif %}
+                    </form>
+                    <br> <br>
+
+                      <form method="post"  action="{% url 'napr_otr' el.id %}">
+                            {% csrf_token %}
+                            {% if med and not vlk_n %}
+                                <button class="animate__animated  animate__fadeInUp" value="True" name="true_false" type="submit" style="background-color: #368200; width: 70%;">Відправити запит на отримання направлення</button>
+                            {% endif %}
+                        </form>
+                    <br>
+                   
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+{% endif %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+                    <script>
+                       $.noConflict();
+                            jQuery(document).ready(function($) {
+                                function fetchData() {
+                                    $.ajax({
+                                        url: '{% url "json_vlk" el.id %}',
+                                        type: 'GET',
+                                        success: function(data) {
+                                            console.log(data);
+                                            if (data.napr === "True") {
+                                                $('#vlk-step').stop(true, true).show();
+                                                $('#down_vlk').stop(true, true).show();
+                                            } else if (data.napr === "False") {
+                                                $('#vlk-step').stop(true, true).hide();
+                                                $('#down_vlk').stop(true, true).hide();
+                                            } else if (data.napr === "not_found") {
+                                                $('#vlk-step').stop(true, true).hide();
+                                                $('#down_vlk').stop(true, true).hide();
+                                            }
+                                        },
+                                        error: function(xhr, status, error) {
+                                            console.error('AJAX Error:', status, error);
+                                        }
+                                    });
+                                }
+                            
+                                setInterval(fetchData, 2000);
+                            });
+                            
+                    </script>
+
+
+ <div id="vlk-step" style="background-color: #09c5a2; color: black">
+        <br>
+        <div class="container-fluid ">
+            <div class="jumbotron" style="background: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 style="color: #e1e6d8;"><strong>Крок 5: Завантаження КАРТИ медичного огляду  </strong></h1><br>
+                        <h3>Вам необхідно завантажити фото КАРТИ медичного огляду </h3>
+                         <p style="font-size: 12px; color: #777">(Ваші дані та заповнені заяви перевірятимуться модератором. Якщо все буде в порядку, статус кожного кроку зміниться. Для точнішого відслідковування статусу перезавантажте сторінку.) </p>
+                            <br>
+                     {% if vlk %}
+                       <a id="down_vlk" href="{% url 'download_pdf' vlk.id %}">
+                             <button class="animate__animated animate__fadeInUp" style="background-color: #368200; width: 40%;">Завантажити направлення</button>
+                       </a>
+                       {% else %}
+                    {% endif %}
+                    <br><br>
+                    {% if vid_napr %}
+                        <h3>Вітаю ви подали усі дані для вступу у НАДПСУ.</h3>
+                        <h4>
+                        Про подальший порядок вступного відбору в НАДПСУ вам буде повідомлено на ваш мобільний телефон, який ви вказали під час реєстрації,
+                        або ви можете переглянути цю інформацію в 
+                        <a href="https://t.me/vstup_nadpsu_bot"><strong style="color: #005bb5">телеграм-боті</strong></a>.
+                    </h4>
+
+                         {% else %}
+                      <form method="post" action="{% url 'vid_napr' el.id %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="file" name="napr_img" accept="image/*" multiple style="
+                                                display: block; 
+                                                width: 41%;
+                                                padding: 10px; 
+                                                border: 2px solid #1f611f; 
+                                                border-radius: 5px; 
+                                                background-color: #3dc23d; 
+                                                font-size: 14px;
+                                                cursor: pointer; 
+                                                text-align: center; 
+                                                color: #495057; 
+                                                outline: none; 
+                                                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+                                                transition: border-color 0.3s, background-color 0.3s;
+                                            ">
+
+
+                            <br>
+                            <button class="animate__animated animate__fadeInUp" type="submit" style="background-color: #368200; width: 40%;">Відправити</button>
+                        </form>
+                        <br> <br>
+                        {% endif %}
+                        <div style="position: relative; left: 1%">
+                        {% if vid_napr %}
+                            <p  style="color:#989898; font-size: 100%;">ДАНІ ПОДАНІ ✔️</p>
+                        {% else %}
+                            <p style="color:#989898; font-size: 100%;">ПОКИ НЕМАЄ ДАНИХ ❌</p>
+                        {% endif %}
+                     </div>
+                    <br><br>
+
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="chat-button">
+        <i style="font-size: 20px;">💬</i>
+    </div>
+   <div id="chat-box" class="hidden">
+        <button id="close-chat-button" class="close-button">✕</button>
+        <h2 style="color: #000">Служба підтримки</h2>
+        <p style="color: #000">Задайте свої питання або повідомте про проблему.</p>
+        <div class="contact-info">
+            <p style="color: #000">Телефон: <a href="tel:+380671234567">+38 (097) 251-51-14</a></p>
+            <a href="viber://chat?number=380972515114" class="viber-button">Написати у Viber</a>
+        </div>
+   </div>
+
+        <script src="{% static 'js/page.js' %}"></script>
+        <script src="{% static 'js/gradient.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+const chatButton = document.getElementById('chat-button');
+        const chatBox = document.getElementById('chat-box');
+
+        chatButton.addEventListener('click', () => {
+            chatBox.classList.remove('hidden');
+        });
+
+        //  (Optional) Додати функціональність для закриття вікна чату
+
+        chatBox.addEventListener('click', (event) => {
+            if (event.target === chatBox) {
+                chatBox.classList.add('hidden');
+            }
+        });
+
+        const closeChatButton = document.getElementById('close-chat-button');
+
+        closeChatButton.addEventListener('click', () => {
+            chatBox.classList.add('hidden');
+        });
+        var openModalBtn = document.getElementById("openModalBtn");
+        var modal = document.getElementById("myModal");
+        var closeBtn1 = modal.getElementsByClassName("close")[0];
+
+        openModalBtn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        closeBtn1.onclick = function() {
+            modal.style.display = "none";
+        }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+                            var submitButton = document.getElementById("submitButton");
+                            submitButton.onclick = function() {
+                                var checkboxes = modal.querySelectorAll('input[type="checkbox"]');
+                                var checkedUrl = "";
+                                checkboxes.forEach(function(checkbox) {
+                                    if (checkbox.checked) {
+                                        checkedUrl = checkbox.getAttribute("data-url");
+                                    }
+                                });
+                                if (checkedUrl) {
+                                    window.location.href = checkedUrl;
+                                } else {
+                                    alert("Будь ласка, виберіть опцію.");
+                                }
+                            }
+
+                            var checkboxes = modal.querySelectorAll('input[type="checkbox"]');
+                            checkboxes.forEach(function(checkbox) {
+                                checkbox.addEventListener('change', function() {
+                                    checkboxes.forEach(function(otherCheckbox) {
+                                        if (otherCheckbox !== checkbox) {
+                                            otherCheckbox.checked = false;
+                                        }
+                                    });
+                                });
+                            });
+
+                            // Second modal handling
+                            var btn = document.getElementById("openModalButton");
+                            var modal2 = document.getElementById("myModal2");
+                            var closeBtn2 = modal2.getElementsByClassName("close")[0];
+
+                            btn.onclick = function() {
+                                modal2.style.display = "block";
+                            }
+
+                            closeBtn2.onclick = function() {
+                                modal2.style.display = "none";
+                            }
+
+                            window.onclick = function(event) {
+                                if (event.target == modal2) {
+                                    modal2.style.display = "none";
+                                }
+                            }
+</script>
+       
+
+</body>
+</html>

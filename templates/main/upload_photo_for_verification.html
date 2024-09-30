@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Верифікація за допомогою фото з паспортом</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #2e5538;
+        }
+
+        .container {
+            width: 45%;
+            min-width: 350px;
+            margin: 5px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .photo-wrapper {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .photo-wrapper img {
+            width: 300px;
+            height: 200px;
+            margin-bottom: 10px;
+            border: 2px solid #000000;
+            border-radius: 13px;
+        }
+
+        #passportPhoto {
+            display: block;
+            margin: 0 auto;
+            width: 95%;
+            padding: 10px;
+            background-color: #d1d1d1;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #passportPhoto:hover {
+            border: 1.5px solid #000000;
+        }
+
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4c8b64;
+            color: #000000;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            border: 1.5px solid #000000;
+        }
+
+
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Верифікація</h1>
+    <p>Будь ласка, завантажте фото, на якому ви тримаєте свій паспорт у руках, щоб підтвердити свою особу.</p>
+    <form method="post" role="form" enctype="multipart/form-data">
+    <div class="photo-wrapper">
+        
+    {% csrf_token %}
+        <img src="{% static 'img/face_ver.jpg' %}" alt="Приклад фото з паспортом">
+        {% for el in form %}
+        <div style="background-color: #989898; padding: 9px; border-radius: 4px">{{el}}</div>
+        {% endfor %}
+    </div>
+    <button type="submit" id="submitPhoto">Відправити фото на верифікацію</button>
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Верефікація</title>
+    <link rel="stylesheet" href="{% static 'css/mod_ver.css' %}">
+
+</head>
+<body>
+   <div class="container">
+        {% for photo in img34 %}
+        <img class="image-container" src="{{ photo.photo1.url }}">
+        {% endfor %}
+            <div class="button-container">
+                <form method="post" action="{% url 'ver' el.id %}" id="img_form">
+                    {% csrf_token %}
+                    <button class="button" name="verify" value="verify" id="verified">Верефікований</button>
+                </form>
+                        <form method="post" >
+                            {% csrf_token %}
+                            <button type="submit" class="button" name="delete_user">Не верефікований</button>
+                        </form>
+            </div>
+   </div>
+</body>
+</html>
