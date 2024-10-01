@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77ddaea5-b96c-45a0-9cb5-b82cf090c6f2" name="Changes" comment="qq">
+    <list default="true" id="77ddaea5-b96c-45a0-9cb5-b82cf090c6f2" name="Changes" comment="qq2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vstupProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/vstupProject/settings.py" afterDir="false" />
     </list>
     <list id="ed714fbf-2b7d-4a30-ab78-4335e01ca868" name="Changes by IDservice" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -249,7 +250,7 @@
       <workItem from="1727417367002" duration="599000" />
       <workItem from="1727420419674" duration="14761000" />
       <workItem from="1727442915828" duration="6096000" />
-      <workItem from="1727676076887" duration="8842000" />
+      <workItem from="1727676076887" duration="12099000" />
     </task>
     <task id="LOCAL-00001" summary="qq">
       <option name="closed" value="true" />
@@ -259,7 +260,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727707010825</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="qq2">
+      <option name="closed" value="true" />
+      <created>1727709131829</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727709131830</updated>
+    </task>
+    <task id="LOCAL-00003" summary="qq2">
+      <option name="closed" value="true" />
+      <created>1727709155715</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727709155715</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +287,18 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="107" />
+                </map>
+              </option>
+              <option name="TEXT_FILTER_SETTINGS">
+                <TextFilterSettings>
+                  <option name="REGEX" value="true" />
+                </TextFilterSettings>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -278,7 +306,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="qq" />
-    <option name="LAST_COMMIT_MESSAGE" value="qq" />
+    <MESSAGE value="qq2" />
+    <option name="LAST_COMMIT_MESSAGE" value="qq2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/vstupProject$exel_data.coverage" NAME="exel_data Coverage Results" MODIFIED="1723192888881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
