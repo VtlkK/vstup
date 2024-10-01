@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['vstup_nadpsu']
+ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
