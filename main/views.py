@@ -3,15 +3,14 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden, HttpRespons
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from .models import Clients, Sing_Clients, verif
-import telegram
-import asyncio
+
+
 from django.views.decorators.cache import never_cache
 from dotenv import load_dotenv
-import os
+
 load_dotenv()
 
-bot_token = os.environ.get('BOT_TOKEN')
-chat_id = os.environ.get('CHAT_ID')
+
 
 def index(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -63,13 +62,6 @@ def CreatUser(request):
                             born=born, document=document, num=num, lang=lang,military=military, email=email)
 
         obj1.save()
-
-        bot = telegram.Bot(token=bot_token)
-        message = f"Новий користувач :\nІм'я: {name}\nПрізвище: {soname}\nПо-батькові: {fname}\nНомер телефону: {num} зареєструвався!!!!!!"
-
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        loop.run_until_complete(bot.send_message(chat_id=chat_id, text=message))
 
         return redirect(reverse('cabinet', kwargs={'id': obj.id}))
     else:
