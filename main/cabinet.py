@@ -3,7 +3,7 @@ from django.http import HttpResponseForbidden, HttpResponseNotFound, HttpRespons
 from .models import (Clients, Sing_Clients, nadatu_dozvil, vid_red,
                       Mod_TF, napravlen, zgoda_bat, documents, corup,
                       Anketa, Med, verif, vlk_napr, Moder_napr)
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render,  get_object_or_404
 from dotenv import load_dotenv
 import os
 
@@ -61,6 +61,7 @@ def Cabinet(request, id):
         close_edit = zgoda_bat.objects.get(client_id=el.id)
     except zgoda_bat.DoesNotExist:
         close_edit = None
+
     if close_edit is not None:
         time_close = close_edit.last_modified > close_edit.created
     else:

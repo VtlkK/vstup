@@ -61,7 +61,7 @@ class verif(models.Model):
 
 class verificate_photo_client(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='verify2')
-    photo1 = models.ImageField(upload_to='media/main/ver')
+    photo1 = models.ImageField(upload_to='ver_photo')
 
 
 class Mod_TF(models.Model):
@@ -88,7 +88,7 @@ class napravlen(models.Model):
 
 class Anketa_draft(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='Anketa_dtaft')
-    photo = models.ImageField(upload_to='media/main/Anketa')#
+    photo = models.ImageField(upload_to='Anketa_photo')#
     nsf = models.CharField(max_length=1024)#1
     count = models.IntegerField(default=0, null=True, blank=True)
     ed_nsf = models.CharField(max_length=1024)#2
@@ -199,7 +199,7 @@ class Anketa_draft(models.Model):
 
 class Anketa(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='Anketa')
-    photo = models.ImageField(upload_to='media/main/Anketa')#
+    photo = models.ImageField(upload_to='Anketa_photo2')#
     nsf = models.CharField(max_length=1024)#1
     ed_nsf = models.CharField(max_length=1024)#2
     born = models.CharField(max_length=1024)#3
@@ -314,15 +314,15 @@ class re_password(models.Model):
 
 class documents(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='documents')
-    id_card = models.ImageField(upload_to='media/main/doc')
-    id_card2 = models.ImageField(upload_to='media/main/doc')
-    location_doc = models.ImageField(upload_to='media/main/doc')
-    born_doc = models.ImageField(upload_to='media/main/doc')
-    plat_doc = models.ImageField(upload_to='media/main/doc')
-    spec_doc = models.ImageField(upload_to='media/main/doc')
-    photo_doc = models.ImageField(upload_to='media/main/doc')
-    cruminal_doc = models.ImageField(upload_to='media/main/doc')
-    psix_doc = models.ImageField(upload_to='media/main/doc')
+    id_card = models.ImageField(upload_to='doc_id_card1')
+    id_card2 = models.ImageField(upload_to='doc_id_card2')
+    location_doc = models.ImageField(upload_to='location_doc')
+    born_doc = models.ImageField(upload_to='born_doc')
+    plat_doc = models.ImageField(upload_to='plat_doc')
+    spec_doc = models.ImageField(upload_to='spec_doc')
+    photo_doc = models.ImageField(upload_to='photo_client_doc')
+    cruminal_doc = models.ImageField(upload_to='crumsnal_doc')
+    psix_doc = models.ImageField(upload_to='psix_doc')
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
 
@@ -371,18 +371,17 @@ class corup(models.Model):
 
 class zgoda_bat(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='zgoda')
-    photo_zgodu = models.ImageField(upload_to='media/main/zgoda_bat')
+    photo_zgodu = models.ImageField(upload_to='zgoda_bat')
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
 
 class vlk_napr(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='vlk')
-    pdf = models.FileField(upload_to='main/vlk_napr')
+    pdf = models.FileField(upload_to='vlk_napr')
 
 class Moder_napr(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='moder_napr')
-    napr_img = models.ImageField(upload_to='media/main/pdf_moder_napr')
-
+    napr_img = models.ImageField(upload_to='pdf_moder_napr')
 
 class check_napr(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='check_napr2')

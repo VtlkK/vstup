@@ -11,10 +11,9 @@ def zgoda_ofor(request, id):
     if idd is None or int(idd) != int(el.id):
         return HttpResponseForbidden("У вас немає доступу до цієї сторінки.")
     if zgoda_bat.objects.filter(client_id=el.id).exists():
-        return redirect('cabinet', id=el.id)  #
+        return redirect('cabinet', id=el.id)
     if request.method == 'POST':
         photo_zgodu = request.FILES['photo_zgodu']
-
 
         obj12 = zgoda_bat(
             client=el,

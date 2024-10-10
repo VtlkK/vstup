@@ -70,7 +70,7 @@ urlpatterns = [
     path('bhgdfnu3ymi3hgubytz2x_cgvbxjncjhb1n3467fckdvjfhb/<int:id>', med.med, name='med'),
     path('fsntbj23jybt7umnkbjhbhbb7n5bbhvhbhbfh/<int:id>', med_edit.edit_med, name='edit_med'),
     path('ghfbgmjghvv6vfgbnhbhvfb56_ijifvghcur/<int:id>', Med_docs.med_docs, name='med_docs'),
-
+    path('sfodnbgthrfdngfbidjfgnkbtdjgnb/', open_zgoda.open_pdf, name='open_zgoda'),
 
     path('gfhbjhgvgfh_adjsbg4nfdjk47thertgvbn/<int:id>', zgoda_p.download_zgoda_p, name='download_zgoda_p'),
 

@@ -3,7 +3,8 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden, HttpRespons
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from .models import Clients, Sing_Clients, verif
-
+import json
+import re
 
 from django.views.decorators.cache import never_cache
 from dotenv import load_dotenv
@@ -50,6 +51,18 @@ def CreatUser(request):
 
         if Clients.objects.filter(login=login).exists():
             return render(request, 'main/signup.html', {'error': 'Такий логін вже існує'})
+        if len(password) < 8:
+            return render(request, 'main/signup.html', {'error': 'Пароль має містити не менше 8 символів.'})
+
+        if not re.search(r'[a-z]', password):
+            return render(request, 'main/signup.html', {'error': 'Пароль має містити принаймні одну малу літеру.'})
+
+        if not re.search(r'[A-Z]', password):
+            return render(request, 'main/signup.html', {'error': 'Пароль має містити принаймні одну велику літеру.'})
+
+        if not re.search(r'[\W_]', password):
+            return render(request, 'main/signup.html',
+                          {'error': 'Пароль має містити принаймні один спеціальний символ.'})
 
         hashed_password = make_password(password)
 
@@ -59,7 +72,7 @@ def CreatUser(request):
         request.session.save()
 
         obj1 = Sing_Clients(client=obj, pogad=pogad, place_med=place_med, sex=sex, name=name, soname=soname, fname=fname, name2=name2, soname2=soname2, fname2=fname2, date=date,
-                            born=born, document=document, num=num, lang=lang,military=military, email=email)
+                            born=born, document=document, num=num, lang=lang, military=military, email=email)
 
         obj1.save()
 

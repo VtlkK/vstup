@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Анкета</title>
     <link rel="stylesheet" href="{% static 'css/anketa_style.css' %}">
-    <style>
+     <style>
         body {
             background-color: #2e5538;
         }
@@ -106,10 +106,7 @@
             }
         }
 
-
-
-
-
+        
     </style>
 </head>
 <body>
@@ -578,14 +575,7 @@
 
 </div>
     {% else %}
-
-
-
-    <!-- Для виправлення використовувати анкету яка знизу -->
-
-
-
-
+    
     <div class="container">
         <form method="POST" class="form-inline" role="form" enctype="multipart/form-data">
             {% csrf_token %}
@@ -612,7 +602,7 @@
                         </div>
                         <label for="nsf">1. Прізвище, ім’я, по батькові:</label>
                     </div>
-                    <input type="text" class="form-control" value="Кожушко Віталій Юрійович" id="nsf" name="nsf" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control"  id="nsf" name="nsf" placeholder="" oninput="validateInput(this)">
                 </div>
 
 
@@ -625,7 +615,7 @@
                         </div>
                         <label for="ed_nsf">2. Якщо змінювали прізвище, ім’я або по батькові, вкажіть коли і з якої причини:</label>
                     </div>
-                    <input type="text" class="form-control" value="Прізвище не змінювалося" id="ed_nsf" name="ed_nsf" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control"  id="ed_nsf" name="ed_nsf" placeholder="" oninput="validateInput(this)">
                </div>
 
 
@@ -637,7 +627,7 @@
                         </div>
                         <label for="born">3. Рік, число, місяць та місце народження (село, місто, район, область):</label>
                     </div>
-                    <input type="text" class="form-control" value="2004 02 01 Лісовський обл, село Вишневе," id="born" name="born" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control"  id="born" name="born" placeholder="" oninput="validateInput(this)">
                </div>
 
 
@@ -649,7 +639,7 @@
                         </div>
                         <label for="place">4. Місце реєстрації:</label>
                     </div>
-                    <input type="text" class="form-control" id="place" value="Лісовський обл, село Вишневе" name="place" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control" id="place"  name="place" placeholder="" oninput="validateInput(this)">
                 </div>
 
 
@@ -661,7 +651,7 @@
                         </div>
                         <label for="place_register">5. Місце фактичного проживання:</label>
                     </div>
-                    <input type="text" class="form-control" value="Лісовський обл, село Вишневе" id="place_register" name="place_register" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control"  id="place_register" name="place_register" placeholder="" oninput="validateInput(this)">
                 </div>
 
                 <div class="input-container">
@@ -672,7 +662,7 @@
                         </div>
                         <label for="place_live">6. Громадянство:</label>
                     </div>
-                    <input type="text" class="form-control" value="Українець" id="place_live" name="place_live" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control"  id="place_live" name="place_live" placeholder="" oninput="validateInput(this)">
                 </div>
 
 
@@ -684,7 +674,7 @@
                         </div>
                         <label for="cityzen">7. Якщо змінювали громадянство або маєте громадянство іншої країни, вкажіть коли і з якої причини, або за яких обставин ви отримали (змінили):</label>
                     </div>
-                    <input type="text" class="form-control" id="cityzen" value="громадянство не змінював" name="cityzen" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control" id="cityzen" name="cityzen" placeholder="" oninput="validateInput(this)">
                 </div>
 
                 <div class="input-container">
@@ -695,7 +685,7 @@
                         </div>
                         <label for="edit_cit">8. Паспорт громадянина України: серія, номер, ким виданий і коли:</label>
                     </div>
-                    <input type="text" class="form-control" id="edit_cit"  value="001234567, 1234, 03.12.2020" name="edit_cit" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control" id="edit_cit"   name="edit_cit" placeholder="" oninput="validateInput(this)">
                 </div>
 
                 <div class="input-container">
@@ -706,7 +696,7 @@
                         </div>
                         <label for="pasport">9. Паспорт громадянина України для виїзду за кордон: серія, номер, ким виданий і коли:</label>
                     </div>
-                    <input type="text" class="form-control" id="pasport" value="відсутній" name="pasport" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control" id="pasport"  name="pasport" placeholder="" oninput="validateInput(this)">
                 </div>
 
                 <div class="input-container">
@@ -717,7 +707,7 @@
                         </div>
                         <label for="pasport_c">10. Інші документи що посвідчують особу (посвідчення водія, посвідчення біженця, ін.):</label>
                     </div>
-                    <input type="text" class="form-control" id="pasport_c" value="відсутні" name="pasport_c" placeholder="" oninput="validateInput(this)">
+                    <input type="text" class="form-control" id="pasport_c"  name="pasport_c" placeholder="" oninput="validateInput(this)">
                 </div>
 
                     <div class="input-container">
@@ -728,7 +718,7 @@
                             </div>
                             <label for="en_doc">11. Якщо отримували паспорти (посвідчення, посвідки, картки) інших держав, вкажіть коли, якої країни, з якої причини або за яких обставин:</label>
                         </div>
-                        <input type="text" class="form-control" value="Відсутні" id="en_doc" name="en_doc" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control"  id="en_doc" name="en_doc" placeholder="" oninput="validateInput(this)">
                     </div>
 
                     <div class="input-container">
@@ -739,7 +729,7 @@
                             </div>
                             <label for="education">12. Освіта, спеціальність, коли і який навчальний заклад закінчили (вказуються всі навчальні заклади):</label>
                         </div>
-                        <input type="text" class="form-control" value="Середкевицький ЗЗСЩ 1 - 3 ст" id="education" name="education" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control"  id="education" name="education" placeholder="" oninput="validateInput(this)">
                     </div>
 
                     <div class="input-container">
@@ -750,7 +740,7 @@
                             </div>
                             <label for="duplom">13. Диплом (свідоцтво про здобуття повної загальної середньої освіти): серія і номер, ким виданий і коли:</label>
                         </div>
-                        <input type="text" class="form-control" value="34556 464365466" id="duplom" name="duplom" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control"  id="duplom" name="duplom" placeholder="" oninput="validateInput(this)">
                     </div>
 
                     <div class="input-container">
@@ -761,7 +751,7 @@
                             </div>
                             <label for="len">14. Якими іноземними мовами володієте (якою та в якому обсязі):</label>
                         </div>
-                        <input type="text" class="form-control" value="Англійською на розмовному рівні" id="len" name="len" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control"  id="len" name="len" placeholder="" oninput="validateInput(this)">
                     </div>
 
                     <div class="input-container">
@@ -772,7 +762,7 @@
                             </div>
                             <label for="social_med">15. Якими соціальними медіа (соціальними мережами) ви користуєтесь, а також вкажіть ваші профілі:</label>
                         </div>
-                        <input type="text" class="form-control" value="Instagram: _vitalik.k_____" id="social_med" name="social_med" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control"  id="social_med" name="social_med" placeholder="" oninput="validateInput(this)">
                     </div>
 
                     <div class="input-container">
@@ -783,7 +773,7 @@
                             </div>
                             <label for="tz">16. Наявність транспортних засобів, що перебувають в особистій власності і членів сім'ї:</label>
                         </div>
-                        <input type="text" class="form-control" id="tz" value="Власне авто Skoda" name="tz" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control" id="tz"  name="tz" placeholder="" oninput="validateInput(this)">
                     </div>
 
                     <div class="input-container">
@@ -794,7 +784,7 @@
                             </div>
                             <label for="zbroi">17. Володіння зброєю (яка та в якому обсязі), наявність спортивних звань, розрядів (з яких видів спорту):</label>
                         </div>
-                        <input type="text" class="form-control" value="КМС по Дзюдо" id="zbroi" name="zbroi" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control"  id="zbroi" name="zbroi" placeholder="" oninput="validateInput(this)">
                     </div>
 
                     <div class="input-container">
@@ -805,7 +795,7 @@
                             </div>
                             <label for="crimanal">18. Чи притягались Ви або Ваші близькі родичі до кримінальної, адміністративної відповідальності, коли і за що, рішення суду:</label>
                         </div>
-                        <input type="text" class="form-control" value="не притягались" id="crimanal" name="crimanal" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control"  id="crimanal" name="crimanal" placeholder="" oninput="validateInput(this)">
                     </div>
 
                     <div class="input-container">
@@ -816,7 +806,7 @@
                             </div>
                             <label for="teritory">19. Чи перебували Ви (де і коли) або маєте родичів на непідконтрольній території України (Донецька, Луганська області та АР Крим, вказати адресу) або рф:</label>
                         </div>
-                        <input type="text" class="form-control" value="відсутні" id="teritory" name="teritory" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control"  id="teritory" name="teritory" placeholder="" oninput="validateInput(this)">
                     </div>
 
                     <div class="input-container">
@@ -827,7 +817,7 @@
                             </div>
                             <label for="rf">20. Чи перебували Ви (де і коли) або маєте за кордоном :</label>
                         </div>
-                        <input type="text" class="form-control" value="не перебував" id="rf" name="rf" placeholder="" oninput="validateInput(this)">
+                        <input type="text" class="form-control"  id="rf" name="rf" placeholder="" oninput="validateInput(this)">
                     </div>
 
 
@@ -915,10 +905,7 @@
                     <p style="font-size: 12px; color: #777">У разі заповнення анкети зі смартфону, зверніть увагу на те, що таблиці прогортуються в сторону.</p>
                 </div>
 
-
-
-
-
+                
                 <div class="input-container">
                     <div class="top-row">
                         <div class="info-button">
@@ -1045,55 +1032,7 @@
 
 </div>
 {% endif %}
+  
 </body>
-<script>
-
-    function validatePhoneNumber(input) {
-        // Регулярний вираз для цифр та крапки
-        const regex = /^[\d.]{0,11}$/;
-        // Зберігаємо значення до і після очищення
-        const originalValue = input.value;
-        // Очищаємо значення до цифр та крапки і обмежуємо довжину до 11 символів (10 цифр і 1 крапка)
-        input.value = originalValue.replace(/[^0-9.]/g, '').substring(0, 11);
-    }
-
-
-
-    function validateInput(input) {
-        // Регулярний вираз для українських літер, цифр, пробілів, знаків (тире, апострофи, крапка, кома, /, !, ?, _, =, +, *, (, ), #)
-        const regex = /^[А-ЩЬЮЯа-щьюя0-9 \-\'’.,\/!?_=\+\*\(\)#]*$/;
-        // Зберігаємо значення до і після очищення
-        const originalValue = input.value;
-        // Очищаємо значення до тих, що відповідають регулярному виразу
-        input.value = originalValue.replace(/[^А-ЩЬЮЯа-щьюя0-9 \-\'’.,\/!?_=\+\*\(\)#]/g, '');
-    }
-
-
-
-
-
-    function addInfoButton(containerId, infoText) {
-        const container = document.getElementById(containerId);
-        const infoButton = document.createElement("div");
-        infoButton.className = "info-button";
-
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "info-icon";
-        button.textContent = "i";
-
-        const infoPopup = document.createElement("div");
-        infoPopup.className = "info-popup";
-        infoPopup.textContent = infoText;
-
-        infoButton.appendChild(button);
-        infoButton.appendChild(infoPopup);
-
-        container.appendChild(infoButton);
-    }
-
-
-    
-
-</script>
+<script src="{% static 'js/anketa.js' %}"></script>
 </html>

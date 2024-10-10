@@ -2,6 +2,7 @@ from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from .models import Clients, Sing_Clients,Moderator, verificate_photo_client, verif, Anketa, documents, corup, zgoda_bat
 from django.shortcuts import render, redirect, get_object_or_404
+
 def aut3(request, id):
     moder_id = request.session.get('id')
     moder = get_object_or_404(Moderator, id=moder_id)
@@ -10,7 +11,6 @@ def aut3(request, id):
 
     if request.method == 'POST':
         try:
-
             Sing_Clients.objects.filter(client_id=el.id).delete()
             Anketa.objects.filter(client_id=el.id).delete()
             verificate_photo_client.objects.filter(client_id=el.id).delete()

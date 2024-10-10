@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 
-from .models import verif, Clients, Anketa, Mod_TF, vlk_napr
+from .models import *
 from django.http import JsonResponse
 
 def json_request_ver(request, id):
@@ -27,8 +27,7 @@ def json_request_tf(request, id):
             return JsonResponse({'tf1': 'True'})
         else:
             return JsonResponse({'tf1': 'False'})
-    except Mod_TF.DoesNotExist:
-        return JsonResponse({'tf1': 'not_found'})
+
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
@@ -42,8 +41,7 @@ def json_request_tf5(request, id):
             return JsonResponse({'tf5': 'True'})
         else:
             return JsonResponse({'tf5': 'False'})
-    except Mod_TF.DoesNotExist:
-        return JsonResponse('tf5: not_found')
+
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
@@ -56,8 +54,6 @@ def json_request_tf4(request, id):
             return JsonResponse({'tf4': 'True'})
         else:
             return JsonResponse({'tf4': 'False'})
-    except Mod_TF.DoesNotExist:
-        return JsonResponse('tf4: not_found')
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
@@ -71,8 +67,7 @@ def json_request_tf7(request, id):
             return JsonResponse({'tf7': 'True'})
         else:
             return JsonResponse({'tf7': 'False'})
-    except Mod_TF.DoesNotExist:
-        return JsonResponse('tf7: not_found')
+
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
@@ -86,8 +81,7 @@ def json_request_tf6(request, id):
             return JsonResponse({'tf6': 'True'})
         else:
             return JsonResponse({'tf6': 'False'})
-    except Mod_TF.DoesNotExist:
-        return JsonResponse('tf6: not_found')
+
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 

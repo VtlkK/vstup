@@ -84,7 +84,6 @@
                             url: '{% url "json_request" el.id %}',  
                             type: 'GET',
                             success: function(data) {
-                                console.log(data); 
                                 if (data.v === "verified") {
                                     $('#verification-step').stop(true, true).show();
                                     $('#auth-status').html('<p style="color: #FFC32A; font-size: 100%;">Ви пройшли авторизацію</p>');
@@ -200,7 +199,7 @@
                                 {% endif %}
                             
                            
-                             <p id="ank-status" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                             <p id="ank-status" style="color:#989898; font-size: 100%;"></p>
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                     <script>
                        $.noConflict();
@@ -210,7 +209,6 @@
                                         url: '{% url "json_tf" el.id %}',
                                         type: 'GET',
                                         success: function(data) {
-                                        console.log('Data received:', data);
                                         if (data.tf1 === 'True') {
                                             $('#ank-status').html('<p style="color: #FFC32A; font-size: 100%;">Дані перевірені</p>');
                                         } else if (data.tf1 === 'False') {
@@ -272,7 +270,7 @@
                     </div>
 
                     
-                    <p id="corup-status" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                    <p id="corup-status" style="color:#989898; font-size: 100%;"></p>
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                     <script>
                        $.noConflict();
@@ -282,20 +280,19 @@
                                         url: '{% url "json_tf5" el.id %}',
                                         type: 'GET',
                                         success: function(data) {
-                                        console.log('tf5:', data);
                                         if (data.tf5 === 'True') {
                                             $('#corup-status').html('<p style="color: green; font-size: 100%;">Дані перевірені</p>');
                                         } else if (data.tf5 === 'False') {
-                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Дані на первірці</p>');
                                         } else if (data.tf5 === 'not_found') {
                                             $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
                                         } else {
-                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;"></p>');
                                         }
                                     },
                                         error: function(xhr, status, error) {
                                             console.error('AJAX Error:', status, error);
-                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;"></p>');
                                         }
                                     });
                                 }
@@ -319,7 +316,7 @@
                     </div>
 
                     
-                <p id="corup-status4" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                <p id="corup-status4" style="color:#989898; font-size: 100%;"></p>
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                     <script>
                        $.noConflict();
@@ -329,20 +326,19 @@
                                         url: '{% url "json_tf4" el.id %}',
                                         type: 'GET',
                                         success: function(data) {
-                                        console.log('tf4:', data);
                                         if (data.tf4 === 'True') {
                                             $('#corup-status4').html('<p style="color: green; font-size: 100%;">Дані перевірені</p>');
                                         } else if (data.tf4 === 'False') {
-                                            $('#corup-status4').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                            $('#corup-status4').html('<p style="color:#989898; font-size: 100%;">Дані на первірці</p>');
                                         } else if (data.tf4 === 'not_found') {
                                             $('#corup-status4').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
                                         } else {
-                                            $('#corup-status4').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                            $('#corup-status4').html('<p style="color:#989898; font-size: 100%;"></p>');
                                         }
                                     },
                                         error: function(xhr, status, error) {
                                             console.error('AJAX Error:', status, error);
-                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;"></p>');
                                         }
                                     });
                                 }
@@ -366,7 +362,7 @@
                     </div>
 
                     
-                <p id="corup-status7" style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>
+                <p id="corup-status7" style="color:#989898; font-size: 100%;"></p>
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                     <script>
                        $.noConflict();
@@ -376,20 +372,19 @@
                                         url: '{% url "json_tf7" el.id %}',
                                         type: 'GET',
                                         success: function(data) {
-                                        console.log('tf7:', data);
                                         if (data.tf7 === 'True') {
                                             $('#corup-status7').html('<p style="color: green; font-size: 100%;">Дані перевірені</p>');
                                         } else if (data.tf7 === 'False') {
-                                            $('#corup-status7').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                            $('#corup-status7').html('<p style="color:#989898; font-size: 100%;">Дані на первірці</p>');
                                         } else if (data.tf7 === 'not_found') {
                                             $('#corup-status7').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
                                         } else {
-                                            $('#corup-status7').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                            $('#corup-status7').html('<p style="color:#989898; font-size: 100%;"></p>');
                                         }
                                     },
                                         error: function(xhr, status, error) {
                                             console.error('AJAX Error:', status, error);
-                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
+                                            $('#corup-status').html('<p style="color:#989898; font-size: 100%;"></p>');
                                         }
                                     });
                                 }
@@ -413,58 +408,60 @@
                     <button style="width: 70%;" id="openModalButton">Відправити запит на редагування</button>
                     <br><br>
 
-                    <button style=" width: 70%;" id="openModalBtn">Редагувати</button>
-
-                    <div id="myModal" class="modal" >
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h2>Що саме вам необхідно редагувати?</h2>
-                            {% if dozvil.documents_dozvil and not time_close1 %}
-                            <label><input id="editDocuments" data-url="{% url 'edit_document' id=el.id %}" type="checkbox"> Редагувати документи</label><br>
-                            {% endif %}
-                            {% if dozvil.zgoda_dozvil and not time_close %}
-                            <label><input id="editZgoda" data-url="{% url 'edit_zgoda' id=el.id %}" type="checkbox"> Редагувати згоду батьків</label><br>
-                            {% endif %}
-                            {% if dozvil.corup_dozvil and not time_close2 %}
-                            <label><input id="editZayava" data-url="{% url 'edit_cor' id=el.id %}" type="checkbox"> Редагувати заяву про наявність близьких в ДПСУ</label><br>
-                            {% endif %}
-                            <button id="submitButton" type="button">Вибрати</button>
-                        </div>
-                    </div>
-
-                    <div id="myModal2" class="modal2" >
-                        <form method="post" action="{% url 'red_zaput' el.id %}">
-                            {% csrf_token %}
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-
-                                <h2>Що саме вам необхідно редагувати?</h2>
-                                {% if do and not red.documents_red %}
-                                <label><input id="documents_red" name="documents_red" value="True" type="checkbox">Відправити заяву на редагування документи</label><br>
-                                {% endif %}
-                                {% if zgodbat and not red.zgoda_bat_red %}
-                                <label><input id="zgoda_bat_red" name="zgoda_bat_red" value="True" type="checkbox"> Відправити заяву на редагування згоди батьків</label><br>
-                                {% endif %}
-                                {% if co and not red.corup_red %}
-                                <label><input id="corup_red" name="corup_red" value="True" type="checkbox"> Відправити заяву на редагування заяви про наявність близьких в ДПСУ</label><br>
-                                {% endif %}
-                                <button id="submitButton2" type="submit">Вибрати</button>
+                    <button style="width: 70%;" id="openModalBtn">Редагувати</button>
+                            
+                            <div id="myModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <h2>Що саме вам необхідно редагувати?</h2>
+                                    
+                                    {% if dozvil.documents_dozvil and not time_close1 %}
+                                    <label><input id="editDocuments" data-url="{% url 'edit_document' id=el.id %}" type="checkbox"> Редагувати документи</label><br>
+                                    {% endif %}
+                                    
+                                    {% if dozvil.zgoda_dozvil and not time_close %}
+                                    <label><input id="editZgoda" data-url="{% url 'edit_zgoda' id=el.id %}" type="checkbox"> Редагувати згоду батьків</label><br>
+                                    {% endif %}
+                                    
+                                    {% if dozvil.corup_dozvil and not time_close2 %}
+                                    <label><input id="editZayava" data-url="{% url 'edit_cor' id=el.id %}" type="checkbox"> Редагувати заяву про наявність близьких в ДПСУ</label><br>
+                                    {% endif %}
+                                    
+                                    <button id="submitButton" type="button">Вибрати</button>
+                                </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- Закриваємо блок col-md-6 -->
+                            
+                            <div id="myModal2" class="modal2">
+                                <form method="post" action="{% url 'red_zaput' el.id %}">
+                                    {% csrf_token %}
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <h2>Що саме вам необхідно редагувати?44</h2>
+                                        
+                                        {% if do and not red.documents_red %}
+                                        <label><input id="documents_red" name="documents_red" value="True" type="checkbox"> Відправити заяву на редагування документів</label><br>
+                                        {% endif %}
+                                        
+                                        {% if zgodbat and not red.zgoda_bat_red %}
+                                        <label><input id="zgoda_bat_red" name="zgoda_bat_red" value="True" type="checkbox"> Відправити заяву на редагування згоди батьків</label><br>
+                                        {% endif %}
+                                        
+                                        {% if co and not red.corup_red %}
+                                        <label><input id="corup_red" name="corup_red" value="True" type="checkbox"> Відправити заяву на редагування заяви про наявність близьких в ДПСУ</label><br>
+                                        {% endif %}
+                                        
+                                        <button id="submitButton2" type="submit">Вибрати</button>
+                                    </div>
+                                </form>
+                            </div>
+
                 <div class="col-md-6">
                 </div>
             </div>
-            <!-- Закриваємо блок row -->
         </div>
-        <!-- Закриваємо блок jumbotron -->
     </div>
-    <!-- Закриваємо блок container-fluid -->
 </div>
-<!-- Закриваємо блок container-fluid yelowee -->
-
+    </div>
     {% else %}
 {% endif %}
 {% if close_edit1 and close_edit and close_edit2 %}
@@ -502,7 +499,6 @@
                                         url: '{% url "json_tf6" el.id %}',
                                         type: 'GET',
                                         success: function(data) {
-                                        console.log('tf6:', data);
                                         if (data.tf6 === 'True') {
                                             $('#corup-status6').html('<p style="color: orange; font-size: 100%;">Дані перевірені</p>');
                                         } else if (data.tf6 === 'False') {
@@ -577,7 +573,6 @@
                                         url: '{% url "json_vlk" el.id %}',
                                         type: 'GET',
                                         success: function(data) {
-                                            console.log(data);
                                             if (data.napr === "True") {
                                                 $('#vlk-step').stop(true, true).show();
                                                 $('#down_vlk').stop(true, true).show();
@@ -595,9 +590,9 @@
                                     });
                                 }
                             
-                                setInterval(fetchData, 2000);
+                                setInterval(fetchData, 100);
                             });
-                            
+                       
                     </script>
 
 
@@ -680,99 +675,13 @@
             <a href="viber://chat?number=380972515114" class="viber-button">Написати у Viber</a>
         </div>
    </div>
-
-        <script src="{% static 'js/page.js' %}"></script>
+ 
+</body>
+<script src="{% static 'js/page.js' %}"></script>
         <script src="{% static 'js/gradient.js' %}"></script>
+        <script src="{% static 'js/cabinet2.js' %}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script>
-const chatButton = document.getElementById('chat-button');
-        const chatBox = document.getElementById('chat-box');
-
-        chatButton.addEventListener('click', () => {
-            chatBox.classList.remove('hidden');
-        });
-
-        //  (Optional) Додати функціональність для закриття вікна чату
-
-        chatBox.addEventListener('click', (event) => {
-            if (event.target === chatBox) {
-                chatBox.classList.add('hidden');
-            }
-        });
-
-        const closeChatButton = document.getElementById('close-chat-button');
-
-        closeChatButton.addEventListener('click', () => {
-            chatBox.classList.add('hidden');
-        });
-        var openModalBtn = document.getElementById("openModalBtn");
-        var modal = document.getElementById("myModal");
-        var closeBtn1 = modal.getElementsByClassName("close")[0];
-
-        openModalBtn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        closeBtn1.onclick = function() {
-            modal.style.display = "none";
-        }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-                            var submitButton = document.getElementById("submitButton");
-                            submitButton.onclick = function() {
-                                var checkboxes = modal.querySelectorAll('input[type="checkbox"]');
-                                var checkedUrl = "";
-                                checkboxes.forEach(function(checkbox) {
-                                    if (checkbox.checked) {
-                                        checkedUrl = checkbox.getAttribute("data-url");
-                                    }
-                                });
-                                if (checkedUrl) {
-                                    window.location.href = checkedUrl;
-                                } else {
-                                    alert("Будь ласка, виберіть опцію.");
-                                }
-                            }
-
-                            var checkboxes = modal.querySelectorAll('input[type="checkbox"]');
-                            checkboxes.forEach(function(checkbox) {
-                                checkbox.addEventListener('change', function() {
-                                    checkboxes.forEach(function(otherCheckbox) {
-                                        if (otherCheckbox !== checkbox) {
-                                            otherCheckbox.checked = false;
-                                        }
-                                    });
-                                });
-                            });
-
-                            // Second modal handling
-                            var btn = document.getElementById("openModalButton");
-                            var modal2 = document.getElementById("myModal2");
-                            var closeBtn2 = modal2.getElementsByClassName("close")[0];
-
-                            btn.onclick = function() {
-                                modal2.style.display = "block";
-                            }
-
-                            closeBtn2.onclick = function() {
-                                modal2.style.display = "none";
-                            }
-
-                            window.onclick = function(event) {
-                                if (event.target == modal2) {
-                                    modal2.style.display = "none";
-                                }
-                            }
-</script>
-       
-
-</body>
 </html>
