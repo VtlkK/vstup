@@ -4,169 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77ddaea5-b96c-45a0-9cb5-b82cf090c6f2" name="Changes" comment="qq6">
-      <change afterPath="$PROJECT_DIR$/main/static/js/anketa.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/cabinet2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/corruption.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/doc_edit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/edit_corruption.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/edit_med.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/info22.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/med.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/password_edit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/js/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="77ddaea5-b96c-45a0-9cb5-b82cf090c6f2" name="Changes" comment="10.09">
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/css/bootstrap-theme.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/css/bootstrap-theme.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/bootstrap/js/npm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/cabinet.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/cabinet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/auto.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/image_97MCNNj.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/military-textiles-removebg-preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/military-textiles-removebg-preview_4ac7XoT.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/military-textiles-removebg-preview_GQGUMbZ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/military-textiles-removebg-preview_GzyWHSI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/military-textiles-removebg-preview_L6QlIoI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/military-textiles-removebg-preview_WLscsME.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/Anketa/military-textiles-removebg-preview_t8fQCKI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/IMG_0002.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/IMG_0006.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/IMG_0006_5mBa5Tt.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/IMG_0006_EUqeaGJ.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/IMG_0006_T7bLvKa.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/IMG_0006_VQGNltL.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/IMG_0006_t4RN5c0.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/IMG_0006_u7BQbnx.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image_3LeBw73.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image_AXFLq2L.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image_E0AnayD.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image_Fh19q6s.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image_JPPFz5X.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image_MoO2564.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image_hmUsxRM.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image_omRGMrr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/image_qYI5Jsr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_5waKvTT.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_7BXMhf3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_B2eueKo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_IEpncqm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_IlQecMF.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_JAem7Pl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_NIm4EIY.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_O9jbvNH.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_Q0A2CNj.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_RvoIS3y.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_Y67YLkO.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_c3rtvtI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_cUMXk2d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_d8KPv2Y.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_eyWAnKf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_fN95v4W.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_k1hPcmd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_kU7gmQc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_mP84W1D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_nosO2NC.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_qM4k9IQ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_sMlSTd9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_skEKITu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_vggDdvB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_yBzgHro.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/military-textiles-removebg-preview_z3iTCFg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/згода.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/згода_1PoMuMw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/згода_9jFJEKe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/згода_MN0wFi4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/згода_ScGg0HF.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/згода_UpJyamA.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/згода_cemKt79.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/згода_fdTYu3r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/doc/згода_za3hygv.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/pdf_moder_napr/IMG_0006.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/pdf_moder_napr/auto.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/pdf_moder_napr/image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/pdf_moder_napr/згода.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/auto.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/auto_XOOq5NB.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/image_oP2sQpn.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_0FRwI9P.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_1sLZIBY.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_3I2iLkm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_3TACzyB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_3UcRj5B.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_3neqA70.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_3pziTYp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_3u1hErm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_3voUdfC.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_4p3P0wW.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_66v5fHU.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_96CFS90.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_B4IMzu6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_Biko8Kw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_Bx19UfV.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_Gb3RYEt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_HKIcOsa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_JOntdDM.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_K6Koy8C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_KHEKWeZ.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_LJUDTVO.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_O7vK857.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_OzRknbA.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_RxSAtY7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_VdCbATW.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_WgzClHY.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_YiK2SgF.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_Yu43N0c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_ZaXyiJm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_c8gsgNi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_cJzhegW.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_dJAwsJd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_gQUh3wO.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_joUhOEy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_p2AHjEh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_piH9rn4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_qGlz69a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_rM94u0H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_rMN7Csv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_sYK5mSe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_t7b96ZF.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_ufnLM0v.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_yfQYWH8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/ver/military-textiles-removebg-preview_zTy1Pgw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/zgoda_bat/MphS9lQ2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/zgoda_bat/dilTWw2x.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/zgoda_bat/eDkWJECQ.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/zgoda_bat/image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/zgoda_bat/image_8XVrc2b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/img/media/main/zgoda_bat/згода.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/json.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/json.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/moderator_verif_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/moderator_verif_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/js/cabinet.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/static/img/info.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main/zgoda_bat.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/zgoda_bat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/anketa.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/anketa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/cabinet.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/cabinet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/corruption.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/corruption.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/doc_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/doc_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/edit_coruption.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/edit_coruption.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/edit_med.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/edit_med.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/info2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/info2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/med.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/med.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/moderator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/moderator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/moderator_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/moderator_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/modertor_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/modertor_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/password.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/password.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/password2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/password2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/password_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/password_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/parents_consent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/parents_consent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/upload_photo_for_verification.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/upload_photo_for_verification.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vstupProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/vstupProject/settings.py" afterDir="false" />
     </list>
     <list id="ed714fbf-2b7d-4a30-ab78-4335e01ca868" name="Changes by IDservice" comment="" />
@@ -220,7 +75,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vtlkk/OneDrive/Робочий стіл/MPZ-main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/дипломна/djangoProject&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -243,11 +98,11 @@
       <recent name="D:\сайт вступу\vstup.f\vstupProject\main\front" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static\pdf" />
-      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static\img" />
-      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static\js" />
-      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static\css" />
-      <recent name="D:\сайт вступу\vstup.f\vstupProject\vstupProject" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static\bootstrap\js" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static\bootstrap\css" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\static" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\bootstrap\css" />
+      <recent name="D:\сайт вступу\vstup.f\vstupProject\main\bootstrap\js" />
     </key>
   </component>
   <component name="RunManager" selected="Django Server.vstupProject">
@@ -423,7 +278,12 @@
       <workItem from="1728539523670" duration="280000" />
       <workItem from="1728539825481" duration="825000" />
       <workItem from="1728540671660" duration="394000" />
-      <workItem from="1728541105314" duration="13704000" />
+      <workItem from="1728541105314" duration="16883000" />
+      <workItem from="1728650308322" duration="1398000" />
+      <workItem from="1728653074903" duration="18000" />
+      <workItem from="1728653112544" duration="5000" />
+      <workItem from="1728653133089" duration="13000" />
+      <workItem from="1728906497078" duration="4312000" />
     </task>
     <task id="LOCAL-00001" summary="qq">
       <option name="closed" value="true" />
@@ -481,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727851926068</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="10.09">
+      <option name="closed" value="true" />
+      <created>1728568782071</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1728568782071</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,7 +384,8 @@
     <MESSAGE value="qq4" />
     <MESSAGE value="qq5" />
     <MESSAGE value="qq6" />
-    <option name="LAST_COMMIT_MESSAGE" value="qq6" />
+    <MESSAGE value="10.09" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.09" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/vstupProject$exel_data.coverage" NAME="exel_data Coverage Results" MODIFIED="1723192888881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />

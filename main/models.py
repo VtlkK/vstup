@@ -32,7 +32,7 @@ class Sing_Clients(models.Model):
     lang = models.CharField(max_length=1024)
     pogad = models.CharField(verbose_name='Погоджуюсь')
     place_med = models.CharField(max_length=1024)
-    sex = models.CharField(max_length=5)
+    sex = models.CharField(max_length=25)
     data_now2 = models.DateTimeField(auto_now_add=True)
 
 

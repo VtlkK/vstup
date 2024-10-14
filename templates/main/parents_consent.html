@@ -46,7 +46,15 @@
                 <input type="file" class="form-control" id="" name="photo_zgodu" placeholder="" required>
 
                 
-                <p></p>
+                {% if error_list %}
+                    <div class="error">
+                        <ul>
+                            {% for error in error_list %}
+                                <li>{{ error }}</li>  <!-- Виведення кожної помилки в списку -->
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
                 
                 <button type="submit" class="submit-button">ПОДАТИ ЗГОДУ БАТЬКІВ</button>
             </div>

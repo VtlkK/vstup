@@ -83,9 +83,7 @@
                     <br><br><br>
                     <label class="" for="">Логін:</label>
                     <input type="text" class="form-control" id="" name="login" placeholder="Логін для входу" required>
-                    {% if error %}
-                    <p>{{ error }}</p>
-                    {% endif %}
+                    
                     <br><br>
                 
                     
@@ -96,15 +94,18 @@
                             <span id="toggleIcon" class="icon-eye">&#128065;</span>
                         </button>
                     </div>
+                    {% if error %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endif %}
                 
                 <div class="password-requirements">
                     <p>Пароль має відповідати наступним вимогам:</p>
-                    
+
                         <p id="length" class="invalid">Містити принаймні 8 символів</p>
                         <p id="lowercase" class="invalid">Містити принаймні одну малу літеру</p>
                         <p id="uppercase" class="invalid">Містити принаймні одну велику літеру</p>
                         <p id="special" class="invalid">Містити принаймні один спеціальний символ</p>
-                    
+
                 </div>
                 <style>
                      .valid {
