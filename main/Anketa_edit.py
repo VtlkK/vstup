@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 def edit_anketa(request, id):
     el = Clients.objects.get(id=id)
-    info = Anketa_draft.objects.filter(client_id=el.id)
+    info = Anketa.objects.filter(client_id=el.id)
     idd = request.session.get('id')
     if idd is None or int(idd) != int(el.id):
         return HttpResponseForbidden("У вас немає доступу до цієї сторінки.")

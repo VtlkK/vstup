@@ -14,6 +14,7 @@ def Cabinet(request, id):
         el = get_object_or_404(Clients, id=id)
     except Clients.DoesNotExist:
         return HttpResponseNotFound("Користувач не знайдений.")
+    el2 = Sing_Clients.objects.get(client_id=el.id)
     idd = request.session.get('id')
     print(f"{idd} 'idd")
     user = Clients.objects.get(id=idd)
@@ -22,11 +23,13 @@ def Cabinet(request, id):
     if user.id != int(id):
         return HttpResponseForbidden("У вас немає доступу до цієї сторінки.")
 
-    el2 = Sing_Clients.objects.get(client_id=el.id)
+
     try:
         dozvil = nadatu_dozvil.objects.get(client_id=el.id)
     except nadatu_dozvil.DoesNotExist:
         dozvil = None
+
+
     try:
         vid_napr = Moder_napr.objects.filter(client_id=el.id)
     except Moder_napr.DoesNotExist:
@@ -45,53 +48,47 @@ def Cabinet(request, id):
         verific = None
     try:
         anketa = Anketa.objects.get(client_id=el.id)
+        time_close_ank = anketa.last_modified > anketa.created
     except Anketa.DoesNotExist:
         anketa = None
-    if anketa is not None:
-        time_close_ank = anketa.last_modified > anketa.created
-    else:
         time_close_ank = False
+
+    try:
+        close_edit = zgoda_bat.objects.get(client_id=el.id)
+        time_close = close_edit.last_modified > close_edit.created
+    except zgoda_bat.DoesNotExist:
+        close_edit = None
+        time_close = False
+
+    try:
+        close_edit6 = Med.objects.get(client_id=el.id)
+        time_close_med = close_edit6.last_modified > close_edit6.created
+    except Med.DoesNotExist:
+        close_edit6 = None
+        time_close_med = False
+
+
+    try:
+        close_edit1 = documents.objects.get(client_id=el.id)
+        time_close1 = close_edit1.last_modified > close_edit1.created
+    except documents.DoesNotExist:
+        close_edit1 = None
+        time_close1 = False
+
+    try:
+        close_edit2 = corup.objects.get(client_id=el.id)
+        time_close2 = close_edit2.last_modified > close_edit2.created
+    except corup.DoesNotExist:
+        close_edit2 = None
+        time_close2 = False
+
 
     try:
         vlk = vlk_napr.objects.get(client_id=el.id)
     except vlk_napr.DoesNotExist:
         vlk = None
 
-    try:
-        close_edit = zgoda_bat.objects.get(client_id=el.id)
-    except zgoda_bat.DoesNotExist:
-        close_edit = None
 
-    if close_edit is not None:
-        time_close = close_edit.last_modified > close_edit.created
-    else:
-        time_close = False
-
-    try:
-        close_edit6 = Med.objects.get(client_id=el.id)
-    except Med.DoesNotExist:
-        close_edit6 = None
-    if close_edit6 is not None:
-        time_close_med = close_edit6.last_modified > close_edit6.created
-    else:
-        time_close_med = False
-
-    try:
-        close_edit1 = documents.objects.get(client_id=el.id)
-    except documents.DoesNotExist:
-        close_edit1 = None
-    if close_edit1 is not None:
-        time_close1 = close_edit1.last_modified > close_edit1.created
-    else:
-        time_close1 = False
-    try:
-        close_edit2 = corup.objects.get(client_id=el.id)
-    except corup.DoesNotExist:
-        close_edit2 = None
-    if close_edit2 is not None:
-        time_close2 = close_edit2.last_modified > close_edit2.created
-    else:
-        time_close2 = False
     try:
         med = Med.objects.get(client_id=el.id)
     except Med.DoesNotExist:

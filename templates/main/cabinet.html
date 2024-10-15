@@ -11,8 +11,253 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/cabinet.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cabinet_s.css' %}" rel="stylesheet">
 </head>
+<style>
+    .modal, .modal2 {
+                            display: none;
+                            position: fixed;
+                            z-index: 1;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            overflow: auto;
+                            background-color: rgba(0,0,0,0.4);
+                        }
+
+                        .modal-content {
+                            background-color: #2d5138;
+                            margin: 15% auto;
+                            padding: 20px;
+                            border: 1px solid #000000;
+                            width: 80%;
+                            color: #000000;
+                        }
+
+                        .close {
+                            color: #f5f3f3;
+                            float: right;
+                            font-size: 28px;
+                            font-weight: bold;
+                        }
+
+                        .close:hover,
+                        .close:focus {
+                            color: black;
+                            text-decoration: none;
+                            cursor: pointer;
+                        }
+                        @font-face {
+            font-family: "uaf";
+            font-weight: normal;
+            font-style: normal;
+        }
+
+         #chat-button {
+             position: fixed; /* Фіксувати кнопку до вікна */
+             bottom: 15px; /* Відступ знизу */
+             right: 20px; /* Відступ праворуч */
+             z-index: 1000; /* Забезпечити відображення поверх інших елементів */
+             width: 60px; /* Ширина кнопки */
+             height: 60px; /* Висота кнопки */
+             border-radius: 50%; /* Створити круглу форму */
+             background-color: #007acc;
+             color: white; /* Білий текст */
+             text-align: center; /* Центрування тексту */
+             line-height: 60px; /* Вирівнювання тексту по вертикалі */
+             cursor: pointer; /* Зміна курсора на вказівник при наведенні */
+             transition: background-color 0.3s; /* Додати ефект переходу */
+        }
+
+        #chat-button:hover { /* Стиль при наведенні */
+             background-color: #0056b3;
+        }
+
+
+        #chat-box {
+             position: fixed; /* Фіксувати вікно чату до вікна */
+             bottom: 80px; /* Відступ знизу */
+             right: 20px; /* Відступ праворуч */
+             width: 350px; /* Ширина вікна чату */
+             background-color: white; /* Білий фон */
+             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тінь */
+             padding: 20px; /* Внутрішній відступ */
+             border-radius: 5px; /* Злегка закруглені кути */
+             transition: right 0.3s; /* Додати ефект переходу */
+             z-index: 1
+        }
+
+
+       #close-chat-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 25px; /* Встановлює ширину кнопки */
+            height: 25px; /* Встановлює висоту кнопки */
+            padding: 0; /* Забезпечує, що внутрішній відступ не змінює розмір кнопки */
+            border-radius: 50%; /* Робить кнопку круглою */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Білий колір тексту */
+            border: none; /* Відсутність обведення */
+            cursor: pointer; /* Курсор змінюється на вказівник при наведенні */
+       }
+
+        .contact-info {
+            margin-top: 25px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .viber-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #9900cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+        button {
+                background-color: black;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 100px;
+                border-width: 1px;
+                border-color: #222222;
+                transition: background-image 0.4s ease;
+                transition: background-color 0.4s;
+                width: fit-content;
+            
+              }
+            
+              button:hover {
+            
+                cursor:pointer;
+                background-color: #e0e0e0;
+                transition: background-color 0.4s;
+                /* Градієнтний фон */
+            
+            
+                color: #222222;
+                border-color: #222222;
+              }
+            
+              button:active {
+                filter: brightness(80%);
+                /* Темніше при кліку */
+              }
+            
+              .file {
+                background-color: black;
+                /* Задаємо чорний колір кнопки */
+                color: white;
+                /* Задаємо колір тексту кнопки */
+                padding: 10px 20px;
+                /* Задаємо відступи */
+                border-radius: 100px;
+                /* Закруглюємо кути кнопки */
+                border-width: 1px;
+                border-color: #222222;
+                transition: background-image 0.4s ease;
+                /* Додаємо плавну анімацію при зміні градієнту */
+                transition: background-color 0.4s;
+                width: 50vh;
+            
+              }
+            
+              .file:hover {
+            
+                cursor:pointer;
+                background-color: #e0e0e0;
+                transition: background-color 0.4s;
+                /* Градієнтний фон */
+            
+            
+                color: #222222;
+                border-color: #222222;
+              }
+            
+              .file:active {
+                filter: brightness(80%);
+                /* Темніше при кліку */
+              }
+            
+              /* CSS */
+            .img-container img {
+              max-width: 100%; /* Зробить зображення адаптивним у межах батьківського контейнера */
+              height: auto;    /* Збереже пропорції */
+            }
+            
+            
+            
+            
+            body {
+                font-family: "uaf", sans-serif !important;
+            }
+            
+            
+            .multipleSelect2 {
+                width: 300px;
+            }
+            
+            
+            
+            .card {
+                transition: background-color 0.7s;
+            }
+            
+            .card:hover {
+                background-color: #8ACBDE;
+                /* Градієнтний фон */
+                color: #222222;
+                transition: background-color 0.7s;
+            }
+            
+            .gradi {
+                /* Градієнтне фонове заповнення тексту */
+                background-image: linear-gradient(to right, #9FACE6, #07dbdf);
+                /* Обрізка градієнту до області тексту */
+                -webkit-background-clip: text;
+                background-clip: text;
+                /* Колір тексту у випадку, якщо браузер не підтримує градієнтні текстові ефекти */
+                color: transparent;
+            }
+            
+            .whitee{
+                background-color: #F5EDF0;
+            }
+            .grenee{
+                background-color: #368200;
+                color: #F5EDF0
+            }
+            
+            .pinkee{
+                background-color: #AB006F;
+                color:#F5EDF0;
+            }
+            
+            .yelowee{
+                background-color: #FFC32A;
+                color:#368200
+            }
+            
+            .blackee{
+                background-color: #222222;
+                color: #F5EDF0;
+            }
+            
+            .disablee{
+                background-color: #989898;
+                color: #222222;
+            }
+</style>
 
 <body>
 <div style="padding-bottom: 10vh; background-color: #F5EDF0;">
@@ -81,17 +326,14 @@
                 jQuery(document).ready(function($) {
                     function fetchData() {
                         $.ajax({
-                            url: '{% url "json_request" el.id %}',  
+                            url: '{% url "json_request" el.id %}',
                             type: 'GET',
                             success: function(data) {
                                 if (data.v === "verified") {
-                                    $('#verification-step').stop(true, true).show();
                                     $('#auth-status').html('<p style="color: #FFC32A; font-size: 100%;">Ви пройшли авторизацію</p>');
                                 } else if (data.v === "pending") {
-                                    $('#verification-step').stop(true, true).hide();
                                     $('#auth-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
                                 } else if (data.v === "not_found") {
-                                    $('#verification-step').stop(true, true).hide();
                                     $('#auth-status').html('<p style="color:#989898; font-size: 100%;">Дані не знайдено</p>');
                                 } else {
                                     $('#auth-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
@@ -102,11 +344,11 @@
                                 $('#auth-status').html('<p style="color:#989898; font-size: 100%;">Подайте дані для перевірки</p>');
                             },
                             complete: function() {
-                                fetchData(); 
+                                fetchData();
                             }
                         });
                     }
-            
+
                     fetchData();
                 });
             </script>
@@ -151,7 +393,7 @@
         </div>
     </div> 
        
-
+{% if verific %}
     <div id="verification-step" class="container-fluid pinkee">
         <br>
         <div class="container-fluid">
@@ -186,7 +428,7 @@
                         {% if dozvil.anketa_dozvil and not time_close_ank %}
                             <br><br>
                             <a href="{% url 'edit_anketa' id=el.id %}">
-                                <button class="animate__animated animate__fadeInUp" onclick="anketa()" style="background-color: black">Редагувати анкети</button>
+                                <button class="animate__animated animate__fadeInUp"  style="background-color: black">Редагувати анкети</button>
                             </a>
                             {% else %}
                         {% endif %}
@@ -239,13 +481,13 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
+{% else %}
+{% endif %}
   
 {% if anketa %}
 
-
-
-
+    
     <div class="container-fluid yelowee">
     <br>
     <div class="container-fluid">
@@ -563,39 +805,10 @@
     </div>
     {% else %}
 {% endif %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-                    <script>
-                       $.noConflict();
-                            jQuery(document).ready(function($) {
-                                function fetchData() {
-                                    $.ajax({
-                                        url: '{% url "json_vlk" el.id %}',
-                                        type: 'GET',
-                                        success: function(data) {
-                                            if (data.napr === "True") {
-                                                $('#vlk-step').stop(true, true).show();
-                                                $('#down_vlk').stop(true, true).show();
-                                            } else if (data.napr === "False") {
-                                                $('#vlk-step').stop(true, true).hide();
-                                                $('#down_vlk').stop(true, true).hide();
-                                            } else if (data.napr === "not_found") {
-                                                $('#vlk-step').stop(true, true).hide();
-                                                $('#down_vlk').stop(true, true).hide();
-                                            }
-                                        },
-                                        error: function(xhr, status, error) {
-                                            console.error('AJAX Error:', status, error);
-                                        }
-                                    });
-                                }
-                            
-                                setInterval(fetchData, 100);
-                            });
-                       
-                    </script>
+                   
 
-
+{% if vlk %}
  <div id="vlk-step" style="background-color: #09c5a2; color: black">
         <br>
         <div class="container-fluid ">
@@ -662,6 +875,8 @@
             </div>
         </div>
     </div>
+ {% else %}
+ {% endif %}
  
     <div id="chat-button">
         <i style="font-size: 20px;">💬</i>

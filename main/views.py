@@ -45,9 +45,11 @@ def CreatUser(request):
         login = request.POST['login']
         password = request.POST['password']
         lang = request.POST['lang']
-        pogad = request.POST['pogad']
+        pogad = request.POST.get('pogad', None)
         sex = request.POST['sex']
         place_med = request.POST['place_med']
+        if pogad is None or pogad == '':
+            return redirect('CreatUser')
 
         if Clients.objects.filter(login=login).exists():
             return render(request, 'main/signup.html', {'error': 'Такий логін вже існує'})
