@@ -10,15 +10,25 @@ def edit_zgoda(request, id):
     idd = request.session.get('id')
     if idd is None or int(idd) != int(el.id):
         return HttpResponseForbidden("У вас немає доступу до цієї сторінки.")
+
+
     obj12 = get_object_or_404(zgoda_bat, client_id=el.id)
+
     if request.method == 'POST':
-        photo_zgodu = request.FILES['photo_zgodu']
-        obj12.photo_zgodu = photo_zgodu
+        photo_zgodu = request.FILES.get('photo_zgodu')
+
+        if request.POST.get('ended') == 'True':
+            obj12.ended = True
+
+        if photo_zgodu:
+            obj12.photo_zgodu = photo_zgodu
 
         obj12.save()
         return redirect('cabinet', id=el.id)
+
     else:
-            initial_data = {
-                'photo_zgodu': obj12.photo_zgodu,
-            }
-    return render(request,'main/edit_zgoda.html', {'intitial_data': initial_data})
+        initial_data = {
+            'photo_zgodu': obj12.photo_zgodu,
+        }
+
+    return render(request, 'main/edit_zgoda.html', {'initial_data': initial_data})

@@ -10,7 +10,7 @@ from .import (cabinet, Login_logout, Anketa, Anketa_edit,
               zgoda_bat, zgoda_bat_edit, coruption_edit, coruption,
               pdf_coruption, med_edit, med, Med_docs, zgoda_p, pdf_document,
               exel_data, open_zgoda, pdf_napravlen, vlk, vlk_nap_client, moderator_create, vid_red_doca,
-              napr_otr, moder_vlknapr_vid, check_napr, json
+              napr_otr, moder_vlknapr_vid, check_napr, json, ended
               )
 from django.views.generic import RedirectView
 
@@ -79,6 +79,8 @@ urlpatterns = [
     path('rsbdstgfdghvbhfjbfv_fbgvh/', exel_data.exel_data, name='exel'),
 
     path('vhtgbnhgtrftghvb_wgfvbnh/', open_zgoda.open_pdf, name='open_pdf'),
+
+    path('dfehtjfgjhbbghkjggujkykkuj/<int:id>', ended.ended, name='ended_ank'),
 
     path('fvdbydvtfv_ghhnjbfvbdv/<int:id>', pdf_napravlen.download_PDF, name='download_PDF_napravlen'),
 

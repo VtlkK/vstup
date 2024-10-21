@@ -46,7 +46,7 @@ checkboxes.forEach(function(checkbox) {
 });
 
 // Обробка другого модального вікна
-var btn = document.getElementById("openModalButton");  // Додай кнопку з правильним ID
+var btn = document.getElementById("openModalButton");
 var modal2 = document.getElementById("myModal2");
 var closeBtn2 = modal2.getElementsByClassName("close")[0];
 

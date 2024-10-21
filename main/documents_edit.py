@@ -9,6 +9,8 @@ def edit_document(request, id):
         return HttpResponseForbidden("У вас немає доступу до цієї сторінки.")
     obj9 = get_object_or_404(documents, client_id=el.id)
     if request.method == 'POST':
+        if request.POST.get('ended') == 'True':
+            obj9.ended = True
         id_card = request.FILES['id_card']
         id_card2 = request.FILES['id_card2']
         location_doc = request.FILES['location_doc']

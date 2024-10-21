@@ -10,6 +10,8 @@ def edit_cor(request, id):
     obj123 = get_object_or_404(corup, client_id=el.id)
 
     if request.method == 'POST':
+        if request.POST.get('ended') == 'True':
+            obj123.ended = True
         f22 = request.POST['f22']
         obj123.f22 = f22
         obj123.save()

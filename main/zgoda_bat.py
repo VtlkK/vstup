@@ -30,3 +30,5 @@ def zgoda_ofor(request, id):
 
 
     return render(request, 'main/parents_consent.html', {'error_list': error_list, 'client': el})
+
+

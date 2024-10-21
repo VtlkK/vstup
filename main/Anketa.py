@@ -124,6 +124,7 @@ def anketa(request, id):
         kontact_fa = request.POST['kontact_fa']
         kontact_ma = request.POST['kontact_ma']
         data22 = request.POST['data22']
+        ended = request.POST.get('ended', False)
 
         if 'save' in request.POST:
             obj1 = Anketa(
@@ -148,7 +149,7 @@ def anketa(request, id):
                 vstup5=vstup5, zvil5=zvil5, posada5=posada5, location5=location5,
                 kum=kum,
                 seria_num=seria_num, kontact_sl=kontact_sl, kontact_os=kontact_os, kontact_fa=kontact_fa,
-                kontact_ma=kontact_ma, data22=data22
+                kontact_ma=kontact_ma, data22=data22, ended=ended
             )
             obj1.save()
             return redirect('cabinet', id=el.id)

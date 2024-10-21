@@ -12,6 +12,8 @@ def edit_med(request, id):
         return HttpResponseForbidden("У вас немає доступу до цієї сторінки.")
     obj33 = get_object_or_404(Med, client_id=el.id)
     if request.method == 'POST':
+        if request.POST.get('ended') == 'True':
+            obj33.ended = True
         pos_v = request.POST.get('pos_v', '❌')
         psix = request.POST.get('psix', '❌')
         protu_tub = request.POST.get('protu_tub', '❌')

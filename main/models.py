@@ -66,7 +66,7 @@ class verificate_photo_client(models.Model):
 
 class Mod_TF(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='mod_tf')
-    tf1 = models.BooleanField(default=False, max_length=10, null=True, blank=True)
+    tf1 = models.BooleanField(default=False, null=True, blank=True)
     tf2 = models.BooleanField(default=False, null=True, blank=True)
     tf3 = models.BooleanField(default=False, null=True, blank=True)
     tf4 = models.BooleanField(default=False, null=True, blank=True)
@@ -304,7 +304,7 @@ class Anketa(models.Model):
     data_now = models.DateTimeField(auto_now_add=True)
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-
+    ended = models.BooleanField(default=False)
 
 class re_password(models.Model):
     email = models.CharField(max_length=1024, null=True, blank=True)
@@ -325,6 +325,8 @@ class documents(models.Model):
     psix_doc = models.ImageField(upload_to='psix_doc')
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+    ended = models.BooleanField(default=False)
+
 
 
 class Filter(django_filters.FilterSet):
@@ -357,6 +359,7 @@ class Med(models.Model):
     ekg = models.CharField(max_length=1024, null=True, blank=True)
 
     data = models.DateTimeField(auto_now=True)
+    ended = models.BooleanField(default=False)
 
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
@@ -367,6 +370,8 @@ class corup(models.Model):
     f22 = models.CharField(max_length=1024)
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+    ended = models.BooleanField(default=False)
+
 
 
 class zgoda_bat(models.Model):
@@ -374,6 +379,8 @@ class zgoda_bat(models.Model):
     photo_zgodu = models.ImageField(upload_to='zgoda_bat')
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+    ended = models.BooleanField(default=False)
+
 
 class vlk_napr(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='vlk')
@@ -386,3 +393,6 @@ class Moder_napr(models.Model):
 class check_napr(models.Model):
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='check_napr2')
     check2 = models.CharField(max_length=24)
+
+
+
